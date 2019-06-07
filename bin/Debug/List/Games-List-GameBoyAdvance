@@ -1,0 +1,28 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "The Legend of Zelda: A Link to the Past",
+        "Region": "EUR",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "gba",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/166456.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIH3d3lkhWmm3HiX2PIAaQMLWisrezPRtXCZt/VDMQLkQ23Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+
+]

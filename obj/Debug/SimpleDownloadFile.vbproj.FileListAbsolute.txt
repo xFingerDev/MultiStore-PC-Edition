@@ -1,0 +1,79 @@
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.exe
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.pdb
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.xml
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.mainForm.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.Inicio.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.Resources.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.exe
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.xml
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Inicio.resources
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Resources.resources
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+D:\Project Koppai Visual\obj\Debug\Project Koppai.exe
+D:\Project Koppai Visual\obj\Debug\Project Koppai.xml
+D:\Project Koppai Visual\obj\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\bin\Debug\Project Koppai.exe
+D:\Project Koppai Visual\bin\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\bin\Debug\Project Koppai.xml
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Start.resources
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.ResolveComReference.cache
+D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.dll
+D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.xml
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+D:\Project Koppai Visual\bin\Debug\Project Koppai.exe.config
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.exe.config
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.exe
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.pdb
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.xml
+D:\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.dll
+D:\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.xml
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.ResolveComReference.cache
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Inicio.resources
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Resources.resources
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Start.resources
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.exe
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.xml
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.pdb
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Inicio.resources
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Resources.resources
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Start.resources
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+C:\Users\Dara\Source\Repos\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe.config
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.pdb
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.xml
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.exe
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.xml
+C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe.config
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Inicio.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Resources.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Start.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.exe
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Accept.resources

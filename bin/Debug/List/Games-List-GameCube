@@ -1,0 +1,32 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Luigi's Mansion",
+        "Region": "USA",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "iso",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/22086-luigis-mansion.png",
+        "Parts": false,
+        "Encrypt": ["Vy7Yiq4KeaNf6633bS1wvHgth/koClnWXqjg40WBROWOYd4nEt5b5XP/tpyvopxb+YZtZYKa6VB87B0srgkTpiFOYsKpIB4irOLeAMSeuFzAa2hH+xs7nNxEbFtUchVmg9PmmZvnnT+8xsUQfnFiCQ=="],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": "",
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    }
+
+]

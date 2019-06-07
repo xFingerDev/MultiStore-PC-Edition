@@ -1,0 +1,11 @@
+<project outputDir="C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Confused" baseDir="C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug" xmlns="http://confuser.codeplex.com">
+  <module path="Newtonsoft.Json.dll" />
+  <module path="Σύνταξη for games.exe">
+    <rule pattern="true">
+      <protection id="anti dump" />
+      <protection id="anti debug" />
+      <protection id="anti ildasm" />
+      <protection id="invalid metadata" />
+    </rule>
+  </module>
+</project>

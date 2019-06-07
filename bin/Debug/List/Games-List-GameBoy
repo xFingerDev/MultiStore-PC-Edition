@@ -1,0 +1,27 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Donkey Kong Country",
+        "Region": "EU",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "gbc",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/61Bjc595ZuL._SX342_.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIxCoZN+A0xkIsNbFaifUDBxtXh+kgfmrBH80i2ixpmOo23Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+]

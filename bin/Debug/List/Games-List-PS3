@@ -1,0 +1,16 @@
+[
+    {"Name":".detuned","ID":"NPUA80008","Type":"GAME","Format":"pkg","Image":"https://cdn.gracza.pl/galeria/gry13/417982531d.jpg","User":"TiTiYum","Version":"Unknown","Encrypt":["INsQC0xuQNwSAv8xLwd+E+XKhykxR1MZulUCZ5DNrNXxFuxEIBaYxLB+CHUpPrb0YGQpOV11xVi8C0u6M8q4pULEc5gYdtc6Ci+bIwDxrySkxu7Ah7OHgsDny5LhvM0LqVJY1SV8U1bJ2B6+KuENzOK7BL2qQ+T/bduxzi4P3mKo9ebnv1C9Brm+W75pWLEGu0ojbsp+cEliaAjLu64RWDbdnqg/OT557MvTKGNJ/Go="],"Region":"USA","N_Part":1,"Parts":false,"LicenseExist":true,"LinkLisense":"FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIuwQYhPEoXhejkB50ZV3Edep137AEGB4wwveHPtiymCs23Z6oPzk+eezL0yhjSfxq","FormatLisense":"rap"},
+    {"Name":"101-in-1 Megamix (PSP)","ID":"NPUH10088","Type":"GAME","Format":"pkg","Image":"https://i11c.3djuegos.com/juegos/6600/101_in_1_megamix/fotos/ficha/101_in_1_megamix-1723962.jpg","User":"TiTiYum","Version":"Unknown","Encrypt":["INsQC0xuQNwSAv8xLwd+E+XKhykxR1MZulUCZ5DNrNWeCq2yNT3Kdoh75c4p7ecfGNKBAzSJ6aSyNeF0AUKtdVFgIPHEAQlqntXJgi1YHZbZgj4SzvQUoJ/bbHBHpR4R4o1RBvXmQmKDNIKlHKNnoXogp/vJfUVMmxZjtk+OEydzVYXLNc70RoHHt9CxE0WZV5jpJ8WrAyQpD0wqRjQpyjbdnqg/OT557MvTKGNJ/Go="],"Region":"USA","N_Part":1,"Parts":false,"LicenseExist":false,"LinkLisense":"Nt2eqD85Pnnsy9MoY0n8ag==","FormatLisense":""},
+    {"Name":"007 GoldenEye: Reloaded - Emilio Largo","ID":"BLUS30755","Type":"DLC","Format":"pkg","Image":"https://nblog.org/wp-content/uploads/2019/05/cover-640x735.jpg","User":"TiTiYum","Version":"Unknown","Encrypt":["INsQC0xuQNwSAv8xLwd+E+XKhykxR1MZulUCZ5DNrNV2034jA3YetEvjXe7V8X/RRxh6p7afHeYQqtMddfccAOm0uv78aMsW1GMetEFrqSHRuXZq0rYLudDjJFaRV8oYC9ZioCc8XtGnMXZiODGwXkG91knmi3CMUjkEcDT3z9gCPAqT03KRbmBQ+pLKYoJteMf2xESErWOZ0o0we5+ZhTbdnqg/OT557MvTKGNJ/Go="],"Region":"USA","N_Part":1,"Parts":false,"LicenseExist":false,"LinkLisense":"Nt2eqD85Pnnsy9MoY0n8ag==","FormatLisense":""},
+
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+   
+]

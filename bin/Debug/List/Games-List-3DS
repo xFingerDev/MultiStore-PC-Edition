@@ -1,0 +1,44 @@
+[
+        {
+            "ID": "0",
+            "Type": "GAME",
+            "Name": "Pokemon Red",
+            "Region": "USA",
+            "User": "TiTiYum",
+            "Version": "Unknown",
+            "Format": "cia",
+            "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/pokemon-1.jpg",
+            "Parts": false,
+            "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIPQr47ZWVgLP9rWGSWgN8OMExxEG8CASQ2TdS81VmgOk23Z6oPzk+eezL0yhjSfxq"],
+            "N_Part": "1",
+            "LicenseExist": "False",
+            "LinkLisense": "",
+            "FormatLisense": ""
+        },
+        {
+            "ID": "0",
+            "Type": "GAME",
+            "Name": "Pokemon Rojo",
+            "Region": "EU",
+            "User": "TiTiYum",
+            "Version": "Unknown",
+            "Format": "cia",  
+            "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/pokemon-1.jpg",
+            "Parts": false,
+            "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWI8crJQCrMPOOKvoNIEPVbbeEGU9rTMNV9awh0yMQY+nU23Z6oPzk+eezL0yhjSfxq"],
+            "N_Part": "1",
+            "LicenseExist": "False",
+            "LinkLisense": "",
+            "FormatLisense": ""
+        },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+
+]

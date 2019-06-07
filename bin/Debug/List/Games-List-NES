@@ -1,0 +1,48 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Abarenradin",
+        "Region": "UNKNOWN",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nes",
+        "Image": "https://i.ytimg.com/vi/TGrIE6omHMI/hqdefault.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIwDOA6+BhAh9Q4vF39TdmLJJjDFnMDR2IwSrN8u3a7Ug23Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Aces - Iron Eagle 3",
+        "Region": "JP",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nes",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/49871_front.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIebJVrSlbqTdGkAPD0FIk+oZ6rclHnFs/nSr8J1wBUrM23Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": "",
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    }
+
+]

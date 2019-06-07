@@ -1,0 +1,122 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Mario Kart DS",
+        "Region": "EU",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nds",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/s-l1000.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIQa/VbPGgF/GHHIlFu6kqVy6yPU2b66lD6DUbYp+P0EA23Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+    "ID": "0",
+    "Type": "GAME",
+    "Name": "Super Mario 64 DS",
+    "Region": "EUR",
+    "User": "TiTiYum",
+    "Version": "Unknown",
+    "Format": "nds",
+    "Image": "https://www.mobygames.com/images/covers/l/38847-super-mario-64-ds-nintendo-ds-front-cover.jpg",
+    "Parts": "False",
+    "Encrypt":  [
+    "FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWI8tpVDt2+AdsT/f+VM+KKELO3Q9C56SBJK+joMBB68XY23Z6oPzk+eezL0yhjSfxq"
+        ],
+    "N_Part": "1",
+    "LicenseExist": "False",
+    "LinkLisense": "",
+    "FormatLisense": ""
+    },
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Tetris DS",
+        "Region": "EUR",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nds",
+        "Image": "https://images-na.ssl-images-amazon.com/images/I/51bCZzC--qL.jpg",
+        "Parts": "False",
+        "Encrypt":  [
+         "FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWI8CZoTfreIMx6DeSooDiN0Z5ObKxdQkSFw3BiUWbArqs23Z6oPzk+eezL0yhjSfxq"
+    ],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Yoshi Touch & Go",
+        "Region": "USA",
+        "User": "TiTiYum",
+        "Version": "Unknwon",
+        "Format": "nds",
+        "Image": "https://r.mprd.se/ndsbox1/0013a.jpg",
+        "Parts": "False",
+        "Encrypt":  [
+         "FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIDhK6eScsxnYa8/b/8mIOBfZteYz1HSDF/sYFlI90Y/A23Z6oPzk+eezL0yhjSfxq"
+    ],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Yoshi's Island DS",
+        "Region": "EUR",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nds",
+        "Image": "https://images-na.ssl-images-amazon.com/images/I/616MQCAF11L.jpg",
+        "Parts": "False",
+        "Encrypt":  [
+         "FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIH5ltD4i5pD1eZHQReVebiSwQ1PtFyDxLjbok4KSW7pg23Z6oPzk+eezL0yhjSfxq"
+    ],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "The Legend Of Zelda: Phantom Hourglass",
+        "Region": "EUR",
+        "User": "TiTiYum",
+        "Version": "Unknown",
+        "Format": "nds",
+        "Image": "https://i11b.3djuegos.com/juegos/1355/the_legend_of_zelda_phantom_hourglass/fotos/ficha/the_legend_of_zelda_phantom_hourglass-3242213.jpg",
+        "Parts": "False",
+        "Encrypt":  [
+         "FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIXmz1un4jeGOoOity2rjLlQ9Ks84FJHh7wxUf+9nGj3c23Z6oPzk+eezL0yhjSfxq"
+    ],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": "",
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    }
+
+]

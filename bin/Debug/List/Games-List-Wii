@@ -1,0 +1,28 @@
+[
+    {
+        "ID": "0",
+        "Type": "GAME",
+        "Name": "Mega Man 10",
+        "Region": "UNKNOWN",
+        "User": "TiTiYum",
+        "Version": "Unknwon",
+        "Format": "wad",
+        "Image": "https://raw.githubusercontent.com/TiTiYum/Project-Koppai/master/Cover/Cover%20Megaman%2010.jpg",
+        "Parts": false,
+        "Encrypt": ["FT88Z7LTjf8XeNsdQ07kLpu6BWjOmKHbRXVmdX3AyqT0M8DSepEOV3/YRmpbOUWIMpSckT35T1Ap5shEPbkq+hXSMRqanpTAWvzBPhjeM8023Z6oPzk+eezL0yhjSfxq"],
+        "N_Part": "1",
+        "LicenseExist": "False",
+        "LinkLisense": "",
+        "FormatLisense": ""
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+
+]

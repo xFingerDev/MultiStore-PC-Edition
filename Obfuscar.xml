@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Obfuscator>
+  <Var name="InPath" value=".\Obfuscator_Input" />
+  <Var name="OutPath" value=".\Obfuscator_Output" />
+
+  <Module file="$(InPath)\Project Koppai.exe" />
+  <Module file="$(InPath)\Newtonsoft.Json.dll" />
+</Obfuscator>
