@@ -1,0 +1,29 @@
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+C:\Users\darat\Desktop\sdsd\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.exe
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.pdb
+C:\Users\darat\Desktop\sdsd\bin\Debug\Project Koppai.xml
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.mainForm.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.Inicio.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\ProjectKoppai.Resources.resources
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.exe
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.xml
+C:\Users\darat\Desktop\sdsd\obj\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Inicio.resources
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Resources.resources
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+D:\Project Koppai Visual\obj\Debug\Project Koppai.exe
+D:\Project Koppai Visual\obj\Debug\Project Koppai.xml
+D:\Project Koppai Visual\obj\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\bin\Debug\Project Koppai.exe
+D:\Project Koppai Visual\bin\Debug\Project Koppai.pdb
+D:\Project Koppai Visual\bin\Debug\Project Koppai.xml
+D:\Project Koppai Visual\obj\Debug\ProjectKoppai.Start.resources
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.ResolveComReference.cache
+D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.dll
+D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.xml
+D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+D:\Project Koppai Visual\bin\Debug\Project Koppai.exe.config

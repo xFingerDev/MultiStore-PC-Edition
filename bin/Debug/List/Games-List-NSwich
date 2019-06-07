@@ -1,0 +1,24 @@
+[
+    {
+        "ID": "Exemple",
+        "Type": "Exemple",
+        "Name": "Exemple",
+        "Region": "Exemple",
+        "User": "Exemple",
+        "Version": "Exemple",
+        "Format": "Exemple",
+        "Parts": false,
+        "Encrypt": ["Exemple"],
+        "N_Part": "1"
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+
+]
