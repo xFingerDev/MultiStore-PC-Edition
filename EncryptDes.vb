@@ -43,4 +43,19 @@ Module EncryptDes
 	End Function
 #Enable Warning BC42105 ' La función no devuelve un valor en todas las rutas de código
 
+	Public Function FindItem(ByVal LV As ListView, ByVal TextToFind As String) As Integer
+		For i As Integer = 0 To LV.Items.Count - 1
+			If Trim(LV.Items(i).Text).Contains(Trim(TextToFind)) Then
+				Return i
+			End If
+			For subitem As Integer = 0 To LV.Items(i).SubItems.Count - 1
+				If Trim(LV.Items(i).SubItems(subitem).Text).Contains(Trim(TextToFind)) Then
+					' If found, return the row number
+					Return (i)
+				End If
+			Next
+		Next
+		' If not found, then return -1.
+		Return -1
+	End Function
 End Module

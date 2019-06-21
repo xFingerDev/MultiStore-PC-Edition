@@ -1,6 +1,6 @@
 [
         {
-            "ID": "1",
+            "ID": "0",
             "Type": "GAME",
             "Name": "Pokemon Red",
             "Region": "USA",
@@ -13,7 +13,7 @@
             "N_Part": "1"
         },
         {
-            "ID": "2",
+            "ID": "0",
             "Type": "GAME",
             "Name": "Pokemon Rojo",
             "Region": "EU",

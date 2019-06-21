@@ -1,10 +1,8 @@
 ﻿Imports System
 Imports System.IO
-Imports System.Web
 Imports System.Net
 Imports Newtonsoft.Json
 Imports System.Net.Mail
-Imports System.Threading
 
 Public Class Start
 
@@ -17,9 +15,11 @@ Public Class Start
 
 
 	Private Link_Game As String
+	Private Link_License As String
 	Private Platform_Game As String
 	Private Version_Game As String
 	Private format_Game As String
+	Private format_License As String
 	Private Name_Game As String
 	Private Region_Game As String
 	Private Game_Part As String
@@ -32,18 +32,209 @@ Public Class Start
 
 	Public counter2 As Integer
 	Public counter3 As Integer
-
+	Dim counter4 As Integer
 	Public platfom2 As String
 	Public Name_Send As String
 	Public Parts As Boolean
+	Public License_Bol As Boolean
 	Dim ini As New IniFile
 	Private load_images_games As Boolean
 
+	Private Sub Companya_Combo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Companya_Combo.SelectedIndexChanged
+		ComboBox1.Items.Clear()
+		Select Case Companya_Combo.Text
+			Case "All"
+#Region "All"
 
+				ComboBox1.Items.Add("Wii")
+				ComboBox1.Items.Add("Wii U")
+				ComboBox1.Items.Add("Nintendo Swich")
+				ComboBox1.Items.Add("Nintendo 64")
+				ComboBox1.Items.Add("GameCube")
+				ComboBox1.Items.Add("Snes")
+				ComboBox1.Items.Add("Nes")
+				ComboBox1.Items.Add("NDS")
+				ComboBox1.Items.Add("3DS")
+				ComboBox1.Items.Add("Game Boy")
+				ComboBox1.Items.Add("Game Boy Advance")
+				ComboBox1.Items.Add("Virtual Boy")
+				ComboBox1.Items.Add("Game & Watch")
+				ComboBox1.Items.Add("PlayStation")
+				ComboBox1.Items.Add("PlayStation 2")
+				ComboBox1.Items.Add("PlayStation 3")
+				ComboBox1.Items.Add("PlayStation 4")
+				ComboBox1.Items.Add("PSP")
+				ComboBox1.Items.Add("PS Vita")
+				ComboBox1.Items.Add("PocketStation")
+				ComboBox1.Items.Add("Xbox")
+				ComboBox1.Items.Add("Xbox 360")
+				ComboBox1.Items.Add("Xbox One")
+				ComboBox1.Items.Add("SG-1000")
+				ComboBox1.Items.Add("SC-3000")
+				ComboBox1.Items.Add("Sega Master System")
+				ComboBox1.Items.Add("Sega Genesis")
+				ComboBox1.Items.Add("Sega Mega CD")
+				ComboBox1.Items.Add("Game Gear")
+				ComboBox1.Items.Add("Sega Saturn")
+				ComboBox1.Items.Add("Mega Drive 32x")
+				ComboBox1.Items.Add("Sega Nomad")
+				ComboBox1.Items.Add("Sega Model 2")
+				ComboBox1.Items.Add("Sega Dreamcast")
+				ComboBox1.Items.Add("Neo-Geo")
+				ComboBox1.Items.Add("Neo-Geo CD")
+				ComboBox1.Items.Add("Pippin")
+				ComboBox1.Items.Add("Atari 2600")
+				ComboBox1.Items.Add("Atari 5200")
+				ComboBox1.Items.Add("Atari 7800")
+				ComboBox1.Items.Add("Atari Jaguar")
+				ComboBox1.Items.Add("Playdia")
+				ComboBox1.Items.Add("Wonderswan")
+				ComboBox1.Items.Add("Wonderswan Color")
+				ComboBox1.Items.Add("Play System 1")
+				ComboBox1.Items.Add("Play System 2")
+				ComboBox1.Items.Add("Play System 3")
+				ComboBox1.Items.Add("Casio Loopy")
+				ComboBox1.Items.Add("ColecoVision")
+				ComboBox1.Items.Add("Commodore 64GS")
+				ComboBox1.Items.Add("AmigaCD32")
+				ComboBox1.Items.Add("AmigaCD")
+				ComboBox1.Items.Add("Fairchild Channel F")
+				ComboBox1.Items.Add("GP32")
+				ComboBox1.Items.Add("Vectrex")
+				ComboBox1.Items.Add("Magnavox Oddyssey")
+				ComboBox1.Items.Add("Magnavox Oddyssey 2")
+				ComboBox1.Items.Add("Intellivision")
+				ComboBox1.Items.Add("PC Engine")
+				ComboBox1.Items.Add("PC-FX")
+				ComboBox1.Items.Add("N-Gage")
+				ComboBox1.Items.Add("3DO")
+				ComboBox1.Items.Add("Videopac")
+				ComboBox1.Items.Add("Philips CDi")
+				ComboBox1.Items.Add("RCA Studio II")
+				ComboBox1.Items.Add("V.Smile")
+				ComboBox1.Items.Add("Amstrad GX4000")
+
+				ComboBox1.Text = "SNES"
+#End Region
+			Case "Nintendo"
+				ComboBox1.Items.Add("Wii")
+				ComboBox1.Items.Add("Wii U")
+				ComboBox1.Items.Add("Nintendo Swich")
+				ComboBox1.Items.Add("Nintendo 64")
+				ComboBox1.Items.Add("GameCube")
+				ComboBox1.Items.Add("Snes")
+				ComboBox1.Items.Add("Nes")
+				ComboBox1.Items.Add("NDS")
+				ComboBox1.Items.Add("3DS")
+				ComboBox1.Items.Add("Game Boy")
+				ComboBox1.Items.Add("Game Boy Advance")
+				ComboBox1.Items.Add("Virtual Boy")
+				ComboBox1.Items.Add("Game & Watch")
+				ComboBox1.Text = "Wii"
+			Case "Sony"
+				ComboBox1.Items.Add("PlayStation")
+				ComboBox1.Items.Add("PlayStation 2")
+				ComboBox1.Items.Add("PlayStation 3")
+				ComboBox1.Items.Add("PlayStation 4")
+				ComboBox1.Items.Add("PSP")
+				ComboBox1.Items.Add("PS Vita")
+				ComboBox1.Items.Add("PocketStation")
+				ComboBox1.Text = "PlayStation"
+			Case "Microsoft"
+				ComboBox1.Items.Add("Xbox")
+				ComboBox1.Items.Add("Xbox 360")
+				ComboBox1.Items.Add("Xbox One")
+				ComboBox1.Text = "Xbox"
+			Case "Sega"
+				ComboBox1.Items.Add("SG-1000")
+				ComboBox1.Items.Add("SC-3000")
+				ComboBox1.Items.Add("Sega Master System")
+				ComboBox1.Items.Add("Sega Genesis")
+				ComboBox1.Items.Add("Sega Mega CD")
+				ComboBox1.Items.Add("Game Gear")
+				ComboBox1.Items.Add("Sega Saturn")
+				ComboBox1.Items.Add("Mega Drive 32x")
+				ComboBox1.Items.Add("Sega Nomad")
+				ComboBox1.Items.Add("Sega Model 2")
+				ComboBox1.Items.Add("Sega Dreamcast")
+				ComboBox1.Text = "SG-1000"
+			Case "SNK"
+				ComboBox1.Items.Add("Neo-Geo")
+				ComboBox1.Items.Add("Neo-Geo CD")
+				ComboBox1.Text = "Neo-Geo"
+			Case "Apple"
+				ComboBox1.Items.Add("Pippin")
+				ComboBox1.Text = "Pippin"
+			Case "Atari"
+				ComboBox1.Items.Add("Atari 2600")
+				ComboBox1.Items.Add("Atari 5200")
+				ComboBox1.Items.Add("Atari 7800")
+				ComboBox1.Items.Add("Atari Jaguar")
+				ComboBox1.Text = "Atari 2600"
+			Case "Bandai"
+				ComboBox1.Items.Add("Playdia")
+				ComboBox1.Items.Add("Wonderswan")
+				ComboBox1.Items.Add("Wonderswan Color")
+				ComboBox1.Text = "Playdia"
+			Case "Capcom"
+				ComboBox1.Items.Add("Play System 1")
+				ComboBox1.Items.Add("Play System 2")
+				ComboBox1.Items.Add("Play System 3")
+				ComboBox1.Text = "Play System 1"
+			Case "Casio"
+				ComboBox1.Items.Add("Casio Loopy")
+				ComboBox1.Text = "Casio Loopy"
+			Case "Coleco"
+				ComboBox1.Items.Add("ColecoVision")
+				ComboBox1.Text = "ColecoVision"
+			Case "Commodore International"
+				ComboBox1.Items.Add("Commodore 64GS")
+				ComboBox1.Items.Add("AmigaCD32")
+				ComboBox1.Items.Add("AmigaCD")
+				ComboBox1.Text = "Commodore 64GS"
+			Case "Fairchild Semiconductor"
+				ComboBox1.Items.Add("Fairchild Channel F")
+				ComboBox1.Text = "Fairchild Channel F"
+			Case "Game Park"
+				ComboBox1.Items.Add("GP32")
+				ComboBox1.Text = "GP32"
+			Case "Milton Bradley Company"
+				ComboBox1.Items.Add("Vectrex")
+				ComboBox1.Text = "Vectrex"
+			Case "Magnavox"
+				ComboBox1.Items.Add("Magnavox Oddyssey")
+				ComboBox1.Items.Add("Magnavox Oddyssey 2")
+				ComboBox1.Text = "Magnavox Oddyssey"
+			Case "Mattel"
+				ComboBox1.Items.Add("Intellivision")
+				ComboBox1.Text = "Intellivision"
+			Case "NEC"
+				ComboBox1.Items.Add("PC Engine")
+				ComboBox1.Items.Add("PC-FX")
+				ComboBox1.Text = "PC Engine"
+			Case "Nokia"
+				ComboBox1.Items.Add("N-Gage")
+				ComboBox1.Text = "N-Gage"
+			Case "Panoramic"
+				ComboBox1.Items.Add("3DO")
+				ComboBox1.Text = "3DO"
+			Case "Philips"
+				ComboBox1.Items.Add("Videopac")
+				ComboBox1.Items.Add("Philips CDi")
+				ComboBox1.Text = "Videopac"
+			Case "RCA"
+				ComboBox1.Items.Add("RCA Studio II")
+				ComboBox1.Text = "RCA Studio II"
+			Case "V.Tech"
+				ComboBox1.Items.Add("V.Smile")
+				ComboBox1.Text = "V.Smile"
+			Case "Amstrad"
+				ComboBox1.Items.Add("Amstrad GX4000")
+				ComboBox1.Text = "Amstrad GX4000"
+		End Select
+	End Sub
 
 	Public Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-		'Platform = ComboBox1.Text
-		'MsgBox(Platform)
 		Select Case ComboBox1.Text
 			Case "All"
 				Platform = "All"
@@ -71,6 +262,116 @@ Public Class Start
 				Platform = "3DS"
 			Case "Game Boy"
 				Platform = "GameBoy"
+			Case "Game & Watch"
+				Platform = "G&W"
+			Case "PlayStation"
+				Platform = "PS1"
+			Case "PlayStation 2"
+				Platform = "PS2"
+			Case "PlayStation 3"
+				Platform = "PS3"
+			Case "PlayStation 4"
+				Platform = "PS4"
+			Case "PSP"
+				Platform = "PSP"
+			Case "PS Vita"
+				Platform = "PSVita"
+			Case "PocketStation"
+				Platform = "PocketStation"
+			Case "Xbox"
+				Platform = "Xbox"
+			Case "Xbox 360"
+				Platform = "Xbox360"
+			Case "Xbox One"
+				Platform = "XboxOne"
+			Case "SG-1000"
+				Platform = "SG-1000"
+			Case "SC-3000"
+				Platform = "SC-3000"
+			Case "Sega Master System"
+				Platform = "Sega-Master-System"
+			Case "Sega Genesis"
+				Platform = "Sega-Genesis"
+			Case "Sega Mega CD"
+				Platform = "Sega-Mega-CD"
+			Case "Game Gear"
+				Platform = "Game-Gear"
+			Case "Sega Saturn"
+				Platform = "Sega-Saturn"
+			Case "Mega Drive 32x"
+				Platform = "Mega-Drive-32x"
+			Case "Sega Nomad"
+				Platform = "Sega-Nomad"
+			Case "Sega Model 2"
+				Platform = "Sega-Model-2"
+			Case "Sega Dreamcast"
+				Platform = "Dreamcast"
+			Case "Neo-Geo"
+				Platform = "Neo-Geo"
+			Case "Neo-Geo CD"
+				Platform = "Neo-Geo-CD"
+			Case "Pippin"
+				Platform = "Pippin"
+			Case "Atari 2600"
+				Platform = "Atari2600"
+			Case "Atari 5200"
+				Platform = "Atari5200"
+			Case "Atari 7800"
+				Platform = "Atari7800"
+			Case "Atari Jaguar"
+				Platform = "Atari-Jaguar"
+			Case "Playdia"
+				Platform = "Playdia"
+			Case "Wonderswan"
+				Platform = "Wonderswan"
+			Case "Wonderswan Color"
+				Platform = "Wonderswan-Color"
+			Case "Play System 1"
+				Platform = "Play-System-1"
+			Case "Play System 2"
+				Platform = "Play-System-2"
+			Case "Play System 3"
+				Platform = "Play-System-3"
+			Case "Casio Loopy"
+				Platform = "Casio-Loopy"
+			Case "ColecoVision"
+				Platform = "ColecoVision"
+			Case "Commodore 64GS"
+				Platform = "Commodore64GS"
+			Case "AmigaCD32"
+				Platform = "AmigaCD32"
+			Case "AmigaCD"
+				Platform = "AmigaCD"
+			Case "Fairchild Channel F"
+				Platform = "Fairchild-Channel-F"
+			Case "GP32"
+				Platform = "GP32"
+			Case "Vectrex"
+				Platform = "Vectrex"
+			Case "Magnavox Oddyssey"
+				Platform = "Magnavox-Oddyssey"
+			Case "Magnavox Oddyssey 2"
+				Platform = "Magnavox-Oddyssey2"
+			Case "Intellivision"
+				Platform = "Intellivision"
+			Case "PC Engine"
+				Platform = "PC-Engine"
+			Case "PC-FX"
+				Platform = "PC-FX"
+			Case "N-Gage"
+				Platform = "N-Gage"
+			Case "3DO"
+				Platform = "3DO"
+			Case "Videopac"
+				Platform = "Videopac"
+			Case "Philips CDi"
+				Platform = "Philips-CDi"
+			Case "RCA Studio II"
+				Platform = "RCA-Studio-II"
+			Case "V.Smile"
+				Platform = "V-Smile"
+			Case "Amstrad GX4000"
+				Platform = "AmstradGX4000"
 		End Select
 		List1.Items.Clear()
 		AddList()
@@ -81,9 +382,8 @@ Public Class Start
 
 
 		Createfolders()
-
-		Platform = "All"
-		ComboBox1.Items.Add("All")
+#Region "Consoles"
+		Platform = "SNES"
 		ComboBox1.Items.Add("Wii")
 		ComboBox1.Items.Add("Wii U")
 		ComboBox1.Items.Add("Nintendo Swich")
@@ -96,11 +396,198 @@ Public Class Start
 		ComboBox1.Items.Add("Game Boy")
 		ComboBox1.Items.Add("Game Boy Advance")
 		ComboBox1.Items.Add("Virtual Boy")
+		ComboBox1.Items.Add("Game & Watch")
 
-		ComboBox1.Text = "All"
+		ComboBox1.Items.Add("PlayStation")
+		ComboBox1.Items.Add("PlayStation 2")
+		ComboBox1.Items.Add("PlayStation 3")
+		ComboBox1.Items.Add("PlayStation 4")
+		ComboBox1.Items.Add("PSP")
+		ComboBox1.Items.Add("PS Vita")
+		ComboBox1.Items.Add("PocketStation")
 
+		ComboBox1.Items.Add("Xbox")
+		ComboBox1.Items.Add("Xbox 360")
+		ComboBox1.Items.Add("Xbox One")
+
+		ComboBox1.Items.Add("SG-1000")
+		ComboBox1.Items.Add("SC-3000")
+		ComboBox1.Items.Add("Sega Master System")
+		ComboBox1.Items.Add("Sega Genesis")
+		ComboBox1.Items.Add("Sega Mega CD")
+		ComboBox1.Items.Add("Game Gear")
+		ComboBox1.Items.Add("Sega Saturn")
+		ComboBox1.Items.Add("Mega Drive 32x")
+		ComboBox1.Items.Add("Sega Nomad")
+		ComboBox1.Items.Add("Sega Model 2")
+		ComboBox1.Items.Add("Sega Dreamcast")
+
+		ComboBox1.Items.Add("Neo-Geo")
+		ComboBox1.Items.Add("Neo-Geo CD")
+
+		ComboBox1.Items.Add("Pippin")
+
+		ComboBox1.Items.Add("Atari 2600")
+		ComboBox1.Items.Add("Atari 5200")
+		ComboBox1.Items.Add("Atari 7800")
+		ComboBox1.Items.Add("Atari Jaguar")
+
+		ComboBox1.Items.Add("Playdia")
+		ComboBox1.Items.Add("Wonderswan")
+		ComboBox1.Items.Add("Wonderswan Color")
+
+		ComboBox1.Items.Add("Play System 1")
+		ComboBox1.Items.Add("Play System 2")
+		ComboBox1.Items.Add("Play System 3")
+
+		ComboBox1.Items.Add("Casio Loopy")
+
+		ComboBox1.Items.Add("ColecoVision")
+
+		ComboBox1.Items.Add("Commodore 64GS")
+		ComboBox1.Items.Add("AmigaCD32")
+		ComboBox1.Items.Add("AmigaCD")
+
+		ComboBox1.Items.Add("Fairchild Channel F")
+
+		ComboBox1.Items.Add("GP32")
+
+		ComboBox1.Items.Add("Vectrex")
+
+		ComboBox1.Items.Add("Magnavox Oddyssey")
+		ComboBox1.Items.Add("Magnavox Oddyssey 2")
+
+		ComboBox1.Items.Add("Intellivision")
+
+		ComboBox1.Items.Add("PC Engine")
+		ComboBox1.Items.Add("PC-FX")
+
+		ComboBox1.Items.Add("N-Gage")
+
+		ComboBox1.Items.Add("3DO")
+
+		ComboBox1.Items.Add("Videopac")
+		ComboBox1.Items.Add("Philips CDi")
+
+		ComboBox1.Items.Add("RCA Studio II")
+
+		ComboBox1.Items.Add("V.Smile")
+
+		ComboBox1.Items.Add("Amstrad GX4000")
+
+		ComboBox4.Items.Add("Wii")
+		ComboBox4.Items.Add("Wii U")
+		ComboBox4.Items.Add("Nintendo Swich")
+		ComboBox4.Items.Add("Nintendo 64")
+		ComboBox4.Items.Add("GameCube")
+		ComboBox4.Items.Add("Snes")
+		ComboBox4.Items.Add("Nes")
+		ComboBox4.Items.Add("NDS")
+		ComboBox4.Items.Add("3DS")
+		ComboBox4.Items.Add("Game Boy")
+		ComboBox4.Items.Add("Game Boy Advance")
+		ComboBox4.Items.Add("Virtual Boy")
+		ComboBox4.Items.Add("Game & Watch")
+		ComboBox4.Items.Add("PlayStation")
+		ComboBox4.Items.Add("PlayStation 2")
+		ComboBox4.Items.Add("PlayStation 3")
+		ComboBox4.Items.Add("PlayStation 4")
+		ComboBox4.Items.Add("PSP")
+		ComboBox4.Items.Add("PS Vita")
+		ComboBox4.Items.Add("PocketStation")
+		ComboBox4.Items.Add("Xbox")
+		ComboBox4.Items.Add("Xbox 360")
+		ComboBox4.Items.Add("Xbox One")
+		ComboBox4.Items.Add("SG-1000")
+		ComboBox4.Items.Add("SC-3000")
+		ComboBox4.Items.Add("Sega Master System")
+		ComboBox4.Items.Add("Sega Genesis")
+		ComboBox4.Items.Add("Sega Mega CD")
+		ComboBox4.Items.Add("Game Gear")
+		ComboBox4.Items.Add("Sega Saturn")
+		ComboBox4.Items.Add("Mega Drive 32x")
+		ComboBox4.Items.Add("Sega Nomad")
+		ComboBox4.Items.Add("Sega Model 2")
+		ComboBox4.Items.Add("Sega Dreamcast")
+		ComboBox4.Items.Add("Neo-Geo")
+		ComboBox4.Items.Add("Neo-Geo CD")
+		ComboBox4.Items.Add("Pippin")
+		ComboBox4.Items.Add("Atari 2600")
+		ComboBox4.Items.Add("Atari 5200")
+		ComboBox4.Items.Add("Atari 7800")
+		ComboBox4.Items.Add("Atari Jaguar")
+		ComboBox4.Items.Add("Playdia")
+		ComboBox4.Items.Add("Wonderswan")
+		ComboBox4.Items.Add("Wonderswan Color")
+		ComboBox4.Items.Add("Play System 1")
+		ComboBox4.Items.Add("Play System 2")
+		ComboBox4.Items.Add("Play System 3")
+		ComboBox4.Items.Add("Casio Loopy")
+		ComboBox4.Items.Add("ColecoVision")
+		ComboBox4.Items.Add("Commodore 64GS")
+		ComboBox4.Items.Add("AmigaCD32")
+		ComboBox4.Items.Add("AmigaCD")
+		ComboBox4.Items.Add("Fairchild Channel F")
+		ComboBox4.Items.Add("GP32")
+		ComboBox4.Items.Add("Vectrex")
+		ComboBox4.Items.Add("Magnavox Oddyssey")
+		ComboBox4.Items.Add("Magnavox Oddyssey 2")
+		ComboBox4.Items.Add("Intellivision")
+		ComboBox4.Items.Add("PC Engine")
+		ComboBox4.Items.Add("PC-FX")
+		ComboBox4.Items.Add("N-Gage")
+		ComboBox4.Items.Add("3DO")
+		ComboBox4.Items.Add("Videopac")
+		ComboBox4.Items.Add("Philips CDi")
+		ComboBox4.Items.Add("RCA Studio II")
+		ComboBox4.Items.Add("V.Smile")
+		ComboBox4.Items.Add("Amstrad GX4000")
+
+		ComboBox4.Text = "WII"
+		ComboBox1.Text = "Nintendo"
+#End Region
 		DownParts.Items.Add("ALL")
 		DownParts.Text = "ALL"
+#Region "Company"
+		Companya_Combo.Items.Add("All")
+		Companya_Combo.Items.Add("Nintendo") '
+		Companya_Combo.Items.Add("Sony") '
+		Companya_Combo.Items.Add("Microsoft") '
+		Companya_Combo.Items.Add("Sega") '
+		Companya_Combo.Items.Add("SNK") '
+		Companya_Combo.Items.Add("Apple") '
+		Companya_Combo.Items.Add("Atari") '
+		Companya_Combo.Items.Add("Bandai") '
+		'Companya_Combo.Items.Add("Bentley")
+		Companya_Combo.Items.Add("Capcom") '
+		Companya_Combo.Items.Add("Casio") '
+		Companya_Combo.Items.Add("Coleco") '
+		Companya_Combo.Items.Add("Commodore International") '
+		'Companya_Combo.Items.Add("Conic")
+		'Companya_Combo.Items.Add("Cybiko")
+		Companya_Combo.Items.Add("Fairchild Semiconductor") '
+		'Companya_Combo.Items.Add("Fujitsu")
+		Companya_Combo.Items.Add("Game Park") '
+		'Companya_Combo.Items.Add("Game Park Holdings")
+		Companya_Combo.Items.Add("Milton Bradley Company") '
+		'Companya_Combo.Items.Add("Giochi Preziosi")
+		'Companya_Combo.Items.Add("Impel")
+		Companya_Combo.Items.Add("Magnavox") '
+		Companya_Combo.Items.Add("Mattel") '
+		Companya_Combo.Items.Add("NEC") '
+		Companya_Combo.Items.Add("Nokia") '
+		Companya_Combo.Items.Add("Panoramic") '
+		Companya_Combo.Items.Add("Philips") '
+		'Companya_Combo.Items.Add("Qualcomm")
+		Companya_Combo.Items.Add("RCA") '
+		'Companya_Combo.Items.Add("TRQ S.L")
+		'Companya_Combo.Items.Add("Turbo Technologies Inc.")
+		Companya_Combo.Items.Add("V.Tech") '
+		Companya_Combo.Items.Add("Amstrad") '
+		'Companya_Combo.Items.Add("Other")
+
+		Companya_Combo.Text = "ALL"
+#End Region
 
 		List1.Columns.Add("ID", 100)
 		List1.Columns.Add("NAME", 300)
@@ -115,19 +602,39 @@ Public Class Start
 		List1.Columns.Add("NPart", 0)
 		List1.Columns.Add("id_json", 0)
 		List1.Columns.Add("image", 0)
+		List1.Columns.Add("ExistLicense", 0)
+		List1.Columns.Add("LinkLicence encrypt", 0)
+		List1.Columns.Add("FORMATLicence", 0)
 
-		ListView1.Columns.Add("ID", 0)
-		ListView1.Columns.Add("NAME", 120)
-		ListView1.Columns.Add("TYPE", 60)
-		ListView1.Columns.Add("REGION", 100)
-		ListView1.Columns.Add("USER", 100)
-		ListView1.Columns.Add("VERSION", 70)
-		ListView1.Columns.Add("FORMAT", 60)
-		ListView1.Columns.Add("ENCRYPT", 0)
-		ListView1.Columns.Add("Platform", 0)
-		ListView1.Columns.Add("Part", 60)
-		ListView1.Columns.Add("NPart", 0)
-		ListView1.Columns.Add("Image", 100)
+		ListView99.Columns.Add("ID", 100)
+		ListView99.Columns.Add("NAME", 300)
+		ListView99.Columns.Add("TYPE", 70)
+		ListView99.Columns.Add("REGION", 70)
+		ListView99.Columns.Add("USER", 90)
+		ListView99.Columns.Add("VERSION", 100)
+		ListView99.Columns.Add("FORMAT", 100)
+		ListView99.Columns.Add("ENCRYPT", 0)
+		ListView99.Columns.Add("Platform", 0)
+		ListView99.Columns.Add("Part Exist?", 0)
+		ListView99.Columns.Add("NPart", 0)
+		ListView99.Columns.Add("id_json", 0)
+		ListView99.Columns.Add("image", 0)
+		ListView99.Columns.Add("ExistLicense", 0)
+		ListView99.Columns.Add("LinkLicence encrypt", 0)
+		ListView99.Columns.Add("FORMATLicence", 0)
+
+		'ListView1.Columns.Add("ID", 0)
+		'ListView1.Columns.Add("NAME", 120)
+		'ListView1.Columns.Add("TYPE", 60)
+		'ListView1.Columns.Add("REGION", 100)
+		'ListView1.Columns.Add("USER", 100)
+		'ListView1.Columns.Add("VERSION", 70)
+		'ListView1.Columns.Add("FORMAT", 60)
+		'ListView1.Columns.Add("ENCRYPT", 0)
+		'ListView1.Columns.Add("Platform", 0)
+		'ListView1.Columns.Add("Part", 60)
+		'ListView1.Columns.Add("NPart", 0)
+		'ListView1.Columns.Add("Image", 100)
 
 
 		ComboBox2.Items.Add("GAME")
@@ -140,7 +647,6 @@ Public Class Start
 		ComboBox2.Items.Add("HOMEBREW")
 
 		ComboBox2.Text = "GAME"
-
 		ComboBox3.Items.Add("USA")
 		ComboBox3.Items.Add("EUR")
 		ComboBox3.Items.Add("HK")
@@ -168,10 +674,10 @@ Public Class Start
 
 		DownParts.Visible = False
 		DownParts.Enabled = False
-
+		LinkLicense_Text.Visible = False
 		ID_Game.Visible = False
-
-
+		Button2.Visible = False
+		ListView99.Visible = False
 
 		PictureBox2.WaitOnLoad = False
 		PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
@@ -179,7 +685,6 @@ Public Class Start
 		PictureBox3.WaitOnLoad = False
 		PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
 		PictureBox3.Load("https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Megaman10.jpg/220px-Megaman10.jpg")
-
 		AddList()
 
 		ListView2.Columns.Add("Filename", 225, HorizontalAlignment.Left)
@@ -209,65 +714,13 @@ Public Class Start
 			MkDir(Application.StartupPath & "\Roms")
 		End If
 
-		If Dir(Application.StartupPath & "\Uploader", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Uploader")
-		End If
-
-		If Dir(Application.StartupPath & "\Uploader\List", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Uploader\List")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\NDS", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\NDS")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\3DS", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\3DS")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\WII", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\WII")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\WII U", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\WII U")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\NINTENDO 64", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\NINTENDO 64")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\GAMECUBE", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\GAMECUBE")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\NES", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\NES")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\SNES", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\SNES")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\GAME BOY", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\GAME BOY")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\GAME BOY ADVANCE", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\GAME BOY ADVANCE")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\NINTENDO SWICH", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\NINTENDO SWICH")
-		End If
-
-		If Dir(Application.StartupPath & "\Roms\VIRTUAL BOY", vbDirectory) = "" Then
-			MkDir(Application.StartupPath & "\Roms\VIRTUAL BOY")
-		End If
-
 
 		If Dir(Application.StartupPath & "\Lang", vbDirectory) = "" Then
 			MkDir(Application.StartupPath & "\Lang")
+		End If
+
+		If Dir(Application.StartupPath & "\License", vbDirectory) = "" Then
+			MkDir(Application.StartupPath & "\License")
 		End If
 
 		If Dir(Application.StartupPath & "\List", vbDirectory) = "" Then
@@ -313,6 +766,7 @@ Public Class Start
 	Private Sub UploadList()
 		'Delete List
 		Me.Cursor = Cursors.WaitCursor
+#Region "Delete"
 		If Dir(Application.StartupPath & "\List\Games-List-Wii", vbArchive) = "" Then
 		Else
 			Kill(Application.StartupPath & "\List\Games-List-Wii")
@@ -361,7 +815,229 @@ Public Class Start
 		Else
 			Kill(Application.StartupPath & "\List\Games-List-3DS")
 		End If
+		If Dir(Application.StartupPath & "\List\Games-List-3DO", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-3DO")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-AmigaCD", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-AmigaCD")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-AmigaCD32", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-AmigaCD32")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-AmstradGX4000", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-AmstradGX4000")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Atari2600", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Atari2600")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Atari5200", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Atari5200")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Atari7800", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Atari7800")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Atari-Jaguar", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Atari-Jaguar")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Casio-Loopy", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Casio-Loopy")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-ColecoVision", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-ColecoVision")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Commodore64GS", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Commodore64GS")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Dreamcast", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Dreamcast")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Fairchild-Channel-F", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-G&W", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-G&W")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Game-Gear", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Game-Gear")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-GP32", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-GP32")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Intellivision", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Intellivision")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Mega-Drive-32x", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Neo-Geo", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Neo-Geo")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Neo-Geo-CD", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-N-Gage", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-N-Gage")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PC-Engine", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PC-Engine")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PC-FX", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PC-FX")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Philips-CDi", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Philips-CDi")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Pippin", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Pippin")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Playdia", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Playdia")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Play-System-1", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Play-System-1")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Play-System-2", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Play-System-2")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Play-System-3", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Play-System-3")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PocketStation", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PocketStation")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PS1", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PS1")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PS2", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PS2")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PS3", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PS3")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PS4", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PS4")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PSP", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PSP")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-PSVita", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-PSVita")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-RCA-Studio-II", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-RCA-Studio-II")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-SC-3000", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-SC-3000")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Genesis", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Genesis")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Master-System", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Master-System")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Mega-CD", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Model-2", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Model-2")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Nomad", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Nomad")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Sega-Saturn", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Sega-Saturn")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-SG-1000", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-SG-1000")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Vectrex", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Vectrex")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Videopac", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Videopac")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-V-Smile", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-V-Smile")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Wonderswan", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Wonderswan")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Wonderswan-Color", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Wonderswan-Color")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Xbox", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Xbox")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-Xbox360", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-Xbox360")
+		End If
+		If Dir(Application.StartupPath & "\List\Games-List-XboxOne", vbArchive) = "" Then
+		Else
+			Kill(Application.StartupPath & "\List\Games-List-XboxOne")
+		End If
+#End Region
 		'Download List
+#Region "Download"
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wii.json", Application.StartupPath & "\List\Games-List-Wii")
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-WiiU.json", Application.StartupPath & "\List\Games-List-WiiU")
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-VirtualBoy.json", Application.StartupPath & "\List\Games-List-VirtualBoy")
@@ -374,6 +1050,63 @@ Public Class Start
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GameBoy.json", Application.StartupPath & "\List\Games-List-GameBoy")
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-NES.json", Application.StartupPath & "\List\Games-List-NES")
 		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-3DS.json", Application.StartupPath & "\List\Games-List-3DS")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-3DO.json", Application.StartupPath & "\List\Games-List-3DO")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmigaCD.json", Application.StartupPath & "\List\Games-List-AmigaCD")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmigaCD32.json", Application.StartupPath & "\List\Games-List-AmigaCD32")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmstradGX4000.json", Application.StartupPath & "\List\Games-List-AmstradGX4000")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari2600.json", Application.StartupPath & "\List\Games-List-Atari2600")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari5200.json", Application.StartupPath & "\List\Games-List-Atari5200")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari7800.json", Application.StartupPath & "\List\Games-List-Atari7800")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari-Jaguar.json", Application.StartupPath & "\List\Games-List-Atari-Jaguar")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Casio-Loopy.json", Application.StartupPath & "\List\Games-List-Casio-Loopy")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-ColecoVision.json", Application.StartupPath & "\List\Games-List-ColecoVision")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Commodore64GS.json", Application.StartupPath & "\List\Games-List-Commodore64GS")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Dreamcast.json", Application.StartupPath & "\List\Games-List-Dreamcast")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Fairchild-Channel-F.json", Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-G&W.json", Application.StartupPath & "\List\Games-List-G&W")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Game-Gear.json", Application.StartupPath & "\List\Games-List-Game-Gear")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GP32.json", Application.StartupPath & "\List\Games-List-GP32")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Intellivision.json", Application.StartupPath & "\List\Games-List-Intellivision")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Magnavox-Oddyssey.json", Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Magnavox-Oddyssey2.json", Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Mega-Drive-32x.json", Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Neo-Geo.json", Application.StartupPath & "\List\Games-List-Neo-Geo")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Neo-Geo-CD.json", Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-N-Gage.json", Application.StartupPath & "\List\Games-List-N-Gage")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PC-Engine.json", Application.StartupPath & "\List\Games-List-PC-Engine")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PC-FX.json", Application.StartupPath & "\List\Games-List-PC-FX")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Philips-CDi.json", Application.StartupPath & "\List\Games-List-Philips-CDi")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Pippin.json", Application.StartupPath & "\List\Games-List-Pippin")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Playdia.json", Application.StartupPath & "\List\Games-List-Playdia")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-1.json", Application.StartupPath & "\List\Games-List-Play-System-1")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-2.json", Application.StartupPath & "\List\Games-List-Play-System-2")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-3.json", Application.StartupPath & "\List\Games-List-Play-System-3")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PocketStation.json", Application.StartupPath & "\List\Games-List-PocketStation")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS1.json", Application.StartupPath & "\List\Games-List-PS1")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS2.json", Application.StartupPath & "\List\Games-List-PS2")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS3.json", Application.StartupPath & "\List\Games-List-PS3")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS4.json", Application.StartupPath & "\List\Games-List-PS4")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PSP.json", Application.StartupPath & "\List\Games-List-PSP")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PSVita.json", Application.StartupPath & "\List\Games-List-PSVita")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-RCA-Studio-II.json", Application.StartupPath & "\List\Games-List-RCA-Studio-II")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-SC-3000.json", Application.StartupPath & "\List\Games-List-SC-3000")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Genesis.json", Application.StartupPath & "\List\Games-List-Sega-Genesis")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Master-System.json", Application.StartupPath & "\List\Games-List-Sega-Master-System")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Mega-CD.json", Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Model-2.json", Application.StartupPath & "\List\Games-List-Sega-Model-2")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Nomad.json", Application.StartupPath & "\List\Games-List-Sega-Nomad")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Saturn.json", Application.StartupPath & "\List\Games-List-Sega-Saturn")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-SG-1000.json", Application.StartupPath & "\List\Games-List-SG-1000")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Vectrex.json", Application.StartupPath & "\List\Games-List-Vectrex")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Videopac.json", Application.StartupPath & "\List\Games-List-Videopac")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-V-Smile.json", Application.StartupPath & "\List\Games-List-V-Smile")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wonderswan.json", Application.StartupPath & "\List\Games-List-Wonderswan")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wonderswan-Color.json", Application.StartupPath & "\List\Games-List-Wonderswan-Color")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Xbox.json", Application.StartupPath & "\List\Games-List-Xbox")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Xbox360.json", Application.StartupPath & "\List\Games-List-Xbox360")
+		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-XboxOne.json", Application.StartupPath & "\List\Games-List-XboxOne")
+#End Region
+
 		Me.Cursor = Cursors.Default
 	End Sub
 
@@ -410,374 +1143,74 @@ Public Class Start
 														Dim UFila As Long
 														Dim index1 As Long
 														Dim counter As Integer
-														If Platform = "All" Then
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-Wii")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("WII")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															pos = 0
 
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-NSwich")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
+														localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-" & Platform)
+														Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
+														FilaIni = 2 : UFila = 999999
+														For index1 = FilaIni To UFila
+															If (Game(pos).Name = "") Then
+																Exit For
+															Else
+																List1.Items.Add(Game(pos).ID)
+																List1.Items(counter).SubItems.Add(Game(pos).Name)
+																List1.Items(counter).SubItems.Add(Game(pos).Region)
+																List1.Items(counter).SubItems.Add(Game(pos).Type)
+																List1.Items(counter).SubItems.Add(Game(pos).User)
+																List1.Items(counter).SubItems.Add(Game(pos).Version)
+																List1.Items(counter).SubItems.Add(Game(pos).Format)
+																List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
 
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("NINTENDO SWICH")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-WiiU")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("WII U")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
+																Select Case Platform
+																	Case "Wii"
+																		List1.Items(counter).SubItems.Add("WII")
+																	Case "WiiU"
+																		List1.Items(counter).SubItems.Add("WII U")
+																	Case "NSwich"
+																		List1.Items(counter).SubItems.Add("NINTENDO SWICH")
+																	Case "N64"
+																		List1.Items(counter).SubItems.Add("NINTENDO 64")
+																	Case "GameCube"
+																		List1.Items(counter).SubItems.Add("GAMECUBE")
+																	Case "VirtualBoy"
+																		List1.Items(counter).SubItems.Add("VIRTUAL BOY")
+																	Case "GameBoyAdvance"
+																		List1.Items(counter).SubItems.Add("GAME BOY ADVANCE")
+																	Case "SNES"
+																		List1.Items(counter).SubItems.Add("SNES")
+																	Case "NES"
+																		List1.Items(counter).SubItems.Add("NES")
+																	Case "NDS"
+																		List1.Items(counter).SubItems.Add("NDS")
+																	Case "3DS"
+																		List1.Items(counter).SubItems.Add("3DS")
+																	Case "GameBoy"
+																		List1.Items(counter).SubItems.Add("GAME BOY")
+																End Select
+																List1.Items(counter).SubItems.Add(Game(pos).Parts)
+																List1.Items(counter).SubItems.Add(Game(pos).N_Part)
+																List1.Items(counter).SubItems.Add(pos)
+																List1.Items(counter).SubItems.Add(Game(pos).Image)
+																List1.Items(counter).SubItems.Add(Game(pos).LicenseExist)
+																List1.Items(counter).SubItems.Add(Game(pos).LinkLisense)
+																List1.Items(counter).SubItems.Add(Game(pos).FormatLisense)
+																pos = pos + 1
+																counter = counter + 1
+															End If
+														Next index1
 
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-N64")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("NINTENDO 64")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-GameCube")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("GAMECUBE")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-SNES")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("SNES")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-NDS")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("NDS")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-3DS")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("3DS")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-GameBoy")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("GAME BOY")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-GameBoyAdvance")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("GAME BOY ADVANCE")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-NES")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("NES")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-VirtualBoy")
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															pos = 0
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-																	List1.Items(counter).SubItems.Add("VIRTUAL BOY")
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-														Else
-															localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-" & Platform)
-															Game = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
-															FilaIni = 2 : UFila = 999999
-															For index1 = FilaIni To UFila
-																If (Game(pos).Name = "") Then
-																	Exit For
-																Else
-																	List1.Items.Add(Game(pos).ID)
-																	List1.Items(counter).SubItems.Add(Game(pos).Name)
-																	List1.Items(counter).SubItems.Add(Game(pos).Region)
-																	List1.Items(counter).SubItems.Add(Game(pos).Type)
-																	List1.Items(counter).SubItems.Add(Game(pos).User)
-																	List1.Items(counter).SubItems.Add(Game(pos).Version)
-																	List1.Items(counter).SubItems.Add(Game(pos).Format)
-																	List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-
-																	Select Case Platform
-																		Case "Wii"
-																			List1.Items(counter).SubItems.Add("WII")
-																		Case "WiiU"
-																			List1.Items(counter).SubItems.Add("WII U")
-																		Case "NSwich"
-																			List1.Items(counter).SubItems.Add("NINTENDO SWICH")
-																		Case "N64"
-																			List1.Items(counter).SubItems.Add("NINTENDO 64")
-																		Case "GameCube"
-																			List1.Items(counter).SubItems.Add("GAMECUBE")
-																		Case "VirtualBoy"
-																			List1.Items(counter).SubItems.Add("VIRTUAL BOY")
-																		Case "GameBoyAdvance"
-																			List1.Items(counter).SubItems.Add("GAME BOY ADVANCE")
-																		Case "SNES"
-																			List1.Items(counter).SubItems.Add("SNES")
-																		Case "NES"
-																			List1.Items(counter).SubItems.Add("NES")
-																		Case "NDS"
-																			List1.Items(counter).SubItems.Add("NDS")
-																		Case "3DS"
-																			List1.Items(counter).SubItems.Add("3DS")
-																		Case "GameBoy"
-																			List1.Items(counter).SubItems.Add("GAME BOY")
-																	End Select
-																	List1.Items(counter).SubItems.Add(Game(pos).Parts)
-																	List1.Items(counter).SubItems.Add(Game(pos).N_Part)
-																	List1.Items(counter).SubItems.Add(pos)
-																	List1.Items(counter).SubItems.Add(Game(pos).Image)
-																	pos = pos + 1
-																	counter = counter + 1
-																End If
-															Next index1
-														End If
-
-														If List1.Items.Count = 0 Then
-														Else
-															Name_Game_Label.Text = "Name Game: " & List1.Items.Item(0).SubItems(1).Text
-															Type_label.Text = "Type: " & List1.Items.Item(0).SubItems(2).Text
-															Format_label.Text = "Format: " & List1.Items.Item(0).SubItems(6).Text
-															User_label.Text = "User: " & List1.Items.Item(0).SubItems(4).Text
-															Version_label.Text = "Version: " & List1.Items.Item(0).SubItems(5).Text
-															Region_label.Text = "Region: " & List1.Items.Item(0).SubItems(3).Text
-														End If
-
-														Me.Cursor = Cursors.Default
 													End If
+
+													If List1.Items.Count = 0 Then
+													Else
+														Name_Game_Label.Text = "Name Game: " & List1.Items.Item(0).SubItems(1).Text
+														Type_label.Text = "Type: " & List1.Items.Item(0).SubItems(2).Text
+														Format_label.Text = "Format: " & List1.Items.Item(0).SubItems(6).Text
+														User_label.Text = "User: " & List1.Items.Item(0).SubItems(4).Text
+														Version_label.Text = "Version: " & List1.Items.Item(0).SubItems(5).Text
+														Region_label.Text = "Region: " & List1.Items.Item(0).SubItems(3).Text
+													End If
+
+													Me.Cursor = Cursors.Default
 												End If
 											End If
 										End If
@@ -793,7 +1226,9 @@ Public Class Start
 	End Sub
 
 	Private Sub List1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles List1.SelectedIndexChanged
-		'MsgBox(sender & " ee " & e)
+
+		Dim Lisense As Boolean = False
+
 		Name_Game_Label.Text = "Name Game: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
 		Type_label.Text = "Type: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text
 		Format_label.Text = "Format: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
@@ -808,7 +1243,15 @@ Public Class Start
 		Region_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text
 		Game_Part = List1.Items.Item(List1.FocusedItem.Index).SubItems(9).Text
 		Game_Num = List1.Items.Item(List1.FocusedItem.Index).SubItems(10).Text
+		Lisense = List1.Items.Item(List1.FocusedItem.Index).SubItems(13).Text
+		Link_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(14).Text
+		format_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(15).Text
 
+		If Lisense = False Then
+			Button2.Visible = False
+		Else
+			Button2.Visible = True
+		End If
 		'MsgBox(Game_Part)
 		'MsgBox(Game_Num)
 		If Game_Part = True Then
@@ -926,68 +1369,218 @@ Public Class Start
 
 	Private Sub Upload_Add_item_Click(sender As Object, e As EventArgs) Handles Upload_Add_item.Click
 
-
-		Dim founditem As ListViewItem = ListView1.FindItemWithText(TextBox3.Text)
-		If Not (founditem Is Nothing) Then
-			Exit Sub
+		Select Case ComboBox4.Text
+			Case "Wii"
+				platfom2 = "Wii"
+			Case "Wii U"
+				platfom2 = "WiiU"
+			Case "Nintendo Swich"
+				platfom2 = "NSwich"
+			Case "Nintendo 64"
+				platfom2 = "N64"
+			Case "GameCube"
+				platfom2 = "GameCube"
+			Case "Virtual Boy"
+				platfom2 = "VirtualBoy"
+			Case "Game Boy Advance"
+				platfom2 = "GameBoyAdvance"
+			Case "Snes"
+				platfom2 = "SNES"
+			Case "Nes"
+				platfom2 = "NES"
+			Case "NDS"
+				platfom2 = "NDS"
+			Case "3DS"
+				platfom2 = "3DS"
+			Case "Game Boy"
+				platfom2 = "GameBoy"
+			Case "Game & Watch"
+				platfom2 = "G&W"
+			Case "PlayStation"
+				platfom2 = "PS1"
+			Case "PlayStation 2"
+				platfom2 = "PS2"
+			Case "PlayStation 3"
+				platfom2 = "PS3"
+			Case "PlayStation 4"
+				platfom2 = "PS4"
+			Case "PSP"
+				platfom2 = "PSP"
+			Case "PS Vita"
+				platfom2 = "PSVita"
+			Case "PocketStation"
+				platfom2 = "PocketStation"
+			Case "Xbox"
+				platfom2 = "Xbox"
+			Case "Xbox 360"
+				platfom2 = "Xbox360"
+			Case "Xbox One"
+				platfom2 = "XboxOne"
+			Case "SG-1000"
+				platfom2 = "SG-1000"
+			Case "SC-3000"
+				platfom2 = "SC-3000"
+			Case "Sega Master System"
+				platfom2 = "Sega-Master-System"
+			Case "Sega Genesis"
+				platfom2 = "Sega-Genesis"
+			Case "Sega Mega CD"
+				platfom2 = "Sega-Mega-CD"
+			Case "Game Gear"
+				platfom2 = "Game-Gear"
+			Case "Sega Saturn"
+				platfom2 = "Sega-Saturn"
+			Case "Mega Drive 32x"
+				platfom2 = "Mega-Drive-32x"
+			Case "Sega Nomad"
+				platfom2 = "Sega-Nomad"
+			Case "Sega Model 2"
+				platfom2 = "Sega-Model-2"
+			Case "Sega Dreamcast"
+				platfom2 = "Dreamcast"
+			Case "Neo-Geo"
+				platfom2 = "Neo-Geo"
+			Case "Neo-Geo CD"
+				platfom2 = "Neo-Geo-CD"
+			Case "Pippin"
+				platfom2 = "Pippin"
+			Case "Atari 2600"
+				platfom2 = "Atari2600"
+			Case "Atari 5200"
+				platfom2 = "Atari5200"
+			Case "Atari 7800"
+				platfom2 = "Atari7800"
+			Case "Atari Jaguar"
+				platfom2 = "Atari-Jaguar"
+			Case "Playdia"
+				platfom2 = "Playdia"
+			Case "Wonderswan"
+				platfom2 = "Wonderswan"
+			Case "Wonderswan Color"
+				platfom2 = "Wonderswan-Color"
+			Case "Play System 1"
+				platfom2 = "Play-System-1"
+			Case "Play System 2"
+				platfom2 = "Play-System-2"
+			Case "Play System 3"
+				platfom2 = "Play-System-3"
+			Case "Casio Loopy"
+				platfom2 = "Casio-Loopy"
+			Case "ColecoVision"
+				platfom2 = "ColecoVision"
+			Case "Commodore 64GS"
+				platfom2 = "Commodore64GS"
+			Case "AmigaCD32"
+				platfom2 = "AmigaCD32"
+			Case "AmigaCD"
+				platfom2 = "AmigaCD"
+			Case "Fairchild Channel F"
+				platfom2 = "Fairchild-Channel-F"
+			Case "GP32"
+				platfom2 = "GP32"
+			Case "Vectrex"
+				platfom2 = "Vectrex"
+			Case "Magnavox Oddyssey"
+				platfom2 = "Magnavox-Oddyssey"
+			Case "Magnavox Oddyssey 2"
+				platfom2 = "Magnavox-Oddyssey2"
+			Case "Intellivision"
+				platfom2 = "Intellivision"
+			Case "PC Engine"
+				platfom2 = "PC-Engine"
+			Case "PC-FX"
+				platfom2 = "PC-FX"
+			Case "N-Gage"
+				platfom2 = "N-Gage"
+			Case "3DO"
+				platfom2 = "3DO"
+			Case "Videopac"
+				platfom2 = "Videopac"
+			Case "Philips CDi"
+				platfom2 = "Philips-CDi"
+			Case "RCA Studio II"
+				platfom2 = "RCA-Studio-II"
+			Case "V.Smile"
+				platfom2 = "V-Smile"
+			Case "Amstrad GX4000"
+				platfom2 = "AmstradGX4000"
+		End Select
+		If TextBox3.Text = "Name Game" Then
 		Else
-			If TextBox3.Text = "Name Game" Then
+			If TextBox7.Text = "Url Image" Then
 			Else
-				If TextBox7.Text = "Url Image" Then
+				If TextBox7.Text = "" Then
 				Else
-					If TextBox7.Text = "" Then
-					Else
-						If PicExist(TextBox7.Text) = True Then
-							If TextBox3.Text = "" Then
+					If PicExist(TextBox7.Text) = True Then
+						If TextBox3.Text = "" Then
+						Else
+							If TextBox4.Text = "Your Name" Then
 							Else
-								If TextBox4.Text = "Your Name" Then
+								If TextBox4.Text = "" Then
 								Else
-									If TextBox4.Text = "" Then
+									If TextBox5.Text = "Version" Then
 									Else
-										If TextBox5.Text = "Version" Then
+										If TextBox5.Text = "" Then
 										Else
-											If TextBox5.Text = "" Then
+											If TextBox6.Text = "Format" Then
 											Else
-												If TextBox6.Text = "Format" Then
+												If TextBox6.Text = "" Then
 												Else
-													If TextBox6.Text = "" Then
+													If TextBox2.Text = "Link Game(Please Read Wiki)" Then
 													Else
-														If TextBox2.Text = "Link Game(Please Read Wiki)" Then
+														If TextBox2.Text = "" Then
 														Else
-															If TextBox2.Text = "" Then
-															Else
-																If GameID_Checkbox.CheckState = False Then
-																	ListView1.Items.Add(counter2)
-																	ListView1.Items(counter2).SubItems.Add(TextBox3.Text)
-																	ListView1.Items(counter2).SubItems.Add(ComboBox2.Text)
-																	ListView1.Items(counter2).SubItems.Add(ComboBox3.Text)
-																	ListView1.Items(counter2).SubItems.Add(TextBox4.Text)
-																	ListView1.Items(counter2).SubItems.Add(TextBox5.Text)
-																	ListView1.Items(counter2).SubItems.Add(TextBox6.Text)
-																	ListView1.Items(counter2).SubItems.Add(TextBox2.Text)
-																	ListView1.Items(counter2).SubItems.Add(platfom2)
-																	ListView1.Items(counter2).SubItems.Add(Parts)
-																	ListView1.Items(counter2).SubItems.Add("")
-																	ListView1.Items(counter2).SubItems.Add(TextBox7.Text)
-																	counter2 += 1
+															If GameID_Checkbox.CheckState = False Then
+																If CheckBox3.CheckState = False Then
+																	Send(ComboBox4.Text, "0", ComboBox2.Text,
+																					 TextBox3.Text, ComboBox3.Text,
+																					 TextBox4.Text, TextBox5.Text, TextBox6.Text, TextBox7.Text, Parts,
+																					 TextBox2.Text, "1", License_Bol, "", "")
 																Else
-																	If ID_Game.Text = "ID Game" Then
+																	If LinkLicense_Text.Text = "" Then
 																	Else
-																		If ID_Game.Text = "" Then
+																		If LinkLicense_Text.Text = "Link License" Then
 																		Else
-																			ListView1.Items.Add(ID_Game.Text)
-																			ListView1.Items(counter2).SubItems.Add(TextBox3.Text)
-																			ListView1.Items(counter2).SubItems.Add(ComboBox2.Text)
-																			ListView1.Items(counter2).SubItems.Add(ComboBox3.Text)
-																			ListView1.Items(counter2).SubItems.Add(TextBox4.Text)
-																			ListView1.Items(counter2).SubItems.Add(TextBox5.Text)
-																			ListView1.Items(counter2).SubItems.Add(TextBox6.Text)
-																			ListView1.Items(counter2).SubItems.Add(TextBox2.Text)
-																			ListView1.Items(counter2).SubItems.Add(platfom2)
-																			ListView1.Items(counter2).SubItems.Add(Parts)
-																			ListView1.Items(counter2).SubItems.Add("")
-																			ListView1.Items(counter2).SubItems.Add(TextBox7.Text)
-																			counter2 += 1
+																			If TextBox8.Text = "" Then
+																			Else
+																				If TextBox8.Text = "Format License" Then
+																				Else
+																					Send(ComboBox4.Text, "0", ComboBox2.Text,
+																						 TextBox3.Text, ComboBox3.Text,
+																						 TextBox4.Text, TextBox5.Text, TextBox6.Text, TextBox7.Text, Parts,
+																						 TextBox2.Text, "1", License_Bol, LinkLicense_Text.Text, TextBox8.Text)
+																				End If
+																			End If
+																		End If
+																	End If
+																End If
+															Else
+																If ID_Game.Text = "ID Game" Then
+																Else
+																	If ID_Game.Text = "" Then
+																	Else
+																		If CheckBox3.CheckState = False Then
+																			Send(ComboBox4.Text, ID_Game.Text, ComboBox2.Text,
+																			 TextBox3.Text, ComboBox3.Text,
+																			 TextBox4.Text, TextBox5.Text, TextBox6.Text, TextBox7.Text, Parts,
+																			 TextBox2.Text, "1", License_Bol, "", "")
+																		Else
+																			If LinkLicense_Text.Text = "" Then
+																			Else
+																				If LinkLicense_Text.Text = "Link License" Then
+																				Else
+																					If TextBox8.Text = "" Then
+																					Else
+																						If TextBox8.Text = "Format License" Then
+																						Else
+																							Send(ComboBox4.Text, ID_Game.Text, ComboBox2.Text,
+																								 TextBox3.Text, ComboBox3.Text,
+																								 TextBox4.Text, TextBox5.Text, TextBox6.Text, TextBox7.Text, Parts,
+																								 TextBox2.Text, "1", License_Bol, LinkLicense_Text.Text, TextBox8.Text)
+																						End If
+																					End If
+																				End If
+																			End If
 																		End If
 																	End If
 																End If
@@ -1004,473 +1597,7 @@ Public Class Start
 					End If
 				End If
 			End If
-			End If
-	End Sub
-
-	Private Sub TresDS_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles TresDS_BOTONCITOS.CheckedChanged
-		platfom2 = "3DS"
-	End Sub
-	Private Sub NDS_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles NDS_BOTONCITOS.CheckedChanged
-		platfom2 = "NDS"
-	End Sub
-	Private Sub GameBoy_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles GameBoy_BOTONCITOS.CheckedChanged
-		platfom2 = "GameBoy"
-	End Sub
-	Private Sub GameBoyAdvance_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles GameBoyAdvance_BOTONCITOS.CheckedChanged
-		platfom2 = "GameBoyAdvance"
-	End Sub
-	Private Sub GameCube_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles GameCube_BOTONCITOS.CheckedChanged
-		platfom2 = "GameCube"
-	End Sub
-	Private Sub NES_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles NES_BOTONCITOS.CheckedChanged
-		platfom2 = "NES"
-	End Sub
-	Private Sub Snes_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles Snes_BOTONCITOS.CheckedChanged
-		platfom2 = "SNES"
-	End Sub
-	Private Sub N64_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles N64_BOTONCITOS.CheckedChanged
-		platfom2 = "N64"
-	End Sub
-	Private Sub NS_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles NS_BOTONCITOS.CheckedChanged
-		platfom2 = "NSwich"
-	End Sub
-	Private Sub VB_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles VB_BOTONCITOS.CheckedChanged
-		platfom2 = "VirtualBoy"
-	End Sub
-#Disable Warning IDE1006 ' Estilos de nombres
-	Private Sub wii_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles wii_BOTONCITOS.CheckedChanged
-#Enable Warning IDE1006 ' Estilos de nombres
-		platfom2 = "Wii"
-	End Sub
-#Disable Warning IDE1006 ' Estilos de nombres
-	Private Sub wiiu_BOTONCITOS_CheckedChanged(sender As Object, e As EventArgs) Handles wiiu_BOTONCITOS.CheckedChanged
-#Enable Warning IDE1006 ' Estilos de nombres
-		platfom2 = "WiiU"
-	End Sub
-
-	Private Sub Upload_To_ftp_Click(sender As Object, e As EventArgs) Handles Upload_To_ftp.Click
-		Dim NPath As Integer
-
-		Dim words As String()
-
-		Me.Cursor = Cursors.WaitCursor
-		Dim path As String
-		Do While ListView1.Items.Count >= "0"
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "NDS" Then
-
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				Dim w1 As New System.IO.StreamWriter(path)
-				w1.WriteLine("        {")
-				w1.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w1.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w1.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w1.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w1.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w1.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w1.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w1.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w1.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w1.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					'MsgBox(word.Length())
-					NPath = NPath + 1
-					w1.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w1.WriteLine("        ],")
-				w1.WriteLine("            ""N_Part"": """ & NPath & """")
-				w1.WriteLine("        },")
-				w1.Close()
-
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "NSwich" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w2 As New System.IO.StreamWriter(path)
-				w2.WriteLine("        {")
-				w2.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w2.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w2.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w2.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w2.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w2.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w2.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w2.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w2.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w2.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w2.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w2.WriteLine("        ],")
-				w2.WriteLine("            ""N_Part"": """ & NPath & """")
-				w2.WriteLine("        },")
-				w2.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "Wii" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w3 As New System.IO.StreamWriter(path)
-				w3.WriteLine("        {")
-				w3.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w3.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w3.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w3.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w3.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w3.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w3.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w3.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w3.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w3.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w3.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w3.WriteLine("        ],")
-				w3.WriteLine("            ""N_Part"": """ & NPath & """")
-				w3.WriteLine("        },")
-				w3.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "WiiU" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w4 As New System.IO.StreamWriter(path)
-				w4.WriteLine("        {")
-				w4.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w4.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w4.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w4.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w4.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w4.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w4.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w4.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w4.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w4.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w4.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w4.WriteLine("        ],")
-				w4.WriteLine("            ""N_Part"": """ & NPath & """")
-				w4.WriteLine("        },")
-				w4.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "N64" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w5 As New System.IO.StreamWriter(path)
-				w5.WriteLine("        {")
-				w5.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w5.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w5.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w5.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w5.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w5.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w5.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w5.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w5.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w5.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w5.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w5.WriteLine("        ],")
-				w5.WriteLine("            ""N_Part"": """ & NPath & """")
-				w5.WriteLine("        },")
-				w5.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "GameCube" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w6 As New System.IO.StreamWriter(path)
-				w6.WriteLine("        {")
-				w6.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w6.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w6.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w6.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w6.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w6.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w6.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w6.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w6.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w6.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w6.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w6.WriteLine("        ],")
-				w6.WriteLine("            ""N_Part"": """ & NPath & """")
-				w6.WriteLine("        },")
-				w6.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "VirtualBoy" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w7 As New System.IO.StreamWriter(path)
-				w7.WriteLine("        {")
-				w7.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w7.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w7.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w7.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w7.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w7.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w7.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w7.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w7.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w7.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w7.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w7.WriteLine("        ],")
-				w7.WriteLine("            ""N_Part"": """ & NPath & """")
-				w7.WriteLine("        },")
-				w7.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "GameBoyAdvance" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w8 As New System.IO.StreamWriter(path)
-				w8.WriteLine("        {")
-				w8.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w8.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w8.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w8.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w8.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w8.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w8.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w8.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w8.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w8.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w8.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w8.WriteLine("        ],")
-				w8.WriteLine("            ""N_Part"": """ & NPath & """")
-				w8.WriteLine("        },")
-				w8.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "SNES" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w9 As New System.IO.StreamWriter(path)
-				w9.WriteLine("        {")
-				w9.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w9.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w9.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w9.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w9.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w9.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w9.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w9.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w9.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w9.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w9.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w9.WriteLine("        ],")
-				w9.WriteLine("            ""N_Part"": """ & NPath & """")
-				w9.WriteLine("        },")
-				w9.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "NES" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w10 As New System.IO.StreamWriter(path)
-				w10.WriteLine("        {")
-				w10.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w10.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w10.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w10.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w10.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w10.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w10.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w10.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w10.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w10.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w10.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w10.WriteLine("        ],")
-				w10.WriteLine("            ""N_Part"": """ & NPath & """")
-				w10.WriteLine("        },")
-				w10.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "3DS" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w11 As New System.IO.StreamWriter(path)
-				w11.WriteLine("        {")
-				w11.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w11.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w11.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w11.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w11.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w11.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w11.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w11.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w11.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w11.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w11.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-
-				w11.WriteLine("        ],")
-				w11.WriteLine("            ""N_Part"": """ & NPath & """")
-				w11.WriteLine("        },")
-				w11.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-			If ListView1.Items(0).SubItems.Item(8).Text = "GameBoy" Then
-				Name_Send = ListView1.Items(0).SubItems.Item(4).Text
-				path = Application.StartupPath & "\Uploader\List\" & "[" & ListView1.Items(0).SubItems.Item(8).Text & "]" & counter3 & ".txt"
-				NPath = 0
-				Dim w12 As New System.IO.StreamWriter(path)
-				w12.WriteLine("        {")
-				w12.WriteLine("            ""ID"": """ & ListView1.Items.Count & """,")
-				w12.WriteLine("            ""Type"": """ & ListView1.Items(0).SubItems.Item(2).Text & """,")
-				w12.WriteLine("            ""Name"": """ & ListView1.Items(0).SubItems.Item(1).Text & """,")
-				w12.WriteLine("            ""Region"": """ & ListView1.Items(0).SubItems.Item(3).Text & """,")
-				w12.WriteLine("            ""User"": """ & ListView1.Items(0).SubItems.Item(4).Text & """,")
-				w12.WriteLine("            ""Version"": """ & ListView1.Items(0).SubItems.Item(5).Text & """,")
-				w12.WriteLine("            ""Format"": """ & ListView1.Items(0).SubItems.Item(6).Text & """,")
-				w12.WriteLine("            ""Image"": """ & ListView1.Items(0).SubItems.Item(11).Text & """,")
-				w12.WriteLine("            ""Parts"": """ & ListView1.Items(0).SubItems.Item(9).Text & """,")
-				w12.WriteLine("            ""Encrypt"":  [")
-				words = ListView1.Items(0).SubItems.Item(7).Text.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-				Dim word As String
-				For Each word In words
-					NPath = NPath + 1
-					w12.WriteLine("             """ & AES_Encrypt(word) & """,")
-				Next
-				w12.WriteLine("        ],")
-				w12.WriteLine("            ""N_Part"": """ & NPath & """")
-				w12.WriteLine("        },")
-				w12.Close()
-				ListView1.Items.RemoveAt(0)
-				counter3 = counter3 + 1
-				If ListView1.Items.Count = "0" Then
-					Exit Do
-				End If
-			End If
-
-		Loop
-		Send()
-		counter2 = 0
-		Me.Cursor = Cursors.Default
+		End If
 	End Sub
 
 	Public Class ListTwo
@@ -1485,20 +1612,111 @@ Public Class Start
 		Public Region As String
 		Public N_Part As Integer
 		Public Parts As Boolean
+		Public LicenseExist As Boolean
+		Public LinkLisense As String
+		Public FormatLisense As String
 	End Class
 
 	Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-		'search
+		Dim check As Integer = FindItem(List1, TextBox1.Text)
+
+		If TextBox1.Text = "" Then
+			ListView99.Visible = False
+			counter4 = 0
+		Else
+			ListView99.Visible = True
+			ListView99.Items.Clear()
+			counter4 = 0
+
+			For i As Integer = 0 To List1.Items.Count - 1
+				If Trim(List1.Items(i).Text).Contains(Trim(TextBox1.Text)) Then
+					'MsgBox(i)
+					ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
+					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
+					counter4 = counter4 + 1
+				End If
+				For subitem As Integer = 0 To List1.Items(i).SubItems.Count - 1
+					If Trim(List1.Items(i).SubItems(subitem).Text).Contains(Trim(TextBox1.Text)) Then
+						ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
+						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
+						counter4 = counter4 + 1
+						Exit For
+					End If
+				Next
+
+			Next
+
+		End If
 	End Sub
+	Private Sub Send(Platform_Send As String, ID_Send As String, Type_Send As String, Name_Send As String, Region_Send As String,
+					 User_Send As String, Version_Send As String, Format_Send As String, Image_Send As String, Parts_Send As Boolean,
+					 Encrypt_Send As String, NumberParts_Send As String, LicenseExist_Send As Boolean, LinkLisense_Send As String,
+					 FormatLisense_Send As String)
 
-	Private Sub Send()
-
+		Dim Encrypt_Split As String()
+		Dim Encrypt_Array As New List(Of String)
+		Encrypt_Split = Encrypt_Send.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
+		'MsgBox(Encrypt_Split(0))
+		'MsgBox(Encrypt_Split.Length)
+		For Other As Integer = 1 To Encrypt_Split.Length
+			MsgBox(Other)
+			'Encrypt_Array.Add
+			Encrypt_Array.Add(AES_Encrypt(Encrypt_Split(Other - 1)))
+			'Encrypt_Array.Add("asd2")
+			'	Encrypt_Array.Add(1)
+		Next
 		Try
+			'MsgBox(Encrypt_Array.ToArray)
+			Dim Lista As New ListTwo()
 
+			Lista.Name = Name_Send
+			Lista.ID = ID_Send
+			Lista.Type = Type_Send
+			Lista.Format = Format_Send
+			Lista.Image = Image_Send
+			Lista.User = User_Send
+			Lista.Version = Version_Send
+			Lista.Encrypt = Encrypt_Array.ToArray
+			Lista.Region = Region_Send
+			Lista.N_Part = Encrypt_Split.Length
+			Lista.Parts = Parts_Send
+			Lista.FormatLisense = FormatLisense_Send
+			Lista.LicenseExist = LicenseExist_Send
+			Lista.LinkLisense = AES_Encrypt(LinkLisense_Send)
+
+			Dim output As String = JsonConvert.SerializeObject(Lista)
 
 			Dim Smtp_Server As New SmtpClient
 			Dim e_mail As New MailMessage()
-			Dim attachment As System.Net.Mail.Attachment
+			'Dim attachment As System.Net.Mail.Attachment
 
 			Smtp_Server.UseDefaultCredentials = False
 			Smtp_Server.Credentials = New Net.NetworkCredential(("projectkoppaisender@gmail.com"), ("Sender1234"))
@@ -1514,76 +1732,10 @@ Public Class Start
 #Enable Warning IDE0017 ' Simplificar la inicialización de objetos
 			e_mail.From = New MailAddress("titiyum12rc@gmail.com")
 			e_mail.To.Add("titiyum12rc@gmail.com")
-			e_mail.Subject = "[" & Name_Send & "]List"
+			e_mail.Subject = "[" & Platform_Send & "]" & Name_Send
 			e_mail.IsBodyHtml = False 'cannot be read
-			e_mail.Body = "Upload Games List"
+			e_mail.Body = output
 
-
-			'this line here excute correctly but if a user didd'nt attach  a file, sending fails..
-			'i want to send even w/o an attach file..
-			Do While counter3 > 0
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[WII]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[WII]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[3DS]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[3DS]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[GAME BOY]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[GAME BOY]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[NES]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[NES]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[SNES]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[SNES]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[GAME BOY ADVANCE]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[GAME BOY ADVANCE]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[VIRTUAL BOY]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[VIRTUAL BOY]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[GAMECUBE]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[GAMECUBE]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[NINTENDO 64]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[NINTENDO 64]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[NINTENDO SWICH]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[NINTENDO SWICH]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[WII U]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[WII U]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-				If File.Exists(Application.StartupPath & "\Uploader\List\" & "[NDS]" & counter3 - 1 & ".txt") Then
-					attachment = New System.Net.Mail.Attachment(Application.StartupPath & "\Uploader\List\" & "[NDS]" & counter3 - 1 & ".txt") 'file path
-					e_mail.Attachments.Add(attachment)
-					counter3 = counter3 - 1
-				End If
-
-			Loop
 
 			Smtp_Server.Send(e_mail)
 
@@ -1653,8 +1805,8 @@ Platform Game: " & Platform_Game & "
 		End If
 	End Sub
 
-	Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
-		ListView1.Items.RemoveAt(ListView1.FocusedItem.Index)
+	Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs)
+		'ListView1.Items.RemoveAt(ListView1.FocusedItem.Index)
 		counter2 = counter2 - 1
 	End Sub
 
@@ -1721,7 +1873,6 @@ Platform Game: " & Platform_Game & "
 			MsgBox("Please write the error")
 			userMsg = Microsoft.VisualBasic.InputBox("You have to write the problem that happens with this video game, to solve it easily, thank you for your attention", "Write Your Problem", "Write the error here")
 		Else
-			'MsgBox(userMsg)
 			SendTwo()
 		End If
 
@@ -1764,5 +1915,38 @@ Platform Game: " & Platform_Game & "
 
 	Private Sub Button2_Click(sender As Object, e As EventArgs)
 		Clipboard.SetText(AES_Encrypt("https://drive.google.com/uc?export=download&id=1kknhAg39K47SGWooqflDCXcbghmYs90Z"))
+	End Sub
+
+	Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) 
+
+	End Sub
+
+	Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+		If CheckBox3.CheckState = 1 Then
+			CheckBox3.Text = "The Game is licensed? True"
+			LinkLicense_Text.Visible = True
+			License_Bol = True
+		End If
+		If CheckBox3.CheckState = False Then
+			CheckBox3.Text = "The Game is licensed? False"
+			LinkLicense_Text.Visible = False
+			License_Bol = False
+		End If
+	End Sub
+
+	Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+		My.Computer.Network.DownloadFile(AES_Encrypt(Link_License), Application.StartupPath & "\License\[" & List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text & "][" & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text & "]" & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text & "." & format_License)
+	End Sub
+
+	Private Sub Name_Game_Label_Click(sender As Object, e As EventArgs) Handles Name_Game_Label.Click
+
+	End Sub
+
+	Private Sub Region_label_Click(sender As Object, e As EventArgs) Handles Region_label.Click
+
+	End Sub
+
+	Private Sub Upload_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Upload.SelectedIndexChanged
+
 	End Sub
 End Class

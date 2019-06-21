@@ -1,6 +1,6 @@
 [
     {
-        "ID": "1",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Abarenradin",
         "Region": "UNKNOWN",
@@ -13,7 +13,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "2",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Aces - Iron Eagle 3",
         "Region": "JP",

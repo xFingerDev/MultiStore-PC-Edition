@@ -1,6 +1,6 @@
 [
     {
-        "ID": "1",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Mario Kart",
         "Region": "USA",
@@ -10,10 +10,13 @@
         "Image": "https://i.ebayimg.com/images/g/L9gAAOSw~4taX1gZ/s-l640.jpg",
         "Parts": false,
         "Encrypt": ["r/Gj9g3dr7UFgULBr/HT5s09krjdZQtvC9cc1PA3NJBBFZF2cJ8M+yMWayGqlJtwD+JC6arpGya0XR/vXAX1vLKNMJ8q0nSK3xgEknvfkR0="],
-        "N_Part": "1"
+        "N_Part": "1",
+        "LicenseExist": "True",
+        "LinkLisense": "None",
+        "FormatLisense": "Iso"
     },
     {
-        "ID": "2",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Final Fight 1",
         "Region": "EUR",
@@ -26,7 +29,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "3",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Aero Fighters",
         "Region": "USA",
@@ -39,7 +42,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "4",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Aladdin",
         "Region": "USA",
@@ -52,7 +55,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "5",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Biker Mice From Mars",
         "Region": "USA",
@@ -65,7 +68,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "6",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Chrono Trigger",
         "Region": "USA",
@@ -78,7 +81,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "7",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Contra III - The Alien Wars",
         "Region": "USA",
@@ -91,7 +94,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "8",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Demon's Crest",
         "Region": "USA",
@@ -104,7 +107,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "9",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Donkey Kong Country",
         "Region": "USA",
@@ -117,7 +120,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "10",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Donkey Kong Country 2 - Diddy's Kong Quest",
         "Region": "USA",
@@ -130,7 +133,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "11",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Donkey Kong Country 3 - Dixie Kong's Double Trouble",
         "Region": "USA",
@@ -143,7 +146,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "12",
+        "ID": "0",
         "Type": "GAME",
         "Name": "F-ZERO",
         "Region": "USA",
@@ -156,7 +159,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "13",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Final Fantasy III",
         "Region": "USA",
@@ -169,7 +172,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "14",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Goof Troop",
         "Region": "USA",
@@ -182,7 +185,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "15",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Indiana Jones' Greatest Adventures",
         "Region": "USA",
@@ -195,7 +198,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "16",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Joe & Mac",
         "Region": "USA",
@@ -208,7 +211,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "17",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Joe & Mac 2 - Lost in the Tropics",
         "Region": "USA",
@@ -221,7 +224,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "18",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Killer Instinct",
         "Region": "USA",
@@ -234,7 +237,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "19",
+        "ID": "0",
         "Type": "GAME",
         "Name": "The King of Dragons",
         "Region": "USA",
@@ -247,7 +250,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "20",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Kirby Super Star",
         "Region": "USA",
@@ -260,7 +263,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "21",
+        "ID": "0",
         "Type": "GAME",
         "Name": "The Legend of The Mystical Ninja",
         "Region": "USA",
@@ -273,7 +276,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "22",
+        "ID": "0",
         "Type": "GAME",
         "Name": "The Lion King",
         "Region": "USA",
@@ -286,7 +289,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "23",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Disney's Magical Quest Starring Mickey and Minnie",
         "Region": "USA",
@@ -299,7 +302,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "24",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mega Man VII",
         "Region": "USA",
@@ -312,7 +315,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "25",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mega Man X",
         "Region": "USA",
@@ -325,7 +328,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "26",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mega Man X2",
         "Region": "USA",
@@ -338,7 +341,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "27",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mega Man X3",
         "Region": "USA",
@@ -351,7 +354,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "28",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mortal Kombat II",
         "Region": "USA",
@@ -364,7 +367,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "29",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Ninja Gaiden Trilogy",
         "Region": "USA",
@@ -377,7 +380,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "30",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Prince of Persia",
         "Region": "USA",
@@ -390,7 +393,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "31",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Star Fox",
         "Region": "USA",
@@ -403,7 +406,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "32",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Street Fighter II - The World Warrior",
         "Region": "USA",
@@ -416,7 +419,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "33",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Street Fighter II Turbo - Hyper Fighting",
         "Region": "USA",
@@ -429,7 +432,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "34",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Sunset Riders",
         "Region": "USA",
@@ -442,7 +445,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "35",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Adventure Island",
         "Region": "USA",
@@ -455,7 +458,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "36",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Bomberman",
         "Region": "USA",
@@ -468,7 +471,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "37",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Castlevania IV",
         "Region": "USA",
@@ -481,7 +484,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "38",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Ghouls 'N Ghosts",
         "Region": "USA",
@@ -494,7 +497,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "39",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Mario All-Stars + Super Mario World",
         "Region": "USA",
@@ -507,7 +510,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "40",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Mario RPG - Legend of the Seven Stars",
         "Region": "USA",
@@ -520,7 +523,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "41",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Mario World 2 - Yoshi's Island",
         "Region": "USA",
@@ -533,7 +536,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "42",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Metroid",
         "Region": "USA",
@@ -546,7 +549,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "43",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Punch-Out!!",
         "Region": "USA",
@@ -559,7 +562,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "44",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Super Turrican",
         "Region": "USA",
@@ -572,7 +575,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "45",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Teenage Mutant Ninja Turtles IV - Turtles in Time",
         "Region": "USA",
@@ -585,7 +588,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "46",
+        "ID": "0",
         "Type": "GAME",
         "Name": "The Legend of Zelda A Link To a Past",
         "Region": "USA",
@@ -598,7 +601,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "47",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Tiny Toon Adventures - Buster Busts Loose!",
         "Region": "USA",
@@ -611,7 +614,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "48",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Tiny Toon Adventures - Wacky Sports Challenge",
         "Region": "USA",
@@ -624,7 +627,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "49",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Top Gear",
         "Region": "USA",
@@ -637,7 +640,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "50",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Top Gear 2",
         "Region": "USA",
@@ -650,7 +653,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "51",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Top Gear 3000",
         "Region": "USA",
@@ -663,7 +666,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "52",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Toy Story",
         "Region": "USA",
@@ -676,7 +679,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "53",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Ultimate Mortal Kombat 3",
         "Region": "USA",
@@ -689,7 +692,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "54",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Wild Guns",
         "Region": "USA",
@@ -702,7 +705,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "55",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Zombies Ate My Neighbors",
         "Region": "USA",

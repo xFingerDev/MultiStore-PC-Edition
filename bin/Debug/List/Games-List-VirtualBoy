@@ -1,6 +1,6 @@
 [
     {
-        "ID": "1",
+        "ID": "0",
         "Type": "GAME",
         "Name": "BoundHigh",
         "Region": "UNKNOWN",
@@ -13,7 +13,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "2",
+        "ID": "0",
         "Type": "GAME",
         "Name": "3D Tetris",
         "Region": "USA",
@@ -26,7 +26,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "3",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Galactic Pinball",
         "Region": "JAPAN,USA",
@@ -39,7 +39,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "4",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Golf",
         "Region": "USA",
@@ -52,7 +52,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "5",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Innsmouth no Yakata",
         "Region": "JAPAN",
@@ -65,7 +65,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "6",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Jack Bros",
         "Region": "USA",
@@ -78,7 +78,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "7",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Jack Bros No Meiro de Hiihoo!",
         "Region": "JAPAN",
@@ -91,7 +91,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "8",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mario Clash",
         "Region": "JAPAN,USA",
@@ -104,7 +104,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "9",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Mario's Tennis",
         "Region": "JAPAN,USA",
@@ -117,7 +117,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "10",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Nesters Funky Bowling",
         "Region": "USA",
@@ -130,7 +130,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "11",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Niko-chan Battle",
         "Region": "JAPAN",
@@ -143,7 +143,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "12",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Bomberman Panic Bomber",
         "Region": "USA",
@@ -156,7 +156,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "13",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Red Alarm",
         "Region": "JAPAN",
@@ -169,7 +169,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "14",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Red Alarm",
         "Region": "USA",
@@ -182,7 +182,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "15",
+        "ID": "0",
         "Type": "GAME",
         "Name": "SD Gundam Dimension War",
         "Region": "JAPAN",
@@ -195,7 +195,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "16",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Space Invaders Virtual Collection",
         "Region": "JAPAN",
@@ -208,7 +208,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "17",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Space Pinball",
         "Region": "USA",
@@ -221,7 +221,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "18",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Space Squash",
         "Region": "JAPAN",
@@ -234,7 +234,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "19",
+        "ID": "0",
         "Type": "GAME",
         "Name": "T&E Virtual Golf",
         "Region": "JAPAN",
@@ -247,7 +247,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "20",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Teleroboxer",
         "Region": "JAPAN,USA",
@@ -260,7 +260,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "21",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Tobidase! Panibon",
         "Region": "JAPAN",
@@ -273,7 +273,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "22",
+        "ID": "0",
         "Type": "GAME",
         "Name": "V-Tetris",
         "Region": "JAPAN",
@@ -286,7 +286,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "23",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Vertical Force",
         "Region": "JAPAN",
@@ -299,7 +299,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "24",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Vertical Force",
         "Region": "USA",
@@ -312,7 +312,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "25",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual Bowling",
         "Region": "JAPAN",
@@ -325,7 +325,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "26",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual Boy Wario Land",
         "Region": "JAPAN,USA",
@@ -338,7 +338,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "27",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual Fishing",
         "Region": "JAPAN",
@@ -351,7 +351,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "28",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual Lab",
         "Region": "JAPAN",
@@ -364,7 +364,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "29",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual League Baseball",
         "Region": "USA",
@@ -377,7 +377,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "30",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Virtual Pro Yakyuu 95",
         "Region": "JAPAN",
@@ -390,7 +390,7 @@
         "N_Part": "1"
     },
     {
-        "ID": "31",
+        "ID": "0",
         "Type": "GAME",
         "Name": "Waterworld",
         "Region": "USA",

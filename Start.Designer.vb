@@ -26,6 +26,7 @@ Partial Class Start
 		Me.PictureBox1 = New System.Windows.Forms.PictureBox()
 		Me.Upload = New System.Windows.Forms.TabControl()
 		Me.TabPage1 = New System.Windows.Forms.TabPage()
+		Me.Companya_Combo = New System.Windows.Forms.ComboBox()
 		Me.Load_Image_button = New System.Windows.Forms.Button()
 		Me.PictureBox3 = New System.Windows.Forms.PictureBox()
 		Me.Report = New System.Windows.Forms.Button()
@@ -44,6 +45,7 @@ Partial Class Start
 		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
 		Me.TextBox1 = New System.Windows.Forms.TextBox()
 		Me.TabPage2 = New System.Windows.Forms.TabPage()
+		Me.ComboBox4 = New System.Windows.Forms.ComboBox()
 		Me.Button1 = New System.Windows.Forms.Button()
 		Me.TextBox7 = New System.Windows.Forms.TextBox()
 		Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -52,27 +54,13 @@ Partial Class Start
 		Me.i = New System.Windows.Forms.Button()
 		Me.ComboBox2 = New System.Windows.Forms.ComboBox()
 		Me.GamePath = New System.Windows.Forms.CheckBox()
-		Me.ListView1 = New System.Windows.Forms.ListView()
 		Me.TextBox6 = New System.Windows.Forms.TextBox()
 		Me.TextBox5 = New System.Windows.Forms.TextBox()
 		Me.TextBox4 = New System.Windows.Forms.TextBox()
 		Me.TextBox3 = New System.Windows.Forms.TextBox()
 		Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-		Me.wii_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.wiiu_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.VB_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.NS_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.GameBoyAdvance_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.GameCube_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.NES_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.Snes_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.N64_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.NDS_BOTONCITOS = New System.Windows.Forms.RadioButton()
-		Me.GameBoy_BOTONCITOS = New System.Windows.Forms.RadioButton()
 		Me.Upload_Add_item = New System.Windows.Forms.Button()
-		Me.Upload_To_ftp = New System.Windows.Forms.Button()
 		Me.TextBox2 = New System.Windows.Forms.TextBox()
-		Me.TresDS_BOTONCITOS = New System.Windows.Forms.RadioButton()
 		Me.TabPage3 = New System.Windows.Forms.TabPage()
 		Me.CheckBox2 = New System.Windows.Forms.CheckBox()
 		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
@@ -94,6 +82,12 @@ Partial Class Start
 		Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
 		Me.ListView2 = New System.Windows.Forms.ListView()
 		Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+		Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+		Me.LinkLicense_Text = New System.Windows.Forms.TextBox()
+		Me.TextBox8 = New System.Windows.Forms.TextBox()
+		Me.Button2 = New System.Windows.Forms.Button()
+		Me.Search_Label = New System.Windows.Forms.Label()
+		Me.ListView99 = New System.Windows.Forms.ListView()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -108,9 +102,9 @@ Partial Class Start
 		'PictureBox1
 		'
 		Me.PictureBox1.BackColor = System.Drawing.Color.DimGray
-		Me.PictureBox1.Location = New System.Drawing.Point(-1, -5)
+		Me.PictureBox1.Location = New System.Drawing.Point(1, 0)
 		Me.PictureBox1.Name = "PictureBox1"
-		Me.PictureBox1.Size = New System.Drawing.Size(976, 546)
+		Me.PictureBox1.Size = New System.Drawing.Size(976, 538)
 		Me.PictureBox1.TabIndex = 0
 		Me.PictureBox1.TabStop = False
 		'
@@ -120,15 +114,19 @@ Partial Class Start
 		Me.Upload.Controls.Add(Me.TabPage2)
 		Me.Upload.Controls.Add(Me.TabPage3)
 		Me.Upload.Controls.Add(Me.List_Download)
-		Me.Upload.Location = New System.Drawing.Point(-1, 0)
+		Me.Upload.Location = New System.Drawing.Point(-6, 0)
 		Me.Upload.Name = "Upload"
 		Me.Upload.SelectedIndex = 0
-		Me.Upload.Size = New System.Drawing.Size(976, 541)
+		Me.Upload.Size = New System.Drawing.Size(981, 562)
 		Me.Upload.TabIndex = 1
 		'
 		'TabPage1
 		'
 		Me.TabPage1.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage1.Controls.Add(Me.ListView99)
+		Me.TabPage1.Controls.Add(Me.Search_Label)
+		Me.TabPage1.Controls.Add(Me.Button2)
+		Me.TabPage1.Controls.Add(Me.Companya_Combo)
 		Me.TabPage1.Controls.Add(Me.Load_Image_button)
 		Me.TabPage1.Controls.Add(Me.PictureBox3)
 		Me.TabPage1.Controls.Add(Me.Report)
@@ -149,16 +147,27 @@ Partial Class Start
 		Me.TabPage1.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage1.Name = "TabPage1"
 		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage1.Size = New System.Drawing.Size(968, 515)
+		Me.TabPage1.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "Download"
+		'
+		'Companya_Combo
+		'
+		Me.Companya_Combo.BackColor = System.Drawing.Color.DimGray
+		Me.Companya_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.Companya_Combo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Companya_Combo.FormattingEnabled = True
+		Me.Companya_Combo.Location = New System.Drawing.Point(513, 5)
+		Me.Companya_Combo.Name = "Companya_Combo"
+		Me.Companya_Combo.Size = New System.Drawing.Size(183, 21)
+		Me.Companya_Combo.TabIndex = 18
 		'
 		'Load_Image_button
 		'
 		Me.Load_Image_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Load_Image_button.Location = New System.Drawing.Point(768, 5)
+		Me.Load_Image_button.Location = New System.Drawing.Point(858, 5)
 		Me.Load_Image_button.Name = "Load_Image_button"
-		Me.Load_Image_button.Size = New System.Drawing.Size(163, 21)
+		Me.Load_Image_button.Size = New System.Drawing.Size(78, 23)
 		Me.Load_Image_button.TabIndex = 17
 		Me.Load_Image_button.Text = "Load Image"
 		Me.Load_Image_button.UseVisualStyleBackColor = True
@@ -197,9 +206,9 @@ Partial Class Start
 		Me.DownParts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.DownParts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.DownParts.FormattingEnabled = True
-		Me.DownParts.Location = New System.Drawing.Point(762, 415)
+		Me.DownParts.Location = New System.Drawing.Point(762, 419)
 		Me.DownParts.Name = "DownParts"
-		Me.DownParts.Size = New System.Drawing.Size(200, 21)
+		Me.DownParts.Size = New System.Drawing.Size(65, 21)
 		Me.DownParts.TabIndex = 13
 		'
 		'Region_label
@@ -263,7 +272,7 @@ Partial Class Start
 		Me.Button_Download.Name = "Button_Download"
 		Me.Button_Download.Size = New System.Drawing.Size(129, 27)
 		Me.Button_Download.TabIndex = 5
-		Me.Button_Download.Text = "Download"
+		Me.Button_Download.Text = "Download Game"
 		Me.Button_Download.UseVisualStyleBackColor = True
 		'
 		'Progres_KB
@@ -300,23 +309,28 @@ Partial Class Start
 		Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.ComboBox1.FormattingEnabled = True
-		Me.ComboBox1.Location = New System.Drawing.Point(571, 5)
+		Me.ComboBox1.Location = New System.Drawing.Point(702, 5)
 		Me.ComboBox1.Name = "ComboBox1"
-		Me.ComboBox1.Size = New System.Drawing.Size(188, 21)
+		Me.ComboBox1.Size = New System.Drawing.Size(153, 21)
 		Me.ComboBox1.TabIndex = 1
 		'
 		'TextBox1
 		'
+		Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+		Me.TextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
 		Me.TextBox1.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox1.Location = New System.Drawing.Point(6, 6)
+		Me.TextBox1.Location = New System.Drawing.Point(47, 6)
 		Me.TextBox1.Name = "TextBox1"
-		Me.TextBox1.Size = New System.Drawing.Size(559, 20)
+		Me.TextBox1.Size = New System.Drawing.Size(460, 20)
 		Me.TextBox1.TabIndex = 0
-		Me.TextBox1.Text = "Search"
 		'
 		'TabPage2
 		'
 		Me.TabPage2.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage2.Controls.Add(Me.TextBox8)
+		Me.TabPage2.Controls.Add(Me.LinkLicense_Text)
+		Me.TabPage2.Controls.Add(Me.CheckBox3)
+		Me.TabPage2.Controls.Add(Me.ComboBox4)
 		Me.TabPage2.Controls.Add(Me.Button1)
 		Me.TabPage2.Controls.Add(Me.TextBox7)
 		Me.TabPage2.Controls.Add(Me.PictureBox2)
@@ -325,40 +339,38 @@ Partial Class Start
 		Me.TabPage2.Controls.Add(Me.i)
 		Me.TabPage2.Controls.Add(Me.ComboBox2)
 		Me.TabPage2.Controls.Add(Me.GamePath)
-		Me.TabPage2.Controls.Add(Me.ListView1)
 		Me.TabPage2.Controls.Add(Me.TextBox6)
 		Me.TabPage2.Controls.Add(Me.TextBox5)
 		Me.TabPage2.Controls.Add(Me.TextBox4)
 		Me.TabPage2.Controls.Add(Me.TextBox3)
 		Me.TabPage2.Controls.Add(Me.ComboBox3)
-		Me.TabPage2.Controls.Add(Me.wii_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.wiiu_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.VB_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.NS_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.GameBoyAdvance_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.GameCube_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.NES_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.Snes_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.N64_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.NDS_BOTONCITOS)
-		Me.TabPage2.Controls.Add(Me.GameBoy_BOTONCITOS)
 		Me.TabPage2.Controls.Add(Me.Upload_Add_item)
-		Me.TabPage2.Controls.Add(Me.Upload_To_ftp)
 		Me.TabPage2.Controls.Add(Me.TextBox2)
-		Me.TabPage2.Controls.Add(Me.TresDS_BOTONCITOS)
 		Me.TabPage2.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage2.Name = "TabPage2"
 		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage2.Size = New System.Drawing.Size(968, 515)
+		Me.TabPage2.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage2.TabIndex = 1
 		Me.TabPage2.Text = "Upload"
+		'
+		'ComboBox4
+		'
+		Me.ComboBox4.BackColor = System.Drawing.Color.DimGray
+		Me.ComboBox4.Cursor = System.Windows.Forms.Cursors.Default
+		Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.ComboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.ComboBox4.FormattingEnabled = True
+		Me.ComboBox4.Location = New System.Drawing.Point(10, 135)
+		Me.ComboBox4.Name = "ComboBox4"
+		Me.ComboBox4.Size = New System.Drawing.Size(248, 21)
+		Me.ComboBox4.TabIndex = 37
 		'
 		'Button1
 		'
 		Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button1.Location = New System.Drawing.Point(11, 289)
+		Me.Button1.Location = New System.Drawing.Point(615, 388)
 		Me.Button1.Name = "Button1"
-		Me.Button1.Size = New System.Drawing.Size(251, 26)
+		Me.Button1.Size = New System.Drawing.Size(337, 26)
 		Me.Button1.TabIndex = 36
 		Me.Button1.Text = "Check image"
 		Me.Button1.UseVisualStyleBackColor = True
@@ -366,15 +378,16 @@ Partial Class Start
 		'TextBox7
 		'
 		Me.TextBox7.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox7.Location = New System.Drawing.Point(9, 263)
+		Me.TextBox7.Location = New System.Drawing.Point(615, 135)
+		Me.TextBox7.Multiline = True
 		Me.TextBox7.Name = "TextBox7"
-		Me.TextBox7.Size = New System.Drawing.Size(254, 20)
+		Me.TextBox7.Size = New System.Drawing.Size(337, 73)
 		Me.TextBox7.TabIndex = 35
 		Me.TextBox7.Text = "Url Image"
 		'
 		'PictureBox2
 		'
-		Me.PictureBox2.Location = New System.Drawing.Point(10, 100)
+		Me.PictureBox2.Location = New System.Drawing.Point(658, 215)
 		Me.PictureBox2.Name = "PictureBox2"
 		Me.PictureBox2.Size = New System.Drawing.Size(252, 157)
 		Me.PictureBox2.TabIndex = 34
@@ -383,16 +396,16 @@ Partial Class Start
 		'ID_Game
 		'
 		Me.ID_Game.BackColor = System.Drawing.Color.DimGray
-		Me.ID_Game.Location = New System.Drawing.Point(268, 311)
+		Me.ID_Game.Location = New System.Drawing.Point(10, 392)
 		Me.ID_Game.Name = "ID_Game"
-		Me.ID_Game.Size = New System.Drawing.Size(167, 20)
+		Me.ID_Game.Size = New System.Drawing.Size(248, 20)
 		Me.ID_Game.TabIndex = 33
 		Me.ID_Game.Text = "ID Game"
 		'
 		'GameID_Checkbox
 		'
 		Me.GameID_Checkbox.AutoSize = True
-		Me.GameID_Checkbox.Location = New System.Drawing.Point(268, 288)
+		Me.GameID_Checkbox.Location = New System.Drawing.Point(10, 346)
 		Me.GameID_Checkbox.Name = "GameID_Checkbox"
 		Me.GameID_Checkbox.Size = New System.Drawing.Size(122, 17)
 		Me.GameID_Checkbox.TabIndex = 32
@@ -403,11 +416,11 @@ Partial Class Start
 		'
 		Me.i.BackColor = System.Drawing.Color.DimGray
 		Me.i.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.i.Location = New System.Drawing.Point(408, 261)
+		Me.i.Location = New System.Drawing.Point(304, 135)
 		Me.i.Name = "i"
-		Me.i.Size = New System.Drawing.Size(23, 21)
+		Me.i.Size = New System.Drawing.Size(278, 21)
 		Me.i.TabIndex = 31
-		Me.i.Text = "i"
+		Me.i.Text = "Link Wiki"
 		Me.i.UseVisualStyleBackColor = False
 		'
 		'ComboBox2
@@ -417,65 +430,54 @@ Partial Class Start
 		Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.ComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.ComboBox2.FormattingEnabled = True
-		Me.ComboBox2.Location = New System.Drawing.Point(268, 157)
+		Me.ComboBox2.Location = New System.Drawing.Point(10, 215)
 		Me.ComboBox2.Name = "ComboBox2"
-		Me.ComboBox2.Size = New System.Drawing.Size(168, 21)
+		Me.ComboBox2.Size = New System.Drawing.Size(248, 21)
 		Me.ComboBox2.TabIndex = 30
 		'
 		'GamePath
 		'
 		Me.GamePath.AutoSize = True
-		Me.GamePath.Location = New System.Drawing.Point(269, 265)
+		Me.GamePath.Location = New System.Drawing.Point(11, 323)
 		Me.GamePath.Name = "GamePath"
 		Me.GamePath.Size = New System.Drawing.Size(110, 17)
 		Me.GamePath.TabIndex = 26
 		Me.GamePath.Text = "Game Part? False"
 		Me.GamePath.UseVisualStyleBackColor = True
 		'
-		'ListView1
-		'
-		Me.ListView1.BackColor = System.Drawing.Color.DimGray
-		Me.ListView1.FullRowSelect = True
-		Me.ListView1.Location = New System.Drawing.Point(447, 100)
-		Me.ListView1.Name = "ListView1"
-		Me.ListView1.Size = New System.Drawing.Size(507, 399)
-		Me.ListView1.TabIndex = 25
-		Me.ListView1.UseCompatibleStateImageBehavior = False
-		Me.ListView1.View = System.Windows.Forms.View.Details
-		'
 		'TextBox6
 		'
 		Me.TextBox6.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox6.Location = New System.Drawing.Point(268, 210)
+		Me.TextBox6.Location = New System.Drawing.Point(10, 268)
 		Me.TextBox6.Name = "TextBox6"
-		Me.TextBox6.Size = New System.Drawing.Size(167, 20)
+		Me.TextBox6.Size = New System.Drawing.Size(248, 20)
 		Me.TextBox6.TabIndex = 24
 		Me.TextBox6.Text = "Format"
 		'
 		'TextBox5
 		'
 		Me.TextBox5.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox5.Location = New System.Drawing.Point(268, 239)
+		Me.TextBox5.Location = New System.Drawing.Point(10, 297)
 		Me.TextBox5.Name = "TextBox5"
-		Me.TextBox5.Size = New System.Drawing.Size(167, 20)
+		Me.TextBox5.Size = New System.Drawing.Size(248, 20)
 		Me.TextBox5.TabIndex = 23
 		Me.TextBox5.Text = "Version"
 		'
 		'TextBox4
 		'
 		Me.TextBox4.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox4.Location = New System.Drawing.Point(268, 184)
+		Me.TextBox4.Location = New System.Drawing.Point(10, 242)
 		Me.TextBox4.Name = "TextBox4"
-		Me.TextBox4.Size = New System.Drawing.Size(167, 20)
+		Me.TextBox4.Size = New System.Drawing.Size(248, 20)
 		Me.TextBox4.TabIndex = 21
 		Me.TextBox4.Text = "Your Name"
 		'
 		'TextBox3
 		'
 		Me.TextBox3.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox3.Location = New System.Drawing.Point(268, 104)
+		Me.TextBox3.Location = New System.Drawing.Point(10, 162)
 		Me.TextBox3.Name = "TextBox3"
-		Me.TextBox3.Size = New System.Drawing.Size(167, 20)
+		Me.TextBox3.Size = New System.Drawing.Size(248, 20)
 		Me.TextBox3.TabIndex = 20
 		Me.TextBox3.Text = "Name Game"
 		'
@@ -486,162 +488,20 @@ Partial Class Start
 		Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.ComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.ComboBox3.FormattingEnabled = True
-		Me.ComboBox3.Location = New System.Drawing.Point(268, 130)
+		Me.ComboBox3.Location = New System.Drawing.Point(10, 188)
 		Me.ComboBox3.Name = "ComboBox3"
-		Me.ComboBox3.Size = New System.Drawing.Size(168, 21)
+		Me.ComboBox3.Size = New System.Drawing.Size(248, 21)
 		Me.ComboBox3.TabIndex = 19
-		'
-		'wii_BOTONCITOS
-		'
-		Me.wii_BOTONCITOS.AutoSize = True
-		Me.wii_BOTONCITOS.Checked = True
-		Me.wii_BOTONCITOS.Location = New System.Drawing.Point(148, 380)
-		Me.wii_BOTONCITOS.Name = "wii_BOTONCITOS"
-		Me.wii_BOTONCITOS.Size = New System.Drawing.Size(42, 17)
-		Me.wii_BOTONCITOS.TabIndex = 17
-		Me.wii_BOTONCITOS.TabStop = True
-		Me.wii_BOTONCITOS.Text = "WII"
-		Me.wii_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'wiiu_BOTONCITOS
-		'
-		Me.wiiu_BOTONCITOS.AutoSize = True
-		Me.wiiu_BOTONCITOS.Checked = True
-		Me.wiiu_BOTONCITOS.Location = New System.Drawing.Point(148, 403)
-		Me.wiiu_BOTONCITOS.Name = "wiiu_BOTONCITOS"
-		Me.wiiu_BOTONCITOS.Size = New System.Drawing.Size(53, 17)
-		Me.wiiu_BOTONCITOS.TabIndex = 16
-		Me.wiiu_BOTONCITOS.TabStop = True
-		Me.wiiu_BOTONCITOS.Text = "WII U"
-		Me.wiiu_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'VB_BOTONCITOS
-		'
-		Me.VB_BOTONCITOS.AutoSize = True
-		Me.VB_BOTONCITOS.Checked = True
-		Me.VB_BOTONCITOS.Location = New System.Drawing.Point(11, 426)
-		Me.VB_BOTONCITOS.Name = "VB_BOTONCITOS"
-		Me.VB_BOTONCITOS.Size = New System.Drawing.Size(96, 17)
-		Me.VB_BOTONCITOS.TabIndex = 15
-		Me.VB_BOTONCITOS.TabStop = True
-		Me.VB_BOTONCITOS.Text = "VIRTUAL BOY"
-		Me.VB_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'NS_BOTONCITOS
-		'
-		Me.NS_BOTONCITOS.AutoSize = True
-		Me.NS_BOTONCITOS.Checked = True
-		Me.NS_BOTONCITOS.Location = New System.Drawing.Point(148, 426)
-		Me.NS_BOTONCITOS.Name = "NS_BOTONCITOS"
-		Me.NS_BOTONCITOS.Size = New System.Drawing.Size(121, 17)
-		Me.NS_BOTONCITOS.TabIndex = 14
-		Me.NS_BOTONCITOS.TabStop = True
-		Me.NS_BOTONCITOS.Text = "NINTENDO SWICH"
-		Me.NS_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'GameBoyAdvance_BOTONCITOS
-		'
-		Me.GameBoyAdvance_BOTONCITOS.AutoSize = True
-		Me.GameBoyAdvance_BOTONCITOS.Checked = True
-		Me.GameBoyAdvance_BOTONCITOS.Location = New System.Drawing.Point(11, 380)
-		Me.GameBoyAdvance_BOTONCITOS.Name = "GameBoyAdvance_BOTONCITOS"
-		Me.GameBoyAdvance_BOTONCITOS.Size = New System.Drawing.Size(135, 17)
-		Me.GameBoyAdvance_BOTONCITOS.TabIndex = 13
-		Me.GameBoyAdvance_BOTONCITOS.TabStop = True
-		Me.GameBoyAdvance_BOTONCITOS.Text = "GAME BOY ADVANCE"
-		Me.GameBoyAdvance_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'GameCube_BOTONCITOS
-		'
-		Me.GameCube_BOTONCITOS.AutoSize = True
-		Me.GameCube_BOTONCITOS.Checked = True
-		Me.GameCube_BOTONCITOS.Location = New System.Drawing.Point(11, 403)
-		Me.GameCube_BOTONCITOS.Name = "GameCube_BOTONCITOS"
-		Me.GameCube_BOTONCITOS.Size = New System.Drawing.Size(85, 17)
-		Me.GameCube_BOTONCITOS.TabIndex = 12
-		Me.GameCube_BOTONCITOS.TabStop = True
-		Me.GameCube_BOTONCITOS.Text = "GAMECUBE"
-		Me.GameCube_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'NES_BOTONCITOS
-		'
-		Me.NES_BOTONCITOS.AutoSize = True
-		Me.NES_BOTONCITOS.Checked = True
-		Me.NES_BOTONCITOS.Location = New System.Drawing.Point(361, 357)
-		Me.NES_BOTONCITOS.Name = "NES_BOTONCITOS"
-		Me.NES_BOTONCITOS.Size = New System.Drawing.Size(47, 17)
-		Me.NES_BOTONCITOS.TabIndex = 11
-		Me.NES_BOTONCITOS.TabStop = True
-		Me.NES_BOTONCITOS.Text = "NES"
-		Me.NES_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'Snes_BOTONCITOS
-		'
-		Me.Snes_BOTONCITOS.AutoSize = True
-		Me.Snes_BOTONCITOS.Checked = True
-		Me.Snes_BOTONCITOS.Location = New System.Drawing.Point(361, 380)
-		Me.Snes_BOTONCITOS.Name = "Snes_BOTONCITOS"
-		Me.Snes_BOTONCITOS.Size = New System.Drawing.Size(54, 17)
-		Me.Snes_BOTONCITOS.TabIndex = 10
-		Me.Snes_BOTONCITOS.TabStop = True
-		Me.Snes_BOTONCITOS.Text = "SNES"
-		Me.Snes_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'N64_BOTONCITOS
-		'
-		Me.N64_BOTONCITOS.AutoSize = True
-		Me.N64_BOTONCITOS.Checked = True
-		Me.N64_BOTONCITOS.Location = New System.Drawing.Point(148, 357)
-		Me.N64_BOTONCITOS.Name = "N64_BOTONCITOS"
-		Me.N64_BOTONCITOS.Size = New System.Drawing.Size(97, 17)
-		Me.N64_BOTONCITOS.TabIndex = 9
-		Me.N64_BOTONCITOS.TabStop = True
-		Me.N64_BOTONCITOS.Text = "NINTENDO 64"
-		Me.N64_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'NDS_BOTONCITOS
-		'
-		Me.NDS_BOTONCITOS.AutoSize = True
-		Me.NDS_BOTONCITOS.Checked = True
-		Me.NDS_BOTONCITOS.Location = New System.Drawing.Point(269, 380)
-		Me.NDS_BOTONCITOS.Name = "NDS_BOTONCITOS"
-		Me.NDS_BOTONCITOS.Size = New System.Drawing.Size(48, 17)
-		Me.NDS_BOTONCITOS.TabIndex = 8
-		Me.NDS_BOTONCITOS.TabStop = True
-		Me.NDS_BOTONCITOS.Text = "NDS"
-		Me.NDS_BOTONCITOS.UseVisualStyleBackColor = True
-		'
-		'GameBoy_BOTONCITOS
-		'
-		Me.GameBoy_BOTONCITOS.AutoSize = True
-		Me.GameBoy_BOTONCITOS.Checked = True
-		Me.GameBoy_BOTONCITOS.Location = New System.Drawing.Point(11, 357)
-		Me.GameBoy_BOTONCITOS.Name = "GameBoy_BOTONCITOS"
-		Me.GameBoy_BOTONCITOS.Size = New System.Drawing.Size(81, 17)
-		Me.GameBoy_BOTONCITOS.TabIndex = 7
-		Me.GameBoy_BOTONCITOS.TabStop = True
-		Me.GameBoy_BOTONCITOS.Text = "GAME BOY"
-		Me.GameBoy_BOTONCITOS.UseVisualStyleBackColor = True
 		'
 		'Upload_Add_item
 		'
 		Me.Upload_Add_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.Upload_Add_item.Location = New System.Drawing.Point(10, 450)
 		Me.Upload_Add_item.Name = "Upload_Add_item"
-		Me.Upload_Add_item.Size = New System.Drawing.Size(180, 49)
+		Me.Upload_Add_item.Size = New System.Drawing.Size(942, 49)
 		Me.Upload_Add_item.TabIndex = 5
-		Me.Upload_Add_item.Text = "Upload List"
+		Me.Upload_Add_item.Text = "Up Game"
 		Me.Upload_Add_item.UseVisualStyleBackColor = True
-		'
-		'Upload_To_ftp
-		'
-		Me.Upload_To_ftp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Upload_To_ftp.Location = New System.Drawing.Point(196, 450)
-		Me.Upload_To_ftp.Name = "Upload_To_ftp"
-		Me.Upload_To_ftp.Size = New System.Drawing.Size(240, 50)
-		Me.Upload_To_ftp.TabIndex = 4
-		Me.Upload_To_ftp.Text = "List To  Host"
-		Me.Upload_To_ftp.UseVisualStyleBackColor = True
 		'
 		'TextBox2
 		'
@@ -650,21 +510,9 @@ Partial Class Start
 		Me.TextBox2.Multiline = True
 		Me.TextBox2.Name = "TextBox2"
 		Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both
-		Me.TextBox2.Size = New System.Drawing.Size(943, 84)
+		Me.TextBox2.Size = New System.Drawing.Size(943, 119)
 		Me.TextBox2.TabIndex = 1
 		Me.TextBox2.Text = "Link Game(Please Read Wiki)"
-		'
-		'TresDS_BOTONCITOS
-		'
-		Me.TresDS_BOTONCITOS.AutoSize = True
-		Me.TresDS_BOTONCITOS.Checked = True
-		Me.TresDS_BOTONCITOS.Location = New System.Drawing.Point(268, 357)
-		Me.TresDS_BOTONCITOS.Name = "TresDS_BOTONCITOS"
-		Me.TresDS_BOTONCITOS.Size = New System.Drawing.Size(46, 17)
-		Me.TresDS_BOTONCITOS.TabIndex = 0
-		Me.TresDS_BOTONCITOS.TabStop = True
-		Me.TresDS_BOTONCITOS.Text = "3DS"
-		Me.TresDS_BOTONCITOS.UseVisualStyleBackColor = True
 		'
 		'TabPage3
 		'
@@ -681,7 +529,7 @@ Partial Class Start
 		Me.TabPage3.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage3.Name = "TabPage3"
 		Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage3.Size = New System.Drawing.Size(968, 515)
+		Me.TabPage3.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "Configuration"
 		'
@@ -788,7 +636,7 @@ Partial Class Start
 		Me.List_Download.Location = New System.Drawing.Point(4, 22)
 		Me.List_Download.Name = "List_Download"
 		Me.List_Download.Padding = New System.Windows.Forms.Padding(3)
-		Me.List_Download.Size = New System.Drawing.Size(968, 515)
+		Me.List_Download.Size = New System.Drawing.Size(973, 536)
 		Me.List_Download.TabIndex = 3
 		Me.List_Download.Text = "List Download"
 		'
@@ -808,7 +656,7 @@ Partial Class Start
 		Me.MyToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnResume, Me.btnResumeAll, Me.btnPause, Me.btnPauseAll, Me.btnRemove, Me.btnRemoveAll})
 		Me.MyToolStrip.Location = New System.Drawing.Point(3, 3)
 		Me.MyToolStrip.Name = "MyToolStrip"
-		Me.MyToolStrip.Size = New System.Drawing.Size(962, 25)
+		Me.MyToolStrip.Size = New System.Drawing.Size(967, 25)
 		Me.MyToolStrip.TabIndex = 0
 		Me.MyToolStrip.Text = "ToolStrip1"
 		'
@@ -873,6 +721,64 @@ Partial Class Start
 		Me.ListView2.UseCompatibleStateImageBehavior = False
 		Me.ListView2.View = System.Windows.Forms.View.Details
 		'
+		'CheckBox3
+		'
+		Me.CheckBox3.AutoSize = True
+		Me.CheckBox3.Location = New System.Drawing.Point(11, 369)
+		Me.CheckBox3.Name = "CheckBox3"
+		Me.CheckBox3.Size = New System.Drawing.Size(162, 17)
+		Me.CheckBox3.TabIndex = 38
+		Me.CheckBox3.Text = "The Game is licensed? False"
+		Me.CheckBox3.UseVisualStyleBackColor = True
+		'
+		'LinkLicense_Text
+		'
+		Me.LinkLicense_Text.BackColor = System.Drawing.Color.DimGray
+		Me.LinkLicense_Text.Location = New System.Drawing.Point(10, 418)
+		Me.LinkLicense_Text.Name = "LinkLicense_Text"
+		Me.LinkLicense_Text.Size = New System.Drawing.Size(429, 20)
+		Me.LinkLicense_Text.TabIndex = 39
+		Me.LinkLicense_Text.Text = "Link License"
+		'
+		'TextBox8
+		'
+		Me.TextBox8.BackColor = System.Drawing.Color.DimGray
+		Me.TextBox8.Location = New System.Drawing.Point(445, 418)
+		Me.TextBox8.Name = "TextBox8"
+		Me.TextBox8.Size = New System.Drawing.Size(137, 20)
+		Me.TextBox8.TabIndex = 40
+		Me.TextBox8.Text = "Format License"
+		'
+		'Button2
+		'
+		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Button2.Location = New System.Drawing.Point(833, 419)
+		Me.Button2.Name = "Button2"
+		Me.Button2.Size = New System.Drawing.Size(129, 21)
+		Me.Button2.TabIndex = 19
+		Me.Button2.Text = "Download License"
+		Me.Button2.UseVisualStyleBackColor = True
+		'
+		'Search_Label
+		'
+		Me.Search_Label.AutoSize = True
+		Me.Search_Label.Location = New System.Drawing.Point(0, 8)
+		Me.Search_Label.Name = "Search_Label"
+		Me.Search_Label.Size = New System.Drawing.Size(44, 13)
+		Me.Search_Label.TabIndex = 20
+		Me.Search_Label.Text = "Search:"
+		'
+		'ListView99
+		'
+		Me.ListView99.BackColor = System.Drawing.Color.DimGray
+		Me.ListView99.FullRowSelect = True
+		Me.ListView99.Location = New System.Drawing.Point(6, 32)
+		Me.ListView99.Name = "ListView99"
+		Me.ListView99.Size = New System.Drawing.Size(752, 441)
+		Me.ListView99.TabIndex = 21
+		Me.ListView99.UseCompatibleStateImageBehavior = False
+		Me.ListView99.View = System.Windows.Forms.View.Details
+		'
 		'Start
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -926,21 +832,8 @@ Partial Class Start
 	Friend WithEvents TextBox4 As TextBox
 	Friend WithEvents TextBox3 As TextBox
 	Friend WithEvents ComboBox3 As ComboBox
-	Friend WithEvents wii_BOTONCITOS As RadioButton
-	Friend WithEvents wiiu_BOTONCITOS As RadioButton
-	Friend WithEvents VB_BOTONCITOS As RadioButton
-	Friend WithEvents NS_BOTONCITOS As RadioButton
-	Friend WithEvents GameBoyAdvance_BOTONCITOS As RadioButton
-	Friend WithEvents GameCube_BOTONCITOS As RadioButton
-	Friend WithEvents NES_BOTONCITOS As RadioButton
-	Friend WithEvents Snes_BOTONCITOS As RadioButton
-	Friend WithEvents N64_BOTONCITOS As RadioButton
-	Friend WithEvents NDS_BOTONCITOS As RadioButton
-	Friend WithEvents GameBoy_BOTONCITOS As RadioButton
 	Friend WithEvents Upload_Add_item As Button
-	Friend WithEvents Upload_To_ftp As Button
 	Friend WithEvents TextBox2 As TextBox
-	Friend WithEvents TresDS_BOTONCITOS As RadioButton
 	Friend WithEvents Region_label As Label
 	Friend WithEvents Version_label As Label
 	Friend WithEvents User_label As Label
@@ -948,7 +841,6 @@ Partial Class Start
 	Friend WithEvents Type_label As Label
 	Friend WithEvents Name_Game_Label As Label
 	Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-	Friend WithEvents ListView1 As ListView
 	Friend WithEvents List_Download As TabPage
 	Friend WithEvents MyToolStrip As ToolStrip
 	Friend WithEvents btnResume As ToolStripButton
@@ -976,4 +868,12 @@ Partial Class Start
 	Friend WithEvents CheckBox2 As CheckBox
 	Friend WithEvents ListView2 As ListView
 	Friend WithEvents Button1 As Button
+	Friend WithEvents Companya_Combo As ComboBox
+	Friend WithEvents ComboBox4 As ComboBox
+	Friend WithEvents CheckBox3 As CheckBox
+	Friend WithEvents LinkLicense_Text As TextBox
+	Friend WithEvents TextBox8 As TextBox
+	Friend WithEvents Button2 As Button
+	Friend WithEvents Search_Label As Label
+	Friend WithEvents ListView99 As ListView
 End Class

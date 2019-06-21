@@ -27,3 +27,20 @@ D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.dll
 D:\Project Koppai Visual\bin\Debug\Newtonsoft.Json.xml
 D:\Project Koppai Visual\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
 D:\Project Koppai Visual\bin\Debug\Project Koppai.exe.config
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.exe.config
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.exe
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.pdb
+D:\MultiStore-PC-Edition\bin\Debug\Project Koppai.xml
+D:\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.dll
+D:\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.xml
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.ResolveComReference.cache
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Inicio.resources
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Resources.resources
+D:\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Start.resources
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+D:\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.exe
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.xml
+D:\MultiStore-PC-Edition\obj\Debug\Project Koppai.pdb
