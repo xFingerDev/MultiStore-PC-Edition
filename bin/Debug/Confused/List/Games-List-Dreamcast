@@ -1,0 +1,25 @@
+[
+    {
+        "ID": "",
+        "Type": "",
+        "Name": "",
+        "Region": "",
+        "User": "",
+        "Version": "",
+        "Format": "",
+        "Image": "",
+        "Parts": false,
+        "Encrypt": [""],
+        "N_Part": "1"
+    },
+    {
+        "Name": "",
+        "Type": "",
+        "Format": "",
+        "User": "",
+        "Version": "",
+        "Region": "",
+        "Encrypt": ""
+    }
+   
+]

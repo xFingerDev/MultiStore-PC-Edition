@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Rivedere i valori degli attributi dell'assembly
 
-<Assembly: AssemblyTitle("Download file Test")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Tetramedia Studio (www.thetotalsite.it)")> 
-<Assembly: AssemblyProduct("Download file Test for codeproject.com")> 
-<Assembly: AssemblyCopyright("Copyleft 2007 :-D")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("Project Koppai")>
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("TiTiYum Company")>
+<Assembly: AssemblyProduct("")>
+<Assembly: AssemblyCopyright("TiTiYum")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 

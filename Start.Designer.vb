@@ -26,6 +26,9 @@ Partial Class Start
 		Me.PictureBox1 = New System.Windows.Forms.PictureBox()
 		Me.Upload = New System.Windows.Forms.TabControl()
 		Me.TabPage1 = New System.Windows.Forms.TabPage()
+		Me.ListView99 = New System.Windows.Forms.ListView()
+		Me.Search_Label = New System.Windows.Forms.Label()
+		Me.Button2 = New System.Windows.Forms.Button()
 		Me.Companya_Combo = New System.Windows.Forms.ComboBox()
 		Me.Load_Image_button = New System.Windows.Forms.Button()
 		Me.PictureBox3 = New System.Windows.Forms.PictureBox()
@@ -45,6 +48,9 @@ Partial Class Start
 		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
 		Me.TextBox1 = New System.Windows.Forms.TextBox()
 		Me.TabPage2 = New System.Windows.Forms.TabPage()
+		Me.TextBox8 = New System.Windows.Forms.TextBox()
+		Me.LinkLicense_Text = New System.Windows.Forms.TextBox()
+		Me.CheckBox3 = New System.Windows.Forms.CheckBox()
 		Me.ComboBox4 = New System.Windows.Forms.ComboBox()
 		Me.Button1 = New System.Windows.Forms.Button()
 		Me.TextBox7 = New System.Windows.Forms.TextBox()
@@ -62,6 +68,9 @@ Partial Class Start
 		Me.Upload_Add_item = New System.Windows.Forms.Button()
 		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.TabPage3 = New System.Windows.Forms.TabPage()
+		Me.Label2 = New System.Windows.Forms.Label()
+		Me.Select_Image = New System.Windows.Forms.Button()
+		Me.background_image_checkbox = New System.Windows.Forms.CheckBox()
 		Me.CheckBox2 = New System.Windows.Forms.CheckBox()
 		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
 		Me.i2 = New System.Windows.Forms.Button()
@@ -70,7 +79,7 @@ Partial Class Start
 		Me.Languaje_Custom = New System.Windows.Forms.TextBox()
 		Me.Custom_Color = New System.Windows.Forms.TextBox()
 		Me.Languaje = New System.Windows.Forms.ComboBox()
-		Me.Color = New System.Windows.Forms.ComboBox()
+		Me.Color_Combobox = New System.Windows.Forms.ComboBox()
 		Me.List_Download = New System.Windows.Forms.TabPage()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.MyToolStrip = New System.Windows.Forms.ToolStrip()
@@ -82,12 +91,6 @@ Partial Class Start
 		Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
 		Me.ListView2 = New System.Windows.Forms.ListView()
 		Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-		Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-		Me.LinkLicense_Text = New System.Windows.Forms.TextBox()
-		Me.TextBox8 = New System.Windows.Forms.TextBox()
-		Me.Button2 = New System.Windows.Forms.Button()
-		Me.Search_Label = New System.Windows.Forms.Label()
-		Me.ListView99 = New System.Windows.Forms.ListView()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -150,6 +153,36 @@ Partial Class Start
 		Me.TabPage1.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "Download"
+		'
+		'ListView99
+		'
+		Me.ListView99.BackColor = System.Drawing.Color.DimGray
+		Me.ListView99.FullRowSelect = True
+		Me.ListView99.Location = New System.Drawing.Point(6, 32)
+		Me.ListView99.Name = "ListView99"
+		Me.ListView99.Size = New System.Drawing.Size(752, 441)
+		Me.ListView99.TabIndex = 21
+		Me.ListView99.UseCompatibleStateImageBehavior = False
+		Me.ListView99.View = System.Windows.Forms.View.Details
+		'
+		'Search_Label
+		'
+		Me.Search_Label.AutoSize = True
+		Me.Search_Label.Location = New System.Drawing.Point(0, 8)
+		Me.Search_Label.Name = "Search_Label"
+		Me.Search_Label.Size = New System.Drawing.Size(44, 13)
+		Me.Search_Label.TabIndex = 20
+		Me.Search_Label.Text = "Search:"
+		'
+		'Button2
+		'
+		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Button2.Location = New System.Drawing.Point(833, 419)
+		Me.Button2.Name = "Button2"
+		Me.Button2.Size = New System.Drawing.Size(129, 21)
+		Me.Button2.TabIndex = 19
+		Me.Button2.Text = "Download License"
+		Me.Button2.UseVisualStyleBackColor = True
 		'
 		'Companya_Combo
 		'
@@ -353,6 +386,34 @@ Partial Class Start
 		Me.TabPage2.TabIndex = 1
 		Me.TabPage2.Text = "Upload"
 		'
+		'TextBox8
+		'
+		Me.TextBox8.BackColor = System.Drawing.Color.DimGray
+		Me.TextBox8.Location = New System.Drawing.Point(445, 418)
+		Me.TextBox8.Name = "TextBox8"
+		Me.TextBox8.Size = New System.Drawing.Size(137, 20)
+		Me.TextBox8.TabIndex = 40
+		Me.TextBox8.Text = "Format License"
+		'
+		'LinkLicense_Text
+		'
+		Me.LinkLicense_Text.BackColor = System.Drawing.Color.DimGray
+		Me.LinkLicense_Text.Location = New System.Drawing.Point(10, 418)
+		Me.LinkLicense_Text.Name = "LinkLicense_Text"
+		Me.LinkLicense_Text.Size = New System.Drawing.Size(429, 20)
+		Me.LinkLicense_Text.TabIndex = 39
+		Me.LinkLicense_Text.Text = "Link License"
+		'
+		'CheckBox3
+		'
+		Me.CheckBox3.AutoSize = True
+		Me.CheckBox3.Location = New System.Drawing.Point(11, 369)
+		Me.CheckBox3.Name = "CheckBox3"
+		Me.CheckBox3.Size = New System.Drawing.Size(162, 17)
+		Me.CheckBox3.TabIndex = 38
+		Me.CheckBox3.Text = "The Game is licensed? False"
+		Me.CheckBox3.UseVisualStyleBackColor = True
+		'
 		'ComboBox4
 		'
 		Me.ComboBox4.BackColor = System.Drawing.Color.DimGray
@@ -517,6 +578,9 @@ Partial Class Start
 		'TabPage3
 		'
 		Me.TabPage3.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage3.Controls.Add(Me.Label2)
+		Me.TabPage3.Controls.Add(Me.Select_Image)
+		Me.TabPage3.Controls.Add(Me.background_image_checkbox)
 		Me.TabPage3.Controls.Add(Me.CheckBox2)
 		Me.TabPage3.Controls.Add(Me.CheckBox1)
 		Me.TabPage3.Controls.Add(Me.i2)
@@ -525,7 +589,7 @@ Partial Class Start
 		Me.TabPage3.Controls.Add(Me.Languaje_Custom)
 		Me.TabPage3.Controls.Add(Me.Custom_Color)
 		Me.TabPage3.Controls.Add(Me.Languaje)
-		Me.TabPage3.Controls.Add(Me.Color)
+		Me.TabPage3.Controls.Add(Me.Color_Combobox)
 		Me.TabPage3.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage3.Name = "TabPage3"
 		Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -533,10 +597,40 @@ Partial Class Start
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "Configuration"
 		'
+		'Label2
+		'
+		Me.Label2.AutoSize = True
+		Me.Label2.Location = New System.Drawing.Point(241, 34)
+		Me.Label2.Name = "Label2"
+		Me.Label2.Size = New System.Drawing.Size(582, 13)
+		Me.Label2.TabIndex = 11
+		Me.Label2.Text = "If you already have a defined image and change it again, the application will res" &
+	"tart, be careful that the downloads will stop"
+		'
+		'Select_Image
+		'
+		Me.Select_Image.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Select_Image.Location = New System.Drawing.Point(131, 28)
+		Me.Select_Image.Name = "Select_Image"
+		Me.Select_Image.Size = New System.Drawing.Size(104, 24)
+		Me.Select_Image.TabIndex = 10
+		Me.Select_Image.Text = "Select Image"
+		Me.Select_Image.UseVisualStyleBackColor = True
+		'
+		'background_image_checkbox
+		'
+		Me.background_image_checkbox.AutoSize = True
+		Me.background_image_checkbox.Location = New System.Drawing.Point(9, 33)
+		Me.background_image_checkbox.Name = "background_image_checkbox"
+		Me.background_image_checkbox.Size = New System.Drawing.Size(116, 17)
+		Me.background_image_checkbox.TabIndex = 9
+		Me.background_image_checkbox.Text = "Background Image"
+		Me.background_image_checkbox.UseVisualStyleBackColor = True
+		'
 		'CheckBox2
 		'
 		Me.CheckBox2.AutoSize = True
-		Me.CheckBox2.Location = New System.Drawing.Point(185, 143)
+		Me.CheckBox2.Location = New System.Drawing.Point(520, 120)
 		Me.CheckBox2.Name = "CheckBox2"
 		Me.CheckBox2.Size = New System.Drawing.Size(194, 17)
 		Me.CheckBox2.TabIndex = 8
@@ -609,23 +703,23 @@ Partial Class Start
 		'
 		Me.Languaje.BackColor = System.Drawing.Color.DimGray
 		Me.Languaje.FormattingEnabled = True
-		Me.Languaje.Location = New System.Drawing.Point(186, 93)
+		Me.Languaje.Location = New System.Drawing.Point(436, 180)
 		Me.Languaje.Name = "Languaje"
 		Me.Languaje.Size = New System.Drawing.Size(316, 21)
 		Me.Languaje.TabIndex = 1
 		Me.Languaje.Text = "Languaje"
 		Me.Languaje.Visible = False
 		'
-		'Color
+		'Color_Combobox
 		'
-		Me.Color.BackColor = System.Drawing.Color.DimGray
-		Me.Color.FormattingEnabled = True
-		Me.Color.Location = New System.Drawing.Point(185, 66)
-		Me.Color.Name = "Color"
-		Me.Color.Size = New System.Drawing.Size(317, 21)
-		Me.Color.TabIndex = 0
-		Me.Color.Text = "Color"
-		Me.Color.Visible = False
+		Me.Color_Combobox.BackColor = System.Drawing.Color.DimGray
+		Me.Color_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.Color_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Color_Combobox.FormattingEnabled = True
+		Me.Color_Combobox.Location = New System.Drawing.Point(9, 58)
+		Me.Color_Combobox.Name = "Color_Combobox"
+		Me.Color_Combobox.Size = New System.Drawing.Size(317, 21)
+		Me.Color_Combobox.TabIndex = 0
 		'
 		'List_Download
 		'
@@ -721,64 +815,6 @@ Partial Class Start
 		Me.ListView2.UseCompatibleStateImageBehavior = False
 		Me.ListView2.View = System.Windows.Forms.View.Details
 		'
-		'CheckBox3
-		'
-		Me.CheckBox3.AutoSize = True
-		Me.CheckBox3.Location = New System.Drawing.Point(11, 369)
-		Me.CheckBox3.Name = "CheckBox3"
-		Me.CheckBox3.Size = New System.Drawing.Size(162, 17)
-		Me.CheckBox3.TabIndex = 38
-		Me.CheckBox3.Text = "The Game is licensed? False"
-		Me.CheckBox3.UseVisualStyleBackColor = True
-		'
-		'LinkLicense_Text
-		'
-		Me.LinkLicense_Text.BackColor = System.Drawing.Color.DimGray
-		Me.LinkLicense_Text.Location = New System.Drawing.Point(10, 418)
-		Me.LinkLicense_Text.Name = "LinkLicense_Text"
-		Me.LinkLicense_Text.Size = New System.Drawing.Size(429, 20)
-		Me.LinkLicense_Text.TabIndex = 39
-		Me.LinkLicense_Text.Text = "Link License"
-		'
-		'TextBox8
-		'
-		Me.TextBox8.BackColor = System.Drawing.Color.DimGray
-		Me.TextBox8.Location = New System.Drawing.Point(445, 418)
-		Me.TextBox8.Name = "TextBox8"
-		Me.TextBox8.Size = New System.Drawing.Size(137, 20)
-		Me.TextBox8.TabIndex = 40
-		Me.TextBox8.Text = "Format License"
-		'
-		'Button2
-		'
-		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button2.Location = New System.Drawing.Point(833, 419)
-		Me.Button2.Name = "Button2"
-		Me.Button2.Size = New System.Drawing.Size(129, 21)
-		Me.Button2.TabIndex = 19
-		Me.Button2.Text = "Download License"
-		Me.Button2.UseVisualStyleBackColor = True
-		'
-		'Search_Label
-		'
-		Me.Search_Label.AutoSize = True
-		Me.Search_Label.Location = New System.Drawing.Point(0, 8)
-		Me.Search_Label.Name = "Search_Label"
-		Me.Search_Label.Size = New System.Drawing.Size(44, 13)
-		Me.Search_Label.TabIndex = 20
-		Me.Search_Label.Text = "Search:"
-		'
-		'ListView99
-		'
-		Me.ListView99.BackColor = System.Drawing.Color.DimGray
-		Me.ListView99.FullRowSelect = True
-		Me.ListView99.Location = New System.Drawing.Point(6, 32)
-		Me.ListView99.Name = "ListView99"
-		Me.ListView99.Size = New System.Drawing.Size(752, 441)
-		Me.ListView99.TabIndex = 21
-		Me.ListView99.UseCompatibleStateImageBehavior = False
-		Me.ListView99.View = System.Windows.Forms.View.Details
-		'
 		'Start
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -824,7 +860,7 @@ Partial Class Start
 	Friend WithEvents Languaje_Custom As TextBox
 	Friend WithEvents Custom_Color As TextBox
 	Friend WithEvents Languaje As ComboBox
-	Friend WithEvents Color As ComboBox
+	Friend WithEvents Color_Combobox As ComboBox
 	Friend WithEvents CreatedBy As LinkLabel
 	Friend WithEvents TabPage2 As TabPage
 	Friend WithEvents TextBox6 As TextBox
@@ -876,4 +912,7 @@ Partial Class Start
 	Friend WithEvents Button2 As Button
 	Friend WithEvents Search_Label As Label
 	Friend WithEvents ListView99 As ListView
+	Friend WithEvents background_image_checkbox As CheckBox
+	Friend WithEvents Select_Image As Button
+	Friend WithEvents Label2 As Label
 End Class

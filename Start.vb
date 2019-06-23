@@ -3,10 +3,11 @@ Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
 Imports System.Net.Mail
+Imports System.Drawing.Color
 
 Public Class Start
 
-	Public Property Version As String = "2.4"
+	Public Property Version As String = "3.1"
 
 
 	Public Property Platform As String
@@ -39,6 +40,9 @@ Public Class Start
 	Public License_Bol As Boolean
 	Dim ini As New IniFile
 	Private load_images_games As Boolean
+	Public BackGround_Image As Boolean
+	Public Color_ini As String
+
 
 	Private Sub Companya_Combo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Companya_Combo.SelectedIndexChanged
 		ComboBox1.Items.Clear()
@@ -379,7 +383,21 @@ Public Class Start
 
 	Private Sub Start_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 		Me.Cursor = Cursors.WaitCursor
-
+		Me.Text = "Project Koppai v" & Version
+		If Dir(Application.StartupPath & "\Picture_Remplace.png", vbDirectory) = "" Then
+		Else
+			Kill(Application.StartupPath & "\Picture.png")
+			Rename(Application.StartupPath & "\Picture_Remplace.png", Application.StartupPath & "\Picture.png")
+		End If
+		DownParts.Visible = False
+		DownParts.Enabled = False
+		LinkLicense_Text.Visible = False
+		ID_Game.Visible = False
+		Button2.Visible = False
+		ListView99.Visible = False
+		TextBox8.Visible = False
+		Select_Image.Visible = False
+		Label2.Visible = False
 
 		Createfolders()
 #Region "Consoles"
@@ -638,7 +656,10 @@ Public Class Start
 
 
 		ComboBox2.Items.Add("GAME")
+		ComboBox2.Items.Add("DEMO")
 		ComboBox2.Items.Add("HACKROM")
+		ComboBox2.Items.Add("MINI")
+		ComboBox2.Items.Add("EDAT")
 		ComboBox2.Items.Add("DLC")
 		ComboBox2.Items.Add("PORT")
 		ComboBox2.Items.Add("THEME")
@@ -646,6 +667,148 @@ Public Class Start
 		ComboBox2.Items.Add("PATCH")
 		ComboBox2.Items.Add("HOMEBREW")
 
+#Region "Colors"
+		Color_Combobox.Items.Add("White")
+		Color_Combobox.Items.Add("BlanchedAlmond")
+		Color_Combobox.Items.Add("Gray")
+		Color_Combobox.Items.Add("Red")
+		Color_Combobox.Items.Add("Blue")
+		Color_Combobox.Items.Add("Yellow")
+		Color_Combobox.Items.Add("Green")
+		Color_Combobox.Items.Add("Orange")
+		Color_Combobox.Items.Add("Brown")
+		Color_Combobox.Items.Add("Pink")
+		Color_Combobox.Items.Add("Violet")
+		Color_Combobox.Items.Add("Purple")
+		Color_Combobox.Items.Add("Golden")
+		Color_Combobox.Items.Add("Silver")
+		Color_Combobox.Items.Add("WhiteSmoke")
+		Color_Combobox.Items.Add("DimGray")
+		Color_Combobox.Items.Add("Aqua")
+		Color_Combobox.Items.Add("AntiqueWhite")
+		Color_Combobox.Items.Add("Aquamarine")
+		Color_Combobox.Items.Add("Azure")
+		Color_Combobox.Items.Add("Beige")
+		Color_Combobox.Items.Add("Bisque")
+		Color_Combobox.Items.Add("BlanchedAlmond")
+		Color_Combobox.Items.Add("BlueViolet")
+		Color_Combobox.Items.Add("BurlyWood")
+		Color_Combobox.Items.Add("CadetBlue")
+		Color_Combobox.Items.Add("Chartreuse")
+		Color_Combobox.Items.Add("Chocolate")
+		Color_Combobox.Items.Add("Coral")
+		Color_Combobox.Items.Add("CornflowerBlue")
+		Color_Combobox.Items.Add("Cornsilk")
+		Color_Combobox.Items.Add("Crimson")
+		Color_Combobox.Items.Add("Cyan")
+		Color_Combobox.Items.Add("DarkBlue")
+		Color_Combobox.Items.Add("DarkCyan")
+		Color_Combobox.Items.Add("DarkGoldenrod")
+		Color_Combobox.Items.Add("DarkGray")
+		Color_Combobox.Items.Add("DarkGreen")
+		Color_Combobox.Items.Add("DarkKhaki")
+		Color_Combobox.Items.Add("DarkMagenta")
+		Color_Combobox.Items.Add("DarkOliveGreen")
+		Color_Combobox.Items.Add("DarkOrange")
+		Color_Combobox.Items.Add("DarkOrchid")
+		Color_Combobox.Items.Add("DarkRed")
+		Color_Combobox.Items.Add("DarkSalmon")
+		Color_Combobox.Items.Add("DarkSeaGreen")
+		Color_Combobox.Items.Add("DarkSlateBlue")
+		Color_Combobox.Items.Add("DarkSlateGray")
+		Color_Combobox.Items.Add("DarkTurquoise")
+		Color_Combobox.Items.Add("DarkViolet")
+		Color_Combobox.Items.Add("DeepPink")
+		Color_Combobox.Items.Add("DodgerBlue")
+		Color_Combobox.Items.Add("Firebrick")
+		Color_Combobox.Items.Add("FloralWhite")
+		Color_Combobox.Items.Add("ForestGreen")
+		Color_Combobox.Items.Add("Fuchsia")
+		Color_Combobox.Items.Add("Gainsboro")
+		Color_Combobox.Items.Add("GhostWhite")
+		Color_Combobox.Items.Add("Goldenrod")
+		Color_Combobox.Items.Add("GreenYellow")
+		Color_Combobox.Items.Add("Honeydew")
+		Color_Combobox.Items.Add("HotPink")
+		Color_Combobox.Items.Add("IndianRed")
+		Color_Combobox.Items.Add("Indigo")
+		Color_Combobox.Items.Add("Ivory")
+		Color_Combobox.Items.Add("Khaki")
+		Color_Combobox.Items.Add("Lavender")
+		Color_Combobox.Items.Add("LavenderBlush")
+		Color_Combobox.Items.Add("LawnGreen")
+		Color_Combobox.Items.Add("LemonChiffon")
+		Color_Combobox.Items.Add("LightBlue")
+		Color_Combobox.Items.Add("LightCoral")
+		Color_Combobox.Items.Add("LightCyan")
+		Color_Combobox.Items.Add("LightGoldenrodYellow")
+		Color_Combobox.Items.Add("LightGray")
+		Color_Combobox.Items.Add("LightGreen")
+		Color_Combobox.Items.Add("LightPink")
+		Color_Combobox.Items.Add("LightSalmon")
+		Color_Combobox.Items.Add("LightSeaGreen")
+		Color_Combobox.Items.Add("LightSkyBlue")
+		Color_Combobox.Items.Add("LightSlateGray")
+		Color_Combobox.Items.Add("LightSteelBlue")
+		Color_Combobox.Items.Add("LightYellow")
+		Color_Combobox.Items.Add("Lime")
+		Color_Combobox.Items.Add("LimeGreen")
+		Color_Combobox.Items.Add("Linen")
+		Color_Combobox.Items.Add("Magenta")
+		Color_Combobox.Items.Add("Maroon")
+		Color_Combobox.Items.Add("MediumAquamarine")
+		Color_Combobox.Items.Add("MediumBlue")
+		Color_Combobox.Items.Add("MediumOrchid")
+		Color_Combobox.Items.Add("MediumPurple")
+		Color_Combobox.Items.Add("MediumSeaGreen")
+		Color_Combobox.Items.Add("MediumSlateBlue")
+		Color_Combobox.Items.Add("MediumSpringGreen")
+		Color_Combobox.Items.Add("MediumTurquoise")
+		Color_Combobox.Items.Add("MediumVioletRed")
+		Color_Combobox.Items.Add("MidnightBlue")
+		Color_Combobox.Items.Add("MintCream")
+		Color_Combobox.Items.Add("MistyRose")
+		Color_Combobox.Items.Add("Moccasin")
+		Color_Combobox.Items.Add("NavajoWhite")
+		Color_Combobox.Items.Add("Navy")
+		Color_Combobox.Items.Add("OldLace")
+		Color_Combobox.Items.Add("Olive")
+		Color_Combobox.Items.Add("OliveDrab")
+		Color_Combobox.Items.Add("OrangeRed")
+		Color_Combobox.Items.Add("Orchid")
+		Color_Combobox.Items.Add("PaleGoldenrod")
+		Color_Combobox.Items.Add("PaleGreen")
+		Color_Combobox.Items.Add("PaleTurquoise")
+		Color_Combobox.Items.Add("PaleVioletRed")
+		Color_Combobox.Items.Add("PapayaWhip")
+		Color_Combobox.Items.Add("PeachPuff")
+		Color_Combobox.Items.Add("Peru")
+		Color_Combobox.Items.Add("Plum")
+		Color_Combobox.Items.Add("PowderBlue")
+		Color_Combobox.Items.Add("RosyBrown")
+		Color_Combobox.Items.Add("RoyalBlue")
+		Color_Combobox.Items.Add("SaddleBrown")
+		Color_Combobox.Items.Add("Salmon")
+		Color_Combobox.Items.Add("SandyBrown")
+		Color_Combobox.Items.Add("SeaGreen")
+		Color_Combobox.Items.Add("SeaShell")
+		Color_Combobox.Items.Add("Sienna")
+		Color_Combobox.Items.Add("SkyBlue")
+		Color_Combobox.Items.Add("SlateBlue")
+		Color_Combobox.Items.Add("SlateGray")
+		Color_Combobox.Items.Add("Snow")
+		Color_Combobox.Items.Add("SpringGreen")
+		Color_Combobox.Items.Add("SteelBlue")
+		Color_Combobox.Items.Add("Tan")
+		Color_Combobox.Items.Add("Teal")
+		Color_Combobox.Items.Add("Thistle")
+		Color_Combobox.Items.Add("Tomato")
+		Color_Combobox.Items.Add("Turquoise")
+		Color_Combobox.Items.Add("Wheat")
+		Color_Combobox.Items.Add("WhiteSmoke")
+		Color_Combobox.Items.Add("YellowGreen")
+
+#End Region
 		ComboBox2.Text = "GAME"
 		ComboBox3.Items.Add("USA")
 		ComboBox3.Items.Add("EUR")
@@ -672,12 +835,7 @@ Public Class Start
 		'Select_Server.Items.Add("")
 		ComboBox3.Text = "USA"
 
-		DownParts.Visible = False
-		DownParts.Enabled = False
-		LinkLicense_Text.Visible = False
-		ID_Game.Visible = False
-		Button2.Visible = False
-		ListView99.Visible = False
+
 
 		PictureBox2.WaitOnLoad = False
 		PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
@@ -697,6 +855,354 @@ Public Class Start
 		ListView2.Columns.Add("Time Left", 80, HorizontalAlignment.Left)
 
 
+#Region "Load Color"
+		Dim color_combo As Color
+		Color_Combobox.Text = Color_ini
+		Select Case Color_ini
+			Case "White"
+				color_combo = Color.White
+			Case "WhiteSmoke"
+				color_combo = Color.WhiteSmoke
+			Case "BlanchedAlmond"
+				color_combo = Color.BlanchedAlmond
+			Case "Gray"
+				color_combo = Color.Gray
+			Case "DimGray"
+				color_combo = Color.DimGray
+			Case "Red"
+				color_combo = Color.Red
+			Case "Blue"
+				color_combo = Color.Blue
+			Case "Yellow"
+				color_combo = Color.Yellow
+			Case "Green"
+				color_combo = Color.Green
+			Case "Orange"
+				color_combo = Color.Orange
+			Case "Brown"
+				color_combo = Color.Brown
+			Case "Pink"
+				color_combo = Color.Pink
+			Case "Violet"
+				color_combo = Color.Violet
+			Case "Purple"
+				color_combo = Color.Purple
+			Case "Golden"
+				color_combo = Color.Gold
+			Case "Silver"
+				color_combo = Color.Silver
+			Case "Aqua"
+				color_combo = Color.Aqua
+			Case "AntiqueWhite"
+				color_combo = Color.AntiqueWhite
+			Case "AntiqueWhite"
+				color_combo = Color.AntiqueWhite
+			Case "Aquamarine"
+				color_combo = Color.Aquamarine
+			Case "Azure"
+				color_combo = Color.Azure
+			Case "Beige"
+				color_combo = Color.Beige
+			Case "Bisque"
+				color_combo = Color.Bisque
+			Case "BlanchedAlmond"
+				color_combo = Color.BlanchedAlmond
+			Case "BlueViolet"
+				color_combo = Color.BlueViolet
+			Case "BurlyWood"
+				color_combo = Color.BurlyWood
+			Case "CadetBlue"
+				color_combo = Color.CadetBlue
+			Case "Chartreuse"
+				color_combo = Color.Chartreuse
+			Case "Chartreuse"
+				color_combo = Color.Chartreuse
+			Case "Chocolate"
+				color_combo = Color.Chocolate
+			Case "Coral"
+				color_combo = Color.Coral
+			Case "CornflowerBlue"
+				color_combo = Color.CornflowerBlue
+			Case "Cornsilk"
+				color_combo = Color.Cornsilk
+			Case "Crimson"
+				color_combo = Color.Crimson
+			Case "Cyan"
+				color_combo = Color.Cyan
+			Case "DarkBlue"
+				color_combo = Color.DarkBlue
+			Case "DarkCyan"
+				color_combo = Color.DarkCyan
+			Case "DarkGoldenrod"
+				color_combo = Color.DarkGoldenrod
+			Case "DarkGray"
+				color_combo = Color.DarkGray
+			Case "DarkGreen"
+				color_combo = Color.DarkGreen
+			Case "DarkKhaki"
+				color_combo = Color.DarkKhaki
+			Case "DarkMagenta"
+				color_combo = Color.DarkMagenta
+			Case "DarkOliveGreen"
+				color_combo = Color.DarkOliveGreen
+			Case "DarkOrange"
+				color_combo = Color.DarkOrange
+			Case "DarkOrchid"
+				color_combo = Color.DarkOrchid
+			Case "DarkRed"
+				color_combo = Color.DarkRed
+			Case "DarkSalmon"
+				color_combo = Color.DarkSalmon
+			Case "DarkSeaGreen"
+				color_combo = Color.DarkSeaGreen
+			Case "DarkSlateBlue"
+				color_combo = Color.DarkSlateBlue
+			Case "DarkSlateGray"
+				color_combo = Color.DarkSlateGray
+			Case "DarkTurquoise"
+				color_combo = Color.DarkTurquoise
+			Case "DarkViolet"
+				color_combo = Color.DarkViolet
+			Case "DeepPink"
+				color_combo = Color.DeepPink
+			Case "DeepSkyBlue"
+				color_combo = Color.DeepSkyBlue
+			Case "DodgerBlue"
+				color_combo = Color.DodgerBlue
+			Case "Firebrick"
+				color_combo = Color.Firebrick
+			Case "FloralWhite"
+				color_combo = Color.FloralWhite
+			Case "ForestGreen"
+				color_combo = Color.ForestGreen
+			Case "Fuchsia"
+				color_combo = Color.Fuchsia
+			Case "Gainsboro"
+				color_combo = Color.Gainsboro
+			Case "GhostWhite"
+				color_combo = Color.GhostWhite
+			Case "Goldenrod"
+				color_combo = Color.Goldenrod
+			Case "GreenYellow"
+				color_combo = Color.GreenYellow
+			Case "Honeydew"
+				color_combo = Color.Honeydew
+			Case "HotPink"
+				color_combo = Color.HotPink
+			Case "IndianRed"
+				color_combo = Color.IndianRed
+			Case "Indigo"
+				color_combo = Color.Indigo
+			Case "Ivory"
+				color_combo = Color.Ivory
+			Case "Khaki"
+				color_combo = Color.Khaki
+			Case "Lavender"
+				color_combo = Color.Lavender
+			Case "LavenderBlush"
+				color_combo = Color.LavenderBlush
+			Case "LawnGreen"
+				color_combo = Color.LawnGreen
+			Case "LemonChiffon"
+				color_combo = Color.LemonChiffon
+			Case "LightBlue"
+				color_combo = Color.LightBlue
+			Case "Color.LightCoral"
+				color_combo = Color.LightCoral
+			Case "LightCyan"
+				color_combo = Color.LightCyan
+			Case "LightGoldenrodYellow"
+				color_combo = Color.LightGoldenrodYellow
+			Case "LightGray"
+				color_combo = Color.LightGray
+			Case "LightGreen"
+				color_combo = Color.LightGreen
+			Case "LightPink"
+				color_combo = Color.LightPink
+			Case "LightSalmon"
+				color_combo = Color.LightSalmon
+			Case "LightSeaGreen"
+				color_combo = Color.LightSeaGreen
+			Case "LightSkyBlue"
+				color_combo = Color.LightSkyBlue
+			Case "LightSlateGray"
+				color_combo = Color.LightSlateGray
+			Case "LightSteelBlue"
+				color_combo = Color.LightSteelBlue
+			Case "LightYellow"
+				color_combo = Color.LightYellow
+			Case "Lime"
+				color_combo = Color.Lime
+			Case "LimeGreen"
+				color_combo = Color.LimeGreen
+			Case "Linen"
+				color_combo = Color.Linen
+			Case "Magenta"
+				color_combo = Color.Magenta
+			Case "Maroon"
+				color_combo = Color.Maroon
+			Case "MediumAquamarine"
+				color_combo = Color.MediumAquamarine
+			Case "MediumBlue"
+				color_combo = Color.MediumBlue
+			Case "MediumOrchid"
+				color_combo = Color.MediumOrchid
+			Case "MediumPurple"
+				color_combo = Color.MediumPurple
+			Case "MediumSeaGreen"
+				color_combo = Color.MediumSeaGreen
+			Case "MediumSlateBlue"
+				color_combo = Color.MediumSlateBlue
+			Case "MediumSpringGreen"
+				color_combo = Color.MediumSpringGreen
+			Case "MediumTurquoise"
+				color_combo = Color.MediumTurquoise
+			Case "MediumVioletRed"
+				color_combo = Color.MediumVioletRed
+			Case "MidnightBlue"
+				color_combo = Color.MidnightBlue
+			Case "MintCream"
+				color_combo = Color.MintCream
+			Case "MistyRose"
+				color_combo = Color.MistyRose
+			Case "Moccasin"
+				color_combo = Color.Moccasin
+			Case "NavajoWhite"
+				color_combo = Color.NavajoWhite
+			Case "Navy"
+				color_combo = Color.Navy
+			Case "OldLace"
+				color_combo = Color.OldLace
+			Case "Olive"
+				color_combo = Color.Olive
+			Case "OliveDrab"
+				color_combo = Color.OliveDrab
+			Case "OrangeRed"
+				color_combo = Color.OrangeRed
+			Case "Orchid"
+				color_combo = Color.Orchid
+			Case "PaleGoldenrod"
+				color_combo = Color.PaleGoldenrod
+			Case "PaleGreen"
+				color_combo = Color.PaleGreen
+			Case "PaleTurquoise"
+				color_combo = Color.PaleTurquoise
+			Case "PaleVioletRed"
+				color_combo = Color.PaleVioletRed
+			Case "PapayaWhip"
+				color_combo = Color.PapayaWhip
+			Case "PeachPuff"
+				color_combo = Color.PeachPuff
+			Case "Peru"
+				color_combo = Color.Peru
+			Case "Plum"
+				color_combo = Color.Plum
+			Case "PowderBlue"
+				color_combo = Color.PowderBlue
+			Case "RosyBrown"
+				color_combo = Color.RosyBrown
+			Case "RoyalBlue"
+				color_combo = Color.RoyalBlue
+			Case "SaddleBrown"
+				color_combo = Color.SaddleBrown
+			Case "Salmon"
+				color_combo = Color.Salmon
+			Case "SandyBrown"
+				color_combo = Color.SandyBrown
+			Case "SeaGreen"
+				color_combo = Color.SeaGreen
+			Case "SeaShell"
+				color_combo = Color.SeaShell
+			Case "Sienna"
+				color_combo = Color.Sienna
+			Case "SkyBlue"
+				color_combo = Color.SkyBlue
+			Case "SlateBlue"
+				color_combo = Color.SlateBlue
+			Case "SlateGray"
+				color_combo = Color.SlateGray
+			Case "Snow"
+				color_combo = Color.Snow
+			Case "SpringGreen"
+				color_combo = Color.SpringGreen
+			Case "SteelBlue"
+				color_combo = Color.SteelBlue
+			Case "Tan"
+				color_combo = Color.Tan
+			Case "Teal"
+				color_combo = Color.Teal
+			Case "Thistle"
+				color_combo = Color.Thistle
+			Case "Tomato"
+				color_combo = Color.Tomato
+			Case "Turquoise"
+				color_combo = Color.Turquoise
+			Case "Wheat"
+				color_combo = Color.Wheat
+			Case "WhiteSmoke"
+				color_combo = Color.WhiteSmoke
+			Case "YellowGreen"
+				color_combo = Color.YellowGreen
+		End Select
+		TabPage3.BackColor = color_combo
+		Uploader.BackColor = color_combo
+		Color_Combobox.BackColor = color_combo
+		Languaje.BackColor = color_combo
+		TabPage1.BackColor = color_combo
+		TabPage2.BackColor = color_combo
+		ListView2.BackColor = color_combo
+		List_Download.BackColor = color_combo
+		ComboBox4.BackColor = color_combo
+		ComboBox3.BackColor = color_combo
+		Button1.BackColor = color_combo
+		PictureBox2.BackColor = color_combo
+		PictureBox3.BackColor = color_combo
+		TextBox2.BackColor = color_combo
+		i.BackColor = color_combo
+		i2.BackColor = color_combo
+		i3.BackColor = color_combo
+		TextBox3.BackColor = color_combo
+		TextBox4.BackColor = color_combo
+		TextBox6.BackColor = color_combo
+		TextBox5.BackColor = color_combo
+		ID_Game.BackColor = color_combo
+		TextBox8.BackColor = color_combo
+		LinkLicense_Text.BackColor = color_combo
+		Upload_Add_item.BackColor = color_combo
+		TextBox7.BackColor = color_combo
+		Search_Label.BackColor = color_combo
+		TextBox1.BackColor = color_combo
+		Companya_Combo.BackColor = color_combo
+		ComboBox1.BackColor = color_combo
+		Load_Image_button.BackColor = color_combo
+		Name_Game_Label.BackColor = color_combo
+		Type_label.BackColor = color_combo
+		Format_label.BackColor = color_combo
+		User_label.BackColor = color_combo
+		Version_label.BackColor = color_combo
+		Region_label.BackColor = color_combo
+		DownParts.BackColor = color_combo
+		Button2.BackColor = color_combo
+		Button_Download.BackColor = color_combo
+		Report.BackColor = color_combo
+		Progres_KB.BackColor = color_combo
+		ListView99.BackColor = color_combo
+		List1.BackColor = color_combo
+		ComboBox2.BackColor = color_combo
+		MyToolStrip.BackColor = color_combo
+		If BackGround_Image = True Then
+			If Dir(Application.StartupPath & "\Picture.png", vbDirectory) = "" Then
+			Else
+				Dim Dir_Image As String = Application.StartupPath & "\Picture.png"
+				TabPage3.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+				TabPage1.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+				TabPage2.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+				List_Download.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+				PictureBox2.BackColor = Color.Transparent
+				PictureBox3.BackColor = Color.Transparent
+			End If
+		End If
+#End Region
 		Me.Cursor = Cursors.Default
 	End Sub
 
@@ -733,7 +1239,7 @@ Public Class Start
 			Kill(Application.StartupPath & "\List\Version")
 		End If
 
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Version.txt", Application.StartupPath & "\List\Version")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2gPo7zkZJSvY7egf4Sfq1XYNg7AN0lO34nSAnLwKk8ow=="), Application.StartupPath & "\List\Version")
 		If File.ReadAllText(Application.StartupPath & "\List\Version").ToString = Version Then
 		Else
 			Process.Start("https://github.com/TiTiYum/Project-Koppai/releases/latest")
@@ -751,14 +1257,25 @@ Public Class Start
 				CheckBox1.Checked = 0
 				Load_Image_button.Visible = False
 			End If
+			If ini.GetKeyValue("Config", "BackGroundImage") = "True" Then
+				BackGround_Image = True
+				background_image_checkbox.Checked = 1
+			Else
+				BackGround_Image = False
+				background_image_checkbox.Checked = 0
+			End If
+			Color_ini = ini.GetKeyValue("Config", "Color")
 		End If
 		If System.IO.File.Exists((Application.StartupPath & "\List\Config.ini")) = False Then
 			System.IO.File.Create((Application.StartupPath & "\List\Config.ini")).Dispose()
 			ini.Load(Application.StartupPath & "\List\Config.ini")
 			ini.AddSection("Config").AddKey("Unload_Images").Value = "True"
+			ini.AddSection("Config").AddKey("BackGroundImage").Value = "False"
+			ini.AddSection("Config").AddKey("Color").Value = "White"
 			load_images_games = False
 			CheckBox1.Checked = 0
 			Load_Image_button.Visible = False
+			BackGround_Image = False
 			ini.Save(Application.StartupPath & "\List\Config.ini")
 		End If
 	End Sub
@@ -1038,73 +1555,73 @@ Public Class Start
 #End Region
 		'Download List
 #Region "Download"
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wii.json", Application.StartupPath & "\List\Games-List-Wii")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-WiiU.json", Application.StartupPath & "\List\Games-List-WiiU")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-VirtualBoy.json", Application.StartupPath & "\List\Games-List-VirtualBoy")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-SNES.json", Application.StartupPath & "\List\Games-List-SNES")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-NSwich.json", Application.StartupPath & "\List\Games-List-NSwich")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-NDS.json", Application.StartupPath & "\List\Games-List-NDS")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-N64.json", Application.StartupPath & "\List\Games-List-N64")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GameCube.json", Application.StartupPath & "\List\Games-List-GameCube")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GameBoyAdvance.json", Application.StartupPath & "\List\Games-List-GameBoyAdvance")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GameBoy.json", Application.StartupPath & "\List\Games-List-GameBoy")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-NES.json", Application.StartupPath & "\List\Games-List-NES")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-3DS.json", Application.StartupPath & "\List\Games-List-3DS")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-3DO.json", Application.StartupPath & "\List\Games-List-3DO")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmigaCD.json", Application.StartupPath & "\List\Games-List-AmigaCD")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmigaCD32.json", Application.StartupPath & "\List\Games-List-AmigaCD32")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-AmstradGX4000.json", Application.StartupPath & "\List\Games-List-AmstradGX4000")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari2600.json", Application.StartupPath & "\List\Games-List-Atari2600")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari5200.json", Application.StartupPath & "\List\Games-List-Atari5200")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari7800.json", Application.StartupPath & "\List\Games-List-Atari7800")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Atari-Jaguar.json", Application.StartupPath & "\List\Games-List-Atari-Jaguar")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Casio-Loopy.json", Application.StartupPath & "\List\Games-List-Casio-Loopy")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-ColecoVision.json", Application.StartupPath & "\List\Games-List-ColecoVision")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Commodore64GS.json", Application.StartupPath & "\List\Games-List-Commodore64GS")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Dreamcast.json", Application.StartupPath & "\List\Games-List-Dreamcast")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Fairchild-Channel-F.json", Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-G&W.json", Application.StartupPath & "\List\Games-List-G&W")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Game-Gear.json", Application.StartupPath & "\List\Games-List-Game-Gear")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-GP32.json", Application.StartupPath & "\List\Games-List-GP32")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Intellivision.json", Application.StartupPath & "\List\Games-List-Intellivision")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Magnavox-Oddyssey.json", Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Magnavox-Oddyssey2.json", Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Mega-Drive-32x.json", Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Neo-Geo.json", Application.StartupPath & "\List\Games-List-Neo-Geo")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Neo-Geo-CD.json", Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-N-Gage.json", Application.StartupPath & "\List\Games-List-N-Gage")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PC-Engine.json", Application.StartupPath & "\List\Games-List-PC-Engine")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PC-FX.json", Application.StartupPath & "\List\Games-List-PC-FX")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Philips-CDi.json", Application.StartupPath & "\List\Games-List-Philips-CDi")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Pippin.json", Application.StartupPath & "\List\Games-List-Pippin")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Playdia.json", Application.StartupPath & "\List\Games-List-Playdia")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-1.json", Application.StartupPath & "\List\Games-List-Play-System-1")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-2.json", Application.StartupPath & "\List\Games-List-Play-System-2")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Play-System-3.json", Application.StartupPath & "\List\Games-List-Play-System-3")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PocketStation.json", Application.StartupPath & "\List\Games-List-PocketStation")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS1.json", Application.StartupPath & "\List\Games-List-PS1")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS2.json", Application.StartupPath & "\List\Games-List-PS2")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS3.json", Application.StartupPath & "\List\Games-List-PS3")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PS4.json", Application.StartupPath & "\List\Games-List-PS4")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PSP.json", Application.StartupPath & "\List\Games-List-PSP")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-PSVita.json", Application.StartupPath & "\List\Games-List-PSVita")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-RCA-Studio-II.json", Application.StartupPath & "\List\Games-List-RCA-Studio-II")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-SC-3000.json", Application.StartupPath & "\List\Games-List-SC-3000")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Genesis.json", Application.StartupPath & "\List\Games-List-Sega-Genesis")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Master-System.json", Application.StartupPath & "\List\Games-List-Sega-Master-System")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Mega-CD.json", Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Model-2.json", Application.StartupPath & "\List\Games-List-Sega-Model-2")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Nomad.json", Application.StartupPath & "\List\Games-List-Sega-Nomad")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Sega-Saturn.json", Application.StartupPath & "\List\Games-List-Sega-Saturn")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-SG-1000.json", Application.StartupPath & "\List\Games-List-SG-1000")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Vectrex.json", Application.StartupPath & "\List\Games-List-Vectrex")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Videopac.json", Application.StartupPath & "\List\Games-List-Videopac")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-V-Smile.json", Application.StartupPath & "\List\Games-List-V-Smile")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wonderswan.json", Application.StartupPath & "\List\Games-List-Wonderswan")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Wonderswan-Color.json", Application.StartupPath & "\List\Games-List-Wonderswan-Color")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Xbox.json", Application.StartupPath & "\List\Games-List-Xbox")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-Xbox360.json", Application.StartupPath & "\List\Games-List-Xbox360")
-		My.Computer.Network.DownloadFile("http://www.openpstore.xyz/PK-List-Games/Games-List-XboxOne.json", Application.StartupPath & "\List\Games-List-XboxOne")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr + sOPssuKaCd + qnktdTmb4Nf8 / VRQ3dK6uZsb1cA =="), Application.StartupPath & "\List\Games-List-Wii")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr + sOPssuKaCd + qnktdyjMYGXgHn0Hr + s0SubOBbg == "), Application.StartupPath & "\List\Games-List-WiiU")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr + sOPssuKaCd + qnktdOBuOI86k + z5KAWIZUUxQEizy5W / 4zEjT+N9n9vdg7Rk="), Application.StartupPath & "\List\Games-List-VirtualBoy")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdbmM/PK9UtScmXxAlR1tmuA=="), Application.StartupPath & "\List\Games-List-SNES")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdFOBPtZInk2orv1bYkj81sO5r5q8Upveu7hg+cJtu9Ow="), Application.StartupPath & "\List\Games-List-NSwich")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdr0WrqiqBSdyDe8bSIkmP7g=="), Application.StartupPath & "\List\Games-List-NDS")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdl6byXunEEEdeRROSl0BDyg=="), Application.StartupPath & "\List\Games-List-N64")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktds5AfCeSCN4OZC8kILOlF4wlOPOQ0PEk6ITOe8Ca6w38="), Application.StartupPath & "\List\Games-List-GameCube")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdsS50XaLXU9Lh9isQl3hVh9NoaOsTgu1egnLcqToE83M="), Application.StartupPath & "\List\Games-List-GameBoyAdvance")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd9GAWHRk0VNLV8fDjUoTdfaLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-GameBoy")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdkjTqHKNmaSZlFIgCRCmg8w=="), Application.StartupPath & "\List\Games-List-NES")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdT4wi4rXq3mAevDYq2Wy6ZQ=="), Application.StartupPath & "\List\Games-List-3DS")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktduVjtuH+NgLvKk8yJ+cMxqw=="), Application.StartupPath & "\List\Games-List-3DO")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdLDPGYdtvkPX21gTt4v2XNKLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-AmigaCD")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd8F6F6JfMu9ipqyi0ukRhpjCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-AmigaCD32")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdQJvskYsgJ4hu875w8it0g29nc2iSsNGGO/BF6ppSvjY="), Application.StartupPath & "\List\Games-List-AmstradGX4000")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdmTPVJ7wTEKm962leiY2MUTCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-Atari2600")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd9u9ATtEU9A6JyX/kQ/e0+TCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-Atari5200")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdseD+CMyQN8aoY/yDaG3uMzCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-Atari7800")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd2W+4h2HiH703stdbwEw7Q2x+ykChiO4YigVyi9pfeHM="), Application.StartupPath & "\List\Games-List-Atari-Jaguar")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdOQiWkhD+RQmvOgge2xFhZB4Mf9hHVNAGezoBDbGWno8="), Application.StartupPath & "\List\Games-List-Casio-Loopy")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdeczVikziyl3+u7OXx52AAIin2vn529yG4MFBbXlm20M="), Application.StartupPath & "\List\Games-List-ColecoVision")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdzBUnVRB4wv1ye0wJmzBn/Y/7WF047c+X0qEPX6Wba3Q="), Application.StartupPath & "\List\Games-List-Commodore64GS")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdf6ssd/8zYwT/BMSpXub2BjCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-Dreamcast")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdDHwYOKTSTK77azTvqPhTXFBeJ+8f6DE6L4uxZ7yokG8="), Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd+gDkdzHDnSdkeucSRvU3Nw=="), Application.StartupPath & "\List\Games-List-G&W")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdU/DHJFSzawUQFjYk4KhFfDCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-Game-Gear")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdEZeAV/F595oODSWuVgzs2w=="), Application.StartupPath & "\List\Games-List-GP32")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdUeEPLS+ztZ6/BGHaFebrN4Kn+eYPZg5Dj2yUnz1DSCw="), Application.StartupPath & "\List\Games-List-Intellivision")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd2gfLvh5FHsPzfa5uWWSlck1yPElwpzRN5YguDtbnG74="), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd2gfLvh5FHsPzfa5uWWSlct/7STkmh9Ses5RE/l2tCUQ="), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdQyIGv0FhkNNTjwqL+BKkPVwe2+rLZuaYNJLKyZwp75I="), Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdh2HFR0BfxgRSZYvYIeayM6LTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-Neo-Geo")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd0Hxe7RWatfhRe2eM1VmyGyzy5W/4zEjT+N9n9vdg7Rk="), Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdoT4bTZtoBWDn8Y+uDsI4jO5r5q8Upveu7hg+cJtu9Ow="), Application.StartupPath & "\List\Games-List-N-Gage")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdxU2JyF4Yz0pC/w8+xdxd0DCo4sXB2MfH+e3RcHu58T0="), Application.StartupPath & "\List\Games-List-PC-Engine")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdtCrWpWnsjI9UsdJXWcYtzTbdnqg/OT557MvTKGNJ/Go="), Application.StartupPath & "\List\Games-List-PC-FX")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdSPHLFmF3Fbwm8w8Z3s5T5tNWbjOXWRhvtzAXQ+LXDtU="), Application.StartupPath & "\List\Games-List-Philips-CDi")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdPuKXHi4tc7yphp8+Z4jl8u5r5q8Upveu7hg+cJtu9Ow="), Application.StartupPath & "\List\Games-List-Pippin")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdI6XoRha7A2RWEk9PuyLHsKLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-Playdia")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdFLfW5vkBtJAAqW/xKAEvXIexjSceIxhbobUhZ+kQgWM="), Application.StartupPath & "\List\Games-List-Play-System-1")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdFLfW5vkBtJAAqW/xKAEvXF3pKyIGzEwX1mu2IpoTWIk="), Application.StartupPath & "\List\Games-List-Play-System-2")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdFLfW5vkBtJAAqW/xKAEvXMxQGNHRoGxg9i8fQUYuV8E="), Application.StartupPath & "\List\Games-List-Play-System-3")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdccx+/GvuvZkVvBDTyafbaYKn+eYPZg5Dj2yUnz1DSCw="), Application.StartupPath & "\List\Games-List-PocketStation")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdidi3FAK5qPVhTaESYbASPA=="), Application.StartupPath & "\List\Games-List-PS1")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdlqXN9EqMF2FoVEVDRsDsew=="), Application.StartupPath & "\List\Games-List-PS2")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdv258Qcweq/yPf8zoFUavEQ=="), Application.StartupPath & "\List\Games-List-PS3")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdxDUwXvQb4d/ySgKaSSle3g=="), Application.StartupPath & "\List\Games-List-PS4")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdBMqsKbi6ITELIhqk0Mg2JA=="), Application.StartupPath & "\List\Games-List-PSP")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd6oItZNHm/2fBgSofxYAkRe5r5q8Upveu7hg+cJtu9Ow="), Application.StartupPath & "\List\Games-List-PSVita")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdTMUKK0vjnGwhLOJDeuwQyX1zMFAK9Nvx/FxRDxWyy7U="), Application.StartupPath & "\List\Games-List-RCA-Studio-II")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd4go4+6+MslH3Zttj/tzTU6LTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-SC-3000")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdo+lNdiMnnZykp3DFyiMO19msmfQ7NalIau2xV4lI+PE="), Application.StartupPath & "\List\Games-List-Sega-Genesis")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdwgB0RHt/UT4IwhKf8V/ahcFsQIfaTSrfdNC88TrECjo="), Application.StartupPath & "\List\Games-List-Sega-Master-System")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdosLqZR7+QvIajlI9U9oqo3as2jbM1ePAVRTV7vwE8yg="), Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdxLp2LFkYKAv2+8z5TPyEohWJ95vjTjwy/2H3WJbBEFg="), Application.StartupPath & "\List\Games-List-Sega-Model-2")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdVxoaqajWGSQIGQzSz8i3zizy5W/4zEjT+N9n9vdg7Rk="), Application.StartupPath & "\List\Games-List-Sega-Nomad")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdOGz3AxmKXafvKv85idVvKwBMBBywpH64iak4sVK2exA="), Application.StartupPath & "\List\Games-List-Sega-Saturn")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdF9EvYeNlyBvaiMIRYQgcDKLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-SG-1000")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdq9N67P4eAMQtLWawOFUgK6LTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-Vectrex")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd/FwUV/2p9xqv3trbJ8RQTwlOPOQ0PEk6ITOe8Ca6w38="), Application.StartupPath & "\List\Games-List-Videopac")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdd8cECKjuInx9u8t6hzMSX6LTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-V-Smile")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdlZEP7TWNadLtVb4zGcKKFSzy5W/4zEjT+N9n9vdg7Rk="), Application.StartupPath & "\List\Games-List-Wonderswan")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdlZEP7TWNadLtVb4zGcKKFay4a4ei5m3JI8t1AfUBTxc="), Application.StartupPath & "\List\Games-List-Wonderswan-Color")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdUiDIN0xw8aEWsq2lyrvhBA=="), Application.StartupPath & "\List\Games-List-Xbox")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktdVbg6jaI3L9PQOAj6Gsh5IqLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-Xbox360")
+		My.Computer.Network.DownloadFile(AES_Decrypt("U0VzLh27ENMYgkA8Zp67mlH4bFoD7Zh8otEcaclCBr2Xrhr+sOPssuKaCd+qnktd2SB+rd9EtLMuPx/mpylf1qLTrjINwwWFsCWY0rLG0Pc="), Application.StartupPath & "\List\Games-List-XboxOne")
 #End Region
 
 		Me.Cursor = Cursors.Default
@@ -1159,33 +1676,33 @@ Public Class Start
 																List1.Items(counter).SubItems.Add(Game(pos).Version)
 																List1.Items(counter).SubItems.Add(Game(pos).Format)
 																List1.Items(counter).SubItems.Add(Game(pos).Encrypt(0))
-
-																Select Case Platform
-																	Case "Wii"
-																		List1.Items(counter).SubItems.Add("WII")
-																	Case "WiiU"
-																		List1.Items(counter).SubItems.Add("WII U")
-																	Case "NSwich"
-																		List1.Items(counter).SubItems.Add("NINTENDO SWICH")
-																	Case "N64"
-																		List1.Items(counter).SubItems.Add("NINTENDO 64")
-																	Case "GameCube"
-																		List1.Items(counter).SubItems.Add("GAMECUBE")
-																	Case "VirtualBoy"
-																		List1.Items(counter).SubItems.Add("VIRTUAL BOY")
-																	Case "GameBoyAdvance"
-																		List1.Items(counter).SubItems.Add("GAME BOY ADVANCE")
-																	Case "SNES"
-																		List1.Items(counter).SubItems.Add("SNES")
-																	Case "NES"
-																		List1.Items(counter).SubItems.Add("NES")
-																	Case "NDS"
-																		List1.Items(counter).SubItems.Add("NDS")
-																	Case "3DS"
-																		List1.Items(counter).SubItems.Add("3DS")
-																	Case "GameBoy"
-																		List1.Items(counter).SubItems.Add("GAME BOY")
-																End Select
+																List1.Items(counter).SubItems.Add(ComboBox1.Text)
+																'Select Case Platform
+																'Case "Wii"
+																'List1.Items(counter).SubItems.Add(ComboBox1.Text)
+																'Case "WiiU"
+																'List1.Items(counter).SubItems.Add("WII U")
+																'Case "NSwich"
+																'List1.Items(counter).SubItems.Add("NINTENDO SWICH")
+																'Case "N64"
+																'List1.Items(counter).SubItems.Add("NINTENDO 64")
+																'Case "GameCube"
+																'List1.Items(counter).SubItems.Add("GAMECUBE")
+																'Case "VirtualBoy"
+																'List1.Items(counter).SubItems.Add("VIRTUAL BOY")
+																'Case "GameBoyAdvance"
+																'List1.Items(counter).SubItems.Add("GAME BOY ADVANCE")
+																'Case "SNES"
+																'List1.Items(counter).SubItems.Add("SNES")
+																'Case "NES"
+																'List1.Items(counter).SubItems.Add("NES")
+																'Case "NDS"
+																'List1.Items(counter).SubItems.Add("NDS")
+																'Case "3DS"
+																'List1.Items(counter).SubItems.Add("3DS")
+																'Case "GameBoy"
+																'List1.Items(counter).SubItems.Add("GAME BOY")
+																'End Select
 																List1.Items(counter).SubItems.Add(Game(pos).Parts)
 																List1.Items(counter).SubItems.Add(Game(pos).N_Part)
 																List1.Items(counter).SubItems.Add(pos)
@@ -1244,7 +1761,7 @@ Public Class Start
 		Game_Part = List1.Items.Item(List1.FocusedItem.Index).SubItems(9).Text
 		Game_Num = List1.Items.Item(List1.FocusedItem.Index).SubItems(10).Text
 		Lisense = List1.Items.Item(List1.FocusedItem.Index).SubItems(13).Text
-		Link_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(14).Text
+		Link_License = AES_Decrypt(List1.Items.Item(List1.FocusedItem.Index).SubItems(14).Text)
 		format_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(15).Text
 
 		If Lisense = False Then
@@ -1280,41 +1797,151 @@ Public Class Start
 
 	Private Sub Button_Download_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Download.Click
 
-		myFile = Application.StartupPath & "\Roms\" & Platform_Game & "\[" & Platform_Game & "][" & Region_Game & "]" & Name_Game & "." & format_Game
+		myFile = Application.StartupPath & "\Roms\[" & ComboBox1.Text & "][" & Region_Game & "]" & Name_Game & "." & format_Game
 		myWebClient = New Net.WebClient
 		ProgressBar1.Value = 0
-		Me.Text = "Project Koppai v2.3   Downloading..."
+		Me.Text = "Project Koppai v" & Version & "   Downloading..."
 		Dim i As Integer = 0
 
 		Dim Listita As List(Of ListTwo)
 		Dim Plataforma As String
-		Select Case Platform_Game
-			Case "WII"
+		Select Case ComboBox1.Text
+			Case "All"
+				Plataforma = "All"
+			Case "Wii"
 				Plataforma = "Wii"
-			Case "WII U"
+			Case "Wii U"
 				Plataforma = "WiiU"
-			Case "NINTENDO SWICH"
+			Case "Nintendo Swich"
 				Plataforma = "NSwich"
-			Case "NINTENDO 64"
+			Case "Nintendo 64"
 				Plataforma = "N64"
-			Case "GAMECUBE"
+			Case "GameCube"
 				Plataforma = "GameCube"
-			Case "VIRTUAL BOY"
+			Case "Virtual Boy"
 				Plataforma = "VirtualBoy"
-			Case "GAME BOY ADVANCE"
+			Case "Game Boy Advance"
 				Plataforma = "GameBoyAdvance"
-			Case "SNES"
+			Case "Snes"
 				Plataforma = "SNES"
-			Case "NES"
+			Case "Nes"
 				Plataforma = "NES"
 			Case "NDS"
 				Plataforma = "NDS"
 			Case "3DS"
 				Plataforma = "3DS"
-			Case "GAME BOY"
+			Case "Game Boy"
 				Plataforma = "GameBoy"
-			Case Else
-
+			Case "Game & Watch"
+				Plataforma = "G&W"
+			Case "PlayStation"
+				Plataforma = "PS1"
+			Case "PlayStation 2"
+				Plataforma = "PS2"
+			Case "PlayStation 3"
+				Plataforma = "PS3"
+			Case "PlayStation 4"
+				Plataforma = "PS4"
+			Case "PSP"
+				Plataforma = "PSP"
+			Case "PS Vita"
+				Plataforma = "PSVita"
+			Case "PocketStation"
+				Plataforma = "PocketStation"
+			Case "Xbox"
+				Plataforma = "Xbox"
+			Case "Xbox 360"
+				Plataforma = "Xbox360"
+			Case "Xbox One"
+				Plataforma = "XboxOne"
+			Case "SG-1000"
+				Plataforma = "SG-1000"
+			Case "SC-3000"
+				Plataforma = "SC-3000"
+			Case "Sega Master System"
+				Plataforma = "Sega-Master-System"
+			Case "Sega Genesis"
+				Plataforma = "Sega-Genesis"
+			Case "Sega Mega CD"
+				Plataforma = "Sega-Mega-CD"
+			Case "Game Gear"
+				Plataforma = "Game-Gear"
+			Case "Sega Saturn"
+				Plataforma = "Sega-Saturn"
+			Case "Mega Drive 32x"
+				Plataforma = "Mega-Drive-32x"
+			Case "Sega Nomad"
+				Plataforma = "Sega-Nomad"
+			Case "Sega Model 2"
+				Plataforma = "Sega-Model-2"
+			Case "Sega Dreamcast"
+				Plataforma = "Dreamcast"
+			Case "Neo-Geo"
+				Plataforma = "Neo-Geo"
+			Case "Neo-Geo CD"
+				Plataforma = "Neo-Geo-CD"
+			Case "Pippin"
+				Plataforma = "Pippin"
+			Case "Atari 2600"
+				Plataforma = "Atari2600"
+			Case "Atari 5200"
+				Plataforma = "Atari5200"
+			Case "Atari 7800"
+				Plataforma = "Atari7800"
+			Case "Atari Jaguar"
+				Plataforma = "Atari-Jaguar"
+			Case "Playdia"
+				Plataforma = "Playdia"
+			Case "Wonderswan"
+				Plataforma = "Wonderswan"
+			Case "Wonderswan Color"
+				Plataforma = "Wonderswan-Color"
+			Case "Play System 1"
+				Plataforma = "Play-System-1"
+			Case "Play System 2"
+				Plataforma = "Play-System-2"
+			Case "Play System 3"
+				Plataforma = "Play-System-3"
+			Case "Casio Loopy"
+				Plataforma = "Casio-Loopy"
+			Case "ColecoVision"
+				Plataforma = "ColecoVision"
+			Case "Commodore 64GS"
+				Plataforma = "Commodore64GS"
+			Case "AmigaCD32"
+				Plataforma = "AmigaCD32"
+			Case "AmigaCD"
+				Plataforma = "AmigaCD"
+			Case "Fairchild Channel F"
+				Plataforma = "Fairchild-Channel-F"
+			Case "GP32"
+				Plataforma = "GP32"
+			Case "Vectrex"
+				Plataforma = "Vectrex"
+			Case "Magnavox Oddyssey"
+				Plataforma = "Magnavox-Oddyssey"
+			Case "Magnavox Oddyssey 2"
+				Plataforma = "Magnavox-Oddyssey2"
+			Case "Intellivision"
+				Plataforma = "Intellivision"
+			Case "PC Engine"
+				Plataforma = "PC-Engine"
+			Case "PC-FX"
+				Plataforma = "PC-FX"
+			Case "N-Gage"
+				Plataforma = "N-Gage"
+			Case "3DO"
+				Plataforma = "3DO"
+			Case "Videopac"
+				Plataforma = "Videopac"
+			Case "Philips CDi"
+				Plataforma = "Philips-CDi"
+			Case "RCA Studio II"
+				Plataforma = "RCA-Studio-II"
+			Case "V.Smile"
+				Plataforma = "V-Smile"
+			Case "Amstrad GX4000"
+				Plataforma = "AmstradGX4000"
 		End Select
 #Disable Warning BC42104 ' Se usa la variable antes de que se le haya asignado un valor
 		'MsgBox()
@@ -1339,7 +1966,7 @@ Public Class Start
 #Enable Warning IDE1006 ' Estilos de nombres
 		If ProgressBar1.Value = ProgressBar1.Maximum Then
 			MsgBox("Download Completed", MsgBoxStyle.Information)
-			Me.Text = "Project Koppai v2.4"
+			Me.Text = "Project Koppai v" & Version
 			'Button1.Enabled = True
 		Else
 			IO.File.Delete(myFile) '// Delete File if Download is NOT Complete.
@@ -1356,7 +1983,7 @@ Public Class Start
 			Dim dDownloadedMB As Decimal = Format((e.BytesReceived / 1024) / 1024, "###,###,##0.00")
 			Dim dTotalToDownloadMB As Decimal = Format((e.TotalBytesToReceive / 1024) / 1024, "###,###,##0.00")
 			Progres_KB.Text = dDownloadedMB & "/" & dTotalToDownloadMB & "MB"
-			Me.Text = "Project Koppai v2.4    Downloaded: " & dDownloadedMB & "MB out of " & dTotalToDownloadMB & "MB - Progress: " _
+			Me.Text = "Project Koppai v" & Version & "    Downloaded: " & dDownloadedMB & "MB out of " & dTotalToDownloadMB & "MB - Progress: " _
 				& Format(dDownloadProgress, "###.00") & "%"
 		Catch ex As Exception
 		End Try
@@ -1676,18 +2303,18 @@ Public Class Start
 
 		End If
 	End Sub
+
 	Private Sub Send(Platform_Send As String, ID_Send As String, Type_Send As String, Name_Send As String, Region_Send As String,
 					 User_Send As String, Version_Send As String, Format_Send As String, Image_Send As String, Parts_Send As Boolean,
 					 Encrypt_Send As String, NumberParts_Send As String, LicenseExist_Send As Boolean, LinkLisense_Send As String,
 					 FormatLisense_Send As String)
-
+		Upload_Add_item.Enabled = False
 		Dim Encrypt_Split As String()
 		Dim Encrypt_Array As New List(Of String)
 		Encrypt_Split = Encrypt_Send.Split(New String() {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
 		'MsgBox(Encrypt_Split(0))
 		'MsgBox(Encrypt_Split.Length)
 		For Other As Integer = 1 To Encrypt_Split.Length
-			MsgBox(Other)
 			'Encrypt_Array.Add
 			Encrypt_Array.Add(AES_Encrypt(Encrypt_Split(Other - 1)))
 			'Encrypt_Array.Add("asd2")
@@ -1719,7 +2346,7 @@ Public Class Start
 			'Dim attachment As System.Net.Mail.Attachment
 
 			Smtp_Server.UseDefaultCredentials = False
-			Smtp_Server.Credentials = New Net.NetworkCredential(("projectkoppaisender@gmail.com"), ("Sender1234"))
+			Smtp_Server.Credentials = New Net.NetworkCredential((AES_Decrypt("7NWQv+O0aNhcU3btm2P9lXPAyy4l3cP9s8Q9PS7Zlbk=")), (AES_Decrypt("rc61RhoIIIJ7PsX58Qo94g==")))
 
 
 			'sending failure
@@ -1730,11 +2357,11 @@ Public Class Start
 #Disable Warning IDE0017 ' Simplificar la inicialización de objetos
 			e_mail = New MailMessage()
 #Enable Warning IDE0017 ' Simplificar la inicialización de objetos
-			e_mail.From = New MailAddress("titiyum12rc@gmail.com")
-			e_mail.To.Add("titiyum12rc@gmail.com")
+			e_mail.From = New MailAddress(AES_Decrypt("0n7h1omqHPmSHDDxYYWOVUfeCoKJZnYK5YvLOP4Ihmc="))
+			e_mail.To.Add(AES_Decrypt("0n7h1omqHPmSHDDxYYWOVUfeCoKJZnYK5YvLOP4Ihmc="))
 			e_mail.Subject = "[" & Platform_Send & "]" & Name_Send
 			e_mail.IsBodyHtml = False 'cannot be read
-			e_mail.Body = output
+			e_mail.Body = output & ","
 
 
 			Smtp_Server.Send(e_mail)
@@ -1749,7 +2376,7 @@ Public Class Start
 		Else
 			Kill(Application.StartupPath & "\Uploader\List\*.*")
 		End If
-
+		Upload_Add_item.Enabled = True
 	End Sub
 
 	Private Sub SendTwo()
@@ -1761,7 +2388,7 @@ Public Class Start
 			Dim e_mail As New MailMessage()
 
 			Smtp_Server.UseDefaultCredentials = False
-			Smtp_Server.Credentials = New Net.NetworkCredential(("projectkoppaireport@gmail.com"), ("Report1234"))
+			Smtp_Server.Credentials = New Net.NetworkCredential(AES_Decrypt(("BFFQPPm187T5KWkjoOjsY1Bf3n/6jsYja5icjFsFnGg=")), AES_Decrypt(("IUxcAPaUkNjBmV2w3LsqYw==")))
 
 
 			'sending failure
@@ -1772,9 +2399,9 @@ Public Class Start
 #Disable Warning IDE0017 ' Simplificar la inicialización de objetos
 			e_mail = New MailMessage()
 #Enable Warning IDE0017 ' Simplificar la inicialización de objetos
-			e_mail.From = New MailAddress("titiyum12rc@gmail.com")
-			e_mail.To.Add("titiyum12rc@gmail.com")
-			e_mail.Subject = "REPORT"
+			e_mail.From = New MailAddress(AES_Decrypt("0n7h1omqHPmSHDDxYYWOVUfeCoKJZnYK5YvLOP4Ihmc="))
+			e_mail.To.Add(AES_Decrypt("0n7h1omqHPmSHDDxYYWOVUfeCoKJZnYK5YvLOP4Ihmc="))
+			e_mail.Subject = "[" & Platform_Game & "] " & Name_Game
 			e_mail.IsBodyHtml = False 'cannot be read
 			e_mail.Body = userMsg & "
 
@@ -1917,7 +2544,7 @@ Platform Game: " & Platform_Game & "
 		Clipboard.SetText(AES_Encrypt("https://drive.google.com/uc?export=download&id=1kknhAg39K47SGWooqflDCXcbghmYs90Z"))
 	End Sub
 
-	Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) 
+	Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs)
 
 	End Sub
 
@@ -1926,16 +2553,21 @@ Platform Game: " & Platform_Game & "
 			CheckBox3.Text = "The Game is licensed? True"
 			LinkLicense_Text.Visible = True
 			License_Bol = True
+			TextBox8.Visible = True
 		End If
 		If CheckBox3.CheckState = False Then
 			CheckBox3.Text = "The Game is licensed? False"
 			LinkLicense_Text.Visible = False
 			License_Bol = False
+			TextBox8.Visible = False
 		End If
 	End Sub
 
 	Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-		My.Computer.Network.DownloadFile(AES_Encrypt(Link_License), Application.StartupPath & "\License\[" & List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text & "][" & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text & "]" & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text & "." & format_License)
+		Dim dir As String = Application.StartupPath & "\License\[" & List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text & "][" & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text & "]" & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text & "." & format_License
+		MsgBox(dir)
+		MsgBox(Link_License)
+		My.Computer.Network.DownloadFile(Link_License, dir)
 	End Sub
 
 	Private Sub Name_Game_Label_Click(sender As Object, e As EventArgs) Handles Name_Game_Label.Click
@@ -1948,5 +2580,718 @@ Platform Game: " & Platform_Game & "
 
 	Private Sub Upload_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Upload.SelectedIndexChanged
 
+	End Sub
+
+	Private Sub Color_Combobox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Color_Combobox.SelectedIndexChanged
+		Dim color_combo As Color
+		Color_ini = Color_Combobox.Text
+		Select Case Color_Combobox.Text
+			Case "White"
+				color_combo = Color.White
+			Case "WhiteSmoke"
+				color_combo = Color.WhiteSmoke
+			Case "BlanchedAlmond"
+				color_combo = Color.BlanchedAlmond
+			Case "Gray"
+				color_combo = Color.Gray
+			Case "DimGray"
+				color_combo = Color.DimGray
+			Case "Red"
+				color_combo = Color.Red
+			Case "Blue"
+				color_combo = Color.Blue
+			Case "Yellow"
+				color_combo = Color.Yellow
+			Case "Green"
+				color_combo = Color.Green
+			Case "Orange"
+				color_combo = Color.Orange
+			Case "Brown"
+				color_combo = Color.Brown
+			Case "Pink"
+				color_combo = Color.Pink
+			Case "Violet"
+				color_combo = Color.Violet
+			Case "Purple"
+				color_combo = Color.Purple
+			Case "Golden"
+				color_combo = Color.Gold
+			Case "Silver"
+				color_combo = Color.Silver
+			Case "Aqua"
+				color_combo = Color.Aqua
+			Case "AntiqueWhite"
+				color_combo = Color.AntiqueWhite
+			Case "AntiqueWhite"
+				color_combo = Color.AntiqueWhite
+			Case "Aquamarine"
+				color_combo = Color.Aquamarine
+			Case "Azure"
+				color_combo = Color.Azure
+			Case "Beige"
+				color_combo = Color.Beige
+			Case "Bisque"
+				color_combo = Color.Bisque
+			Case "BlanchedAlmond"
+				color_combo = Color.BlanchedAlmond
+			Case "BlueViolet"
+				color_combo = Color.BlueViolet
+			Case "BurlyWood"
+				color_combo = Color.BurlyWood
+			Case "CadetBlue"
+				color_combo = Color.CadetBlue
+			Case "Chartreuse"
+				color_combo = Color.Chartreuse
+			Case "Chartreuse"
+				color_combo = Color.Chartreuse
+			Case "Chocolate"
+				color_combo = Color.Chocolate
+			Case "Coral"
+				color_combo = Color.Coral
+			Case "CornflowerBlue"
+				color_combo = Color.CornflowerBlue
+			Case "Cornsilk"
+				color_combo = Color.Cornsilk
+			Case "Crimson"
+				color_combo = Color.Crimson
+			Case "Cyan"
+				color_combo = Color.Cyan
+			Case "DarkBlue"
+				color_combo = Color.DarkBlue
+			Case "DarkCyan"
+				color_combo = Color.DarkCyan
+			Case "DarkGoldenrod"
+				color_combo = Color.DarkGoldenrod
+			Case "DarkGray"
+				color_combo = Color.DarkGray
+			Case "DarkGreen"
+				color_combo = Color.DarkGreen
+			Case "DarkKhaki"
+				color_combo = Color.DarkKhaki
+			Case "DarkMagenta"
+				color_combo = Color.DarkMagenta
+			Case "DarkOliveGreen"
+				color_combo = Color.DarkOliveGreen
+			Case "DarkOrange"
+				color_combo = Color.DarkOrange
+			Case "DarkOrchid"
+				color_combo = Color.DarkOrchid
+			Case "DarkRed"
+				color_combo = Color.DarkRed
+			Case "DarkSalmon"
+				color_combo = Color.DarkSalmon
+			Case "DarkSeaGreen"
+				color_combo = Color.DarkSeaGreen
+			Case "DarkSlateBlue"
+				color_combo = Color.DarkSlateBlue
+			Case "DarkSlateGray"
+				color_combo = Color.DarkSlateGray
+			Case "DarkTurquoise"
+				color_combo = Color.DarkTurquoise
+			Case "DarkViolet"
+				color_combo = Color.DarkViolet
+			Case "DeepPink"
+				color_combo = Color.DeepPink
+			Case "DeepSkyBlue"
+				color_combo = Color.DeepSkyBlue
+			Case "DodgerBlue"
+				color_combo = Color.DodgerBlue
+			Case "Firebrick"
+				color_combo = Color.Firebrick
+			Case "FloralWhite"
+				color_combo = Color.FloralWhite
+			Case "ForestGreen"
+				color_combo = Color.ForestGreen
+			Case "Fuchsia"
+				color_combo = Color.Fuchsia
+			Case "Gainsboro"
+				color_combo = Color.Gainsboro
+			Case "GhostWhite"
+				color_combo = Color.GhostWhite
+			Case "Goldenrod"
+				color_combo = Color.Goldenrod
+			Case "GreenYellow"
+				color_combo = Color.GreenYellow
+			Case "Honeydew"
+				color_combo = Color.Honeydew
+			Case "HotPink"
+				color_combo = Color.HotPink
+			Case "IndianRed"
+				color_combo = Color.IndianRed
+			Case "Indigo"
+				color_combo = Color.Indigo
+			Case "Ivory"
+				color_combo = Color.Ivory
+			Case "Khaki"
+				color_combo = Color.Khaki
+			Case "Lavender"
+				color_combo = Color.Lavender
+			Case "LavenderBlush"
+				color_combo = Color.LavenderBlush
+			Case "LawnGreen"
+				color_combo = Color.LawnGreen
+			Case "LemonChiffon"
+				color_combo = Color.LemonChiffon
+			Case "LightBlue"
+				color_combo = Color.LightBlue
+			Case "Color.LightCoral"
+				color_combo = Color.LightCoral
+			Case "LightCyan"
+				color_combo = Color.LightCyan
+			Case "LightGoldenrodYellow"
+				color_combo = Color.LightGoldenrodYellow
+			Case "LightGray"
+				color_combo = Color.LightGray
+			Case "LightGreen"
+				color_combo = Color.LightGreen
+			Case "LightPink"
+				color_combo = Color.LightPink
+			Case "LightSalmon"
+				color_combo = Color.LightSalmon
+			Case "LightSeaGreen"
+				color_combo = Color.LightSeaGreen
+			Case "LightSkyBlue"
+				color_combo = Color.LightSkyBlue
+			Case "LightSlateGray"
+				color_combo = Color.LightSlateGray
+			Case "LightSteelBlue"
+				color_combo = Color.LightSteelBlue
+			Case "LightYellow"
+				color_combo = Color.LightYellow
+			Case "Lime"
+				color_combo = Color.Lime
+			Case "LimeGreen"
+				color_combo = Color.LimeGreen
+			Case "Linen"
+				color_combo = Color.Linen
+			Case "Magenta"
+				color_combo = Color.Magenta
+			Case "Maroon"
+				color_combo = Color.Maroon
+			Case "MediumAquamarine"
+				color_combo = Color.MediumAquamarine
+			Case "MediumBlue"
+				color_combo = Color.MediumBlue
+			Case "MediumOrchid"
+				color_combo = Color.MediumOrchid
+			Case "MediumPurple"
+				color_combo = Color.MediumPurple
+			Case "MediumSeaGreen"
+				color_combo = Color.MediumSeaGreen
+			Case "MediumSlateBlue"
+				color_combo = Color.MediumSlateBlue
+			Case "MediumSpringGreen"
+				color_combo = Color.MediumSpringGreen
+			Case "MediumTurquoise"
+				color_combo = Color.MediumTurquoise
+			Case "MediumVioletRed"
+				color_combo = Color.MediumVioletRed
+			Case "MidnightBlue"
+				color_combo = Color.MidnightBlue
+			Case "MintCream"
+				color_combo = Color.MintCream
+			Case "MistyRose"
+				color_combo = Color.MistyRose
+			Case "Moccasin"
+				color_combo = Color.Moccasin
+			Case "NavajoWhite"
+				color_combo = Color.NavajoWhite
+			Case "Navy"
+				color_combo = Color.Navy
+			Case "OldLace"
+				color_combo = Color.OldLace
+			Case "Olive"
+				color_combo = Color.Olive
+			Case "OliveDrab"
+				color_combo = Color.OliveDrab
+			Case "OrangeRed"
+				color_combo = Color.OrangeRed
+			Case "Orchid"
+				color_combo = Color.Orchid
+			Case "PaleGoldenrod"
+				color_combo = Color.PaleGoldenrod
+			Case "PaleGreen"
+				color_combo = Color.PaleGreen
+			Case "PaleTurquoise"
+				color_combo = Color.PaleTurquoise
+			Case "PaleVioletRed"
+				color_combo = Color.PaleVioletRed
+			Case "PapayaWhip"
+				color_combo = Color.PapayaWhip
+			Case "PeachPuff"
+				color_combo = Color.PeachPuff
+			Case "Peru"
+				color_combo = Color.Peru
+			Case "Plum"
+				color_combo = Color.Plum
+			Case "PowderBlue"
+				color_combo = Color.PowderBlue
+			Case "RosyBrown"
+				color_combo = Color.RosyBrown
+			Case "RoyalBlue"
+				color_combo = Color.RoyalBlue
+			Case "SaddleBrown"
+				color_combo = Color.SaddleBrown
+			Case "Salmon"
+				color_combo = Color.Salmon
+			Case "SandyBrown"
+				color_combo = Color.SandyBrown
+			Case "SeaGreen"
+				color_combo = Color.SeaGreen
+			Case "SeaShell"
+				color_combo = Color.SeaShell
+			Case "Sienna"
+				color_combo = Color.Sienna
+			Case "SkyBlue"
+				color_combo = Color.SkyBlue
+			Case "SlateBlue"
+				color_combo = Color.SlateBlue
+			Case "SlateGray"
+				color_combo = Color.SlateGray
+			Case "Snow"
+				color_combo = Color.Snow
+			Case "SpringGreen"
+				color_combo = Color.SpringGreen
+			Case "SteelBlue"
+				color_combo = Color.SteelBlue
+			Case "Tan"
+				color_combo = Color.Tan
+			Case "Teal"
+				color_combo = Color.Teal
+			Case "Thistle"
+				color_combo = Color.Thistle
+			Case "Tomato"
+				color_combo = Color.Tomato
+			Case "Turquoise"
+				color_combo = Color.Turquoise
+			Case "Wheat"
+				color_combo = Color.Wheat
+			Case "WhiteSmoke"
+				color_combo = Color.WhiteSmoke
+			Case "YellowGreen"
+				color_combo = Color.YellowGreen
+		End Select
+		TabPage3.BackColor = color_combo
+		Uploader.BackColor = color_combo
+		Color_Combobox.BackColor = color_combo
+		Languaje.BackColor = color_combo
+		TabPage1.BackColor = color_combo
+		TabPage2.BackColor = color_combo
+		ListView2.BackColor = color_combo
+		List_Download.BackColor = color_combo
+		ComboBox4.BackColor = color_combo
+		ComboBox3.BackColor = color_combo
+		Button1.BackColor = color_combo
+		TextBox2.BackColor = color_combo
+		i.BackColor = color_combo
+		i2.BackColor = color_combo
+		i3.BackColor = color_combo
+		TextBox3.BackColor = color_combo
+		TextBox4.BackColor = color_combo
+		TextBox6.BackColor = color_combo
+		TextBox5.BackColor = color_combo
+		ID_Game.BackColor = color_combo
+		TextBox8.BackColor = color_combo
+		LinkLicense_Text.BackColor = color_combo
+		Upload_Add_item.BackColor = color_combo
+		TextBox7.BackColor = color_combo
+		PictureBox2.BackColor = color_combo
+		PictureBox3.BackColor = color_combo
+		Search_Label.BackColor = color_combo
+		TextBox1.BackColor = color_combo
+		Companya_Combo.BackColor = color_combo
+		ComboBox1.BackColor = color_combo
+		Load_Image_button.BackColor = color_combo
+		Name_Game_Label.BackColor = color_combo
+		Type_label.BackColor = color_combo
+		Format_label.BackColor = color_combo
+		User_label.BackColor = color_combo
+		Version_label.BackColor = color_combo
+		Region_label.BackColor = color_combo
+		DownParts.BackColor = color_combo
+		Button2.BackColor = color_combo
+		Button_Download.BackColor = color_combo
+		Report.BackColor = color_combo
+		Progres_KB.BackColor = color_combo
+		ListView99.BackColor = color_combo
+		List1.BackColor = color_combo
+		ComboBox2.BackColor = color_combo
+		MyToolStrip.BackColor = color_combo
+
+		ini.SetKeyValue("Config", "Color", Color_Combobox.Text)
+		ini.Save(Application.StartupPath & "\List\Config.ini")
+
+		If BackGround_Image = True Then
+			If Dir(Application.StartupPath & "\Picture.png", vbDirectory) = "" Then
+			Else
+				Dim Dir_Image As String = Application.StartupPath & "\Picture.png"
+				PictureBox2.BackColor = Color.Transparent
+				PictureBox3.BackColor = Color.Transparent
+			End If
+		End If
+	End Sub
+
+	Private Sub Background_image_checkbox_CheckedChanged(sender As Object, e As EventArgs) Handles background_image_checkbox.CheckedChanged
+		If background_image_checkbox.CheckState = 1 Then
+			'load_images_games = True
+			Select_Image.Visible = True
+			Label2.Visible = True
+			ini.SetKeyValue("Config", "BackGroundImage", "True")
+			ini.Save(Application.StartupPath & "\List\Config.ini")
+			BackGround_Image = True
+			If BackGround_Image = True Then
+				If Dir(Application.StartupPath & "\Picture.png", vbDirectory) = "" Then
+				Else
+					Dim Dir_Image As String = Application.StartupPath & "\Picture.png"
+					TabPage3.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+					TabPage1.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+					TabPage2.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+					List_Download.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+					PictureBox2.BackColor = Color.Transparent
+					PictureBox3.BackColor = Color.Transparent
+				End If
+			End If
+		End If
+		If background_image_checkbox.CheckState = 0 Then
+			'load_images_games = False
+			Select_Image.Visible = False
+			ini.SetKeyValue("Config", "BackGroundImage", "False")
+			ini.Save(Application.StartupPath & "\List\Config.ini")
+			BackGround_Image = False
+			Label2.Visible = False
+			TabPage3.BackgroundImage = Nothing
+			TabPage1.BackgroundImage = Nothing
+			TabPage2.BackgroundImage = Nothing
+			List_Download.BackgroundImage = Nothing
+
+			Dim color_combo As Color
+			Select Case Color_ini
+				Case "White"
+					color_combo = Color.White
+				Case "WhiteSmoke"
+					color_combo = Color.WhiteSmoke
+				Case "BlanchedAlmond"
+					color_combo = Color.BlanchedAlmond
+				Case "Gray"
+					color_combo = Color.Gray
+				Case "DimGray"
+					color_combo = Color.DimGray
+				Case "Red"
+					color_combo = Color.Red
+				Case "Blue"
+					color_combo = Color.Blue
+				Case "Yellow"
+					color_combo = Color.Yellow
+				Case "Green"
+					color_combo = Color.Green
+				Case "Orange"
+					color_combo = Color.Orange
+				Case "Brown"
+					color_combo = Color.Brown
+				Case "Pink"
+					color_combo = Color.Pink
+				Case "Violet"
+					color_combo = Color.Violet
+				Case "Purple"
+					color_combo = Color.Purple
+				Case "Golden"
+					color_combo = Color.Gold
+				Case "Silver"
+					color_combo = Color.Silver
+				Case "Aqua"
+					color_combo = Color.Aqua
+				Case "AntiqueWhite"
+					color_combo = Color.AntiqueWhite
+				Case "AntiqueWhite"
+					color_combo = Color.AntiqueWhite
+				Case "Aquamarine"
+					color_combo = Color.Aquamarine
+				Case "Azure"
+					color_combo = Color.Azure
+				Case "Beige"
+					color_combo = Color.Beige
+				Case "Bisque"
+					color_combo = Color.Bisque
+				Case "BlanchedAlmond"
+					color_combo = Color.BlanchedAlmond
+				Case "BlueViolet"
+					color_combo = Color.BlueViolet
+				Case "BurlyWood"
+					color_combo = Color.BurlyWood
+				Case "CadetBlue"
+					color_combo = Color.CadetBlue
+				Case "Chartreuse"
+					color_combo = Color.Chartreuse
+				Case "Chartreuse"
+					color_combo = Color.Chartreuse
+				Case "Chocolate"
+					color_combo = Color.Chocolate
+				Case "Coral"
+					color_combo = Color.Coral
+				Case "CornflowerBlue"
+					color_combo = Color.CornflowerBlue
+				Case "Cornsilk"
+					color_combo = Color.Cornsilk
+				Case "Crimson"
+					color_combo = Color.Crimson
+				Case "Cyan"
+					color_combo = Color.Cyan
+				Case "DarkBlue"
+					color_combo = Color.DarkBlue
+				Case "DarkCyan"
+					color_combo = Color.DarkCyan
+				Case "DarkGoldenrod"
+					color_combo = Color.DarkGoldenrod
+				Case "DarkGray"
+					color_combo = Color.DarkGray
+				Case "DarkGreen"
+					color_combo = Color.DarkGreen
+				Case "DarkKhaki"
+					color_combo = Color.DarkKhaki
+				Case "DarkMagenta"
+					color_combo = Color.DarkMagenta
+				Case "DarkOliveGreen"
+					color_combo = Color.DarkOliveGreen
+				Case "DarkOrange"
+					color_combo = Color.DarkOrange
+				Case "DarkOrchid"
+					color_combo = Color.DarkOrchid
+				Case "DarkRed"
+					color_combo = Color.DarkRed
+				Case "DarkSalmon"
+					color_combo = Color.DarkSalmon
+				Case "DarkSeaGreen"
+					color_combo = Color.DarkSeaGreen
+				Case "DarkSlateBlue"
+					color_combo = Color.DarkSlateBlue
+				Case "DarkSlateGray"
+					color_combo = Color.DarkSlateGray
+				Case "DarkTurquoise"
+					color_combo = Color.DarkTurquoise
+				Case "DarkViolet"
+					color_combo = Color.DarkViolet
+				Case "DeepPink"
+					color_combo = Color.DeepPink
+				Case "DeepSkyBlue"
+					color_combo = Color.DeepSkyBlue
+				Case "DodgerBlue"
+					color_combo = Color.DodgerBlue
+				Case "Firebrick"
+					color_combo = Color.Firebrick
+				Case "FloralWhite"
+					color_combo = Color.FloralWhite
+				Case "ForestGreen"
+					color_combo = Color.ForestGreen
+				Case "Fuchsia"
+					color_combo = Color.Fuchsia
+				Case "Gainsboro"
+					color_combo = Color.Gainsboro
+				Case "GhostWhite"
+					color_combo = Color.GhostWhite
+				Case "Goldenrod"
+					color_combo = Color.Goldenrod
+				Case "GreenYellow"
+					color_combo = Color.GreenYellow
+				Case "Honeydew"
+					color_combo = Color.Honeydew
+				Case "HotPink"
+					color_combo = Color.HotPink
+				Case "IndianRed"
+					color_combo = Color.IndianRed
+				Case "Indigo"
+					color_combo = Color.Indigo
+				Case "Ivory"
+					color_combo = Color.Ivory
+				Case "Khaki"
+					color_combo = Color.Khaki
+				Case "Lavender"
+					color_combo = Color.Lavender
+				Case "LavenderBlush"
+					color_combo = Color.LavenderBlush
+				Case "LawnGreen"
+					color_combo = Color.LawnGreen
+				Case "LemonChiffon"
+					color_combo = Color.LemonChiffon
+				Case "LightBlue"
+					color_combo = Color.LightBlue
+				Case "Color.LightCoral"
+					color_combo = Color.LightCoral
+				Case "LightCyan"
+					color_combo = Color.LightCyan
+				Case "LightGoldenrodYellow"
+					color_combo = Color.LightGoldenrodYellow
+				Case "LightGray"
+					color_combo = Color.LightGray
+				Case "LightGreen"
+					color_combo = Color.LightGreen
+				Case "LightPink"
+					color_combo = Color.LightPink
+				Case "LightSalmon"
+					color_combo = Color.LightSalmon
+				Case "LightSeaGreen"
+					color_combo = Color.LightSeaGreen
+				Case "LightSkyBlue"
+					color_combo = Color.LightSkyBlue
+				Case "LightSlateGray"
+					color_combo = Color.LightSlateGray
+				Case "LightSteelBlue"
+					color_combo = Color.LightSteelBlue
+				Case "LightYellow"
+					color_combo = Color.LightYellow
+				Case "Lime"
+					color_combo = Color.Lime
+				Case "LimeGreen"
+					color_combo = Color.LimeGreen
+				Case "Linen"
+					color_combo = Color.Linen
+				Case "Magenta"
+					color_combo = Color.Magenta
+				Case "Maroon"
+					color_combo = Color.Maroon
+				Case "MediumAquamarine"
+					color_combo = Color.MediumAquamarine
+				Case "MediumBlue"
+					color_combo = Color.MediumBlue
+				Case "MediumOrchid"
+					color_combo = Color.MediumOrchid
+				Case "MediumPurple"
+					color_combo = Color.MediumPurple
+				Case "MediumSeaGreen"
+					color_combo = Color.MediumSeaGreen
+				Case "MediumSlateBlue"
+					color_combo = Color.MediumSlateBlue
+				Case "MediumSpringGreen"
+					color_combo = Color.MediumSpringGreen
+				Case "MediumTurquoise"
+					color_combo = Color.MediumTurquoise
+				Case "MediumVioletRed"
+					color_combo = Color.MediumVioletRed
+				Case "MidnightBlue"
+					color_combo = Color.MidnightBlue
+				Case "MintCream"
+					color_combo = Color.MintCream
+				Case "MistyRose"
+					color_combo = Color.MistyRose
+				Case "Moccasin"
+					color_combo = Color.Moccasin
+				Case "NavajoWhite"
+					color_combo = Color.NavajoWhite
+				Case "Navy"
+					color_combo = Color.Navy
+				Case "OldLace"
+					color_combo = Color.OldLace
+				Case "Olive"
+					color_combo = Color.Olive
+				Case "OliveDrab"
+					color_combo = Color.OliveDrab
+				Case "OrangeRed"
+					color_combo = Color.OrangeRed
+				Case "Orchid"
+					color_combo = Color.Orchid
+				Case "PaleGoldenrod"
+					color_combo = Color.PaleGoldenrod
+				Case "PaleGreen"
+					color_combo = Color.PaleGreen
+				Case "PaleTurquoise"
+					color_combo = Color.PaleTurquoise
+				Case "PaleVioletRed"
+					color_combo = Color.PaleVioletRed
+				Case "PapayaWhip"
+					color_combo = Color.PapayaWhip
+				Case "PeachPuff"
+					color_combo = Color.PeachPuff
+				Case "Peru"
+					color_combo = Color.Peru
+				Case "Plum"
+					color_combo = Color.Plum
+				Case "PowderBlue"
+					color_combo = Color.PowderBlue
+				Case "RosyBrown"
+					color_combo = Color.RosyBrown
+				Case "RoyalBlue"
+					color_combo = Color.RoyalBlue
+				Case "SaddleBrown"
+					color_combo = Color.SaddleBrown
+				Case "Salmon"
+					color_combo = Color.Salmon
+				Case "SandyBrown"
+					color_combo = Color.SandyBrown
+				Case "SeaGreen"
+					color_combo = Color.SeaGreen
+				Case "SeaShell"
+					color_combo = Color.SeaShell
+				Case "Sienna"
+					color_combo = Color.Sienna
+				Case "SkyBlue"
+					color_combo = Color.SkyBlue
+				Case "SlateBlue"
+					color_combo = Color.SlateBlue
+				Case "SlateGray"
+					color_combo = Color.SlateGray
+				Case "Snow"
+					color_combo = Color.Snow
+				Case "SpringGreen"
+					color_combo = Color.SpringGreen
+				Case "SteelBlue"
+					color_combo = Color.SteelBlue
+				Case "Tan"
+					color_combo = Color.Tan
+				Case "Teal"
+					color_combo = Color.Teal
+				Case "Thistle"
+					color_combo = Color.Thistle
+				Case "Tomato"
+					color_combo = Color.Tomato
+				Case "Turquoise"
+					color_combo = Color.Turquoise
+				Case "Wheat"
+					color_combo = Color.Wheat
+				Case "WhiteSmoke"
+					color_combo = Color.WhiteSmoke
+				Case "YellowGreen"
+					color_combo = Color.YellowGreen
+			End Select
+			PictureBox2.BackColor = color_combo
+			PictureBox3.BackColor = color_combo
+		End If
+
+	End Sub
+
+	Private Sub Select_Image_Click(sender As Object, e As EventArgs) Handles Select_Image.Click
+		Dim rutaDefault = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+		Dim fileDefault = "Picture.png"
+
+		Dim abrir As New OpenFileDialog
+		abrir.InitialDirectory = rutaDefault
+		abrir.Filter = "Png|*.png"
+
+		If File.Exists(Path.Combine(rutaDefault, fileDefault)) Then
+			'Nombre de archivo que se cargará por defecto, si existe en la ruta
+			abrir.FileName = fileDefault
+		End If
+
+		If abrir.ShowDialog = DialogResult.OK Then
+			'TextBox1.Text = abrir.FileName
+			'MsgBox(abrir.)
+			TabPage3.BackgroundImage = Nothing
+			TabPage1.BackgroundImage = Nothing
+			TabPage2.BackgroundImage = Nothing
+			Dim Dir_Image As String = Application.StartupPath & "\Picture.png"
+
+
+			If Dir(Application.StartupPath & "\Picture.png", vbDirectory) = "" Then
+				File.Copy(abrir.FileName, Dir_Image)
+			Else
+				File.Copy(abrir.FileName, Application.StartupPath & "\Picture_Remplace.png")
+				Application.Restart()
+			End If
+
+
+			TabPage3.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+			TabPage1.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+			TabPage2.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+			List_Download.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
+		End If
+		'MsgBox(fileDefault)
 	End Sub
 End Class

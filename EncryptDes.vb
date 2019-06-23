@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 
+
 Module EncryptDes
 	Public Function AES_Encrypt(ByVal input As String) As String
 		Dim AES As New System.Security.Cryptography.RijndaelManaged
@@ -21,7 +22,6 @@ Module EncryptDes
 #Disable Warning BC42105 ' La función no devuelve un valor en todas las rutas de código
 	End Function
 #Enable Warning BC42105 ' La función no devuelve un valor en todas las rutas de código
-
 	Public Function AES_Decrypt(ByVal input As String) As String
 		Dim AES As New System.Security.Cryptography.RijndaelManaged
 		Dim Hash_AES As New System.Security.Cryptography.MD5CryptoServiceProvider
