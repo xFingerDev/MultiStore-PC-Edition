@@ -91,6 +91,7 @@ Partial Class Start
 		Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
 		Me.ListView2 = New System.Windows.Forms.ListView()
 		Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+		Me.Button3 = New System.Windows.Forms.Button()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -126,6 +127,7 @@ Partial Class Start
 		'TabPage1
 		'
 		Me.TabPage1.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage1.Controls.Add(Me.Button3)
 		Me.TabPage1.Controls.Add(Me.ListView99)
 		Me.TabPage1.Controls.Add(Me.Search_Label)
 		Me.TabPage1.Controls.Add(Me.Button2)
@@ -815,6 +817,15 @@ Partial Class Start
 		Me.ListView2.UseCompatibleStateImageBehavior = False
 		Me.ListView2.View = System.Windows.Forms.View.Details
 		'
+		'Button3
+		'
+		Me.Button3.Location = New System.Drawing.Point(369, 138)
+		Me.Button3.Name = "Button3"
+		Me.Button3.Size = New System.Drawing.Size(179, 111)
+		Me.Button3.TabIndex = 22
+		Me.Button3.Text = "Button3"
+		Me.Button3.UseVisualStyleBackColor = True
+		'
 		'Start
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -915,4 +926,5 @@ Partial Class Start
 	Friend WithEvents background_image_checkbox As CheckBox
 	Friend WithEvents Select_Image As Button
 	Friend WithEvents Label2 As Label
+	Friend WithEvents Button3 As Button
 End Class

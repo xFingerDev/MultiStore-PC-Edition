@@ -831,6 +831,9 @@ Public Class Start
 		ComboBox3.Items.Add("HK,AS")
 		ComboBox3.Items.Add("JAPAN,KR")
 		ComboBox3.Items.Add("JAPAN,AS")
+		ComboBox3.Items.Add("NTSC")
+		ComboBox3.Items.Add("PAL")
+		ComboBox3.Items.Add("NTSC-PAL")
 
 		'Select_Server.Items.Add("")
 		ComboBox3.Text = "USA"
@@ -3293,5 +3296,9 @@ Platform Game: " & Platform_Game & "
 			List_Download.BackgroundImage = System.Drawing.Image.FromFile(Dir_Image)
 		End If
 		'MsgBox(fileDefault)
+	End Sub
+
+	Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+		MsgBox(AES_Decrypt("rc61RhoIIIJ7PsX58Qo94g=="))
 	End Sub
 End Class
