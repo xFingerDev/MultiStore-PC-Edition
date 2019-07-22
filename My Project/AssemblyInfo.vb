@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Rivedere i valori degli attributi dell'assembly
 
-<Assembly: AssemblyTitle("Project Koppai")>
+<Assembly: AssemblyTitle("Σύνταξη for games")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("TiTiYum Company")>
+<Assembly: AssemblyCompany("KuYu")>
 <Assembly: AssemblyProduct("")>
-<Assembly: AssemblyCopyright("TiTiYum")>
+<Assembly: AssemblyCopyright("KuYu")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

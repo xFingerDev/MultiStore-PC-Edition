@@ -22,6 +22,7 @@ Partial Class Start
 	'No lo modifique con el editor de código.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
+		Me.components = New System.ComponentModel.Container()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Start))
 		Me.PictureBox1 = New System.Windows.Forms.PictureBox()
 		Me.Upload = New System.Windows.Forms.TabControl()
@@ -30,10 +31,7 @@ Partial Class Start
 		Me.Search_Label = New System.Windows.Forms.Label()
 		Me.Button2 = New System.Windows.Forms.Button()
 		Me.Companya_Combo = New System.Windows.Forms.ComboBox()
-		Me.Load_Image_button = New System.Windows.Forms.Button()
 		Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-		Me.Report = New System.Windows.Forms.Button()
-		Me.i3 = New System.Windows.Forms.Button()
 		Me.DownParts = New System.Windows.Forms.ComboBox()
 		Me.Region_label = New System.Windows.Forms.Label()
 		Me.Version_label = New System.Windows.Forms.Label()
@@ -42,8 +40,6 @@ Partial Class Start
 		Me.Type_label = New System.Windows.Forms.Label()
 		Me.Name_Game_Label = New System.Windows.Forms.Label()
 		Me.Button_Download = New System.Windows.Forms.Button()
-		Me.Progres_KB = New System.Windows.Forms.Label()
-		Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
 		Me.List1 = New System.Windows.Forms.ListView()
 		Me.ComboBox1 = New System.Windows.Forms.ComboBox()
 		Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -57,7 +53,6 @@ Partial Class Start
 		Me.PictureBox2 = New System.Windows.Forms.PictureBox()
 		Me.ID_Game = New System.Windows.Forms.TextBox()
 		Me.GameID_Checkbox = New System.Windows.Forms.CheckBox()
-		Me.i = New System.Windows.Forms.Button()
 		Me.ComboBox2 = New System.Windows.Forms.ComboBox()
 		Me.GamePath = New System.Windows.Forms.CheckBox()
 		Me.TextBox6 = New System.Windows.Forms.TextBox()
@@ -73,7 +68,6 @@ Partial Class Start
 		Me.background_image_checkbox = New System.Windows.Forms.CheckBox()
 		Me.CheckBox2 = New System.Windows.Forms.CheckBox()
 		Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-		Me.i2 = New System.Windows.Forms.Button()
 		Me.CreatedBy = New System.Windows.Forms.LinkLabel()
 		Me.Uploader = New System.Windows.Forms.Button()
 		Me.Languaje_Custom = New System.Windows.Forms.TextBox()
@@ -81,17 +75,26 @@ Partial Class Start
 		Me.Languaje = New System.Windows.Forms.ComboBox()
 		Me.Color_Combobox = New System.Windows.Forms.ComboBox()
 		Me.List_Download = New System.Windows.Forms.TabPage()
-		Me.Label1 = New System.Windows.Forms.Label()
 		Me.MyToolStrip = New System.Windows.Forms.ToolStrip()
-		Me.btnResume = New System.Windows.Forms.ToolStripButton()
-		Me.btnResumeAll = New System.Windows.Forms.ToolStripButton()
-		Me.btnPause = New System.Windows.Forms.ToolStripButton()
-		Me.btnPauseAll = New System.Windows.Forms.ToolStripButton()
-		Me.btnRemove = New System.Windows.Forms.ToolStripButton()
+		Me.btnResume1 = New System.Windows.Forms.ToolStripButton()
+		Me.btnResumeAll1 = New System.Windows.Forms.ToolStripButton()
+		Me.btnPause1 = New System.Windows.Forms.ToolStripButton()
+		Me.btnPauseAll1 = New System.Windows.Forms.ToolStripButton()
+		Me.btnRemove1 = New System.Windows.Forms.ToolStripButton()
 		Me.btnRemoveAll = New System.Windows.Forms.ToolStripButton()
-		Me.ListView2 = New System.Windows.Forms.ListView()
 		Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-		Me.Button3 = New System.Windows.Forms.Button()
+		Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+		Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.OpenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.MinimizeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.DownloadsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ResumeAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.PauseAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.RemoveAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+		Me.Uploader_tab = New System.Windows.Forms.CheckBox()
+		Me.ListViewEx = New ProjectKoppai.ListViewExtended()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -101,6 +104,7 @@ Partial Class Start
 		Me.TabPage3.SuspendLayout()
 		Me.List_Download.SuspendLayout()
 		Me.MyToolStrip.SuspendLayout()
+		Me.ContextMenuStrip2.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'PictureBox1
@@ -127,15 +131,11 @@ Partial Class Start
 		'TabPage1
 		'
 		Me.TabPage1.BackColor = System.Drawing.Color.DimGray
-		Me.TabPage1.Controls.Add(Me.Button3)
 		Me.TabPage1.Controls.Add(Me.ListView99)
 		Me.TabPage1.Controls.Add(Me.Search_Label)
 		Me.TabPage1.Controls.Add(Me.Button2)
 		Me.TabPage1.Controls.Add(Me.Companya_Combo)
-		Me.TabPage1.Controls.Add(Me.Load_Image_button)
 		Me.TabPage1.Controls.Add(Me.PictureBox3)
-		Me.TabPage1.Controls.Add(Me.Report)
-		Me.TabPage1.Controls.Add(Me.i3)
 		Me.TabPage1.Controls.Add(Me.DownParts)
 		Me.TabPage1.Controls.Add(Me.Region_label)
 		Me.TabPage1.Controls.Add(Me.Version_label)
@@ -144,8 +144,6 @@ Partial Class Start
 		Me.TabPage1.Controls.Add(Me.Type_label)
 		Me.TabPage1.Controls.Add(Me.Name_Game_Label)
 		Me.TabPage1.Controls.Add(Me.Button_Download)
-		Me.TabPage1.Controls.Add(Me.Progres_KB)
-		Me.TabPage1.Controls.Add(Me.ProgressBar1)
 		Me.TabPage1.Controls.Add(Me.List1)
 		Me.TabPage1.Controls.Add(Me.ComboBox1)
 		Me.TabPage1.Controls.Add(Me.TextBox1)
@@ -162,7 +160,7 @@ Partial Class Start
 		Me.ListView99.FullRowSelect = True
 		Me.ListView99.Location = New System.Drawing.Point(6, 32)
 		Me.ListView99.Name = "ListView99"
-		Me.ListView99.Size = New System.Drawing.Size(752, 441)
+		Me.ListView99.Size = New System.Drawing.Size(752, 468)
 		Me.ListView99.TabIndex = 21
 		Me.ListView99.UseCompatibleStateImageBehavior = False
 		Me.ListView99.View = System.Windows.Forms.View.Details
@@ -179,7 +177,7 @@ Partial Class Start
 		'Button2
 		'
 		Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button2.Location = New System.Drawing.Point(833, 419)
+		Me.Button2.Location = New System.Drawing.Point(838, 446)
 		Me.Button2.Name = "Button2"
 		Me.Button2.Size = New System.Drawing.Size(129, 21)
 		Me.Button2.TabIndex = 19
@@ -194,18 +192,8 @@ Partial Class Start
 		Me.Companya_Combo.FormattingEnabled = True
 		Me.Companya_Combo.Location = New System.Drawing.Point(513, 5)
 		Me.Companya_Combo.Name = "Companya_Combo"
-		Me.Companya_Combo.Size = New System.Drawing.Size(183, 21)
+		Me.Companya_Combo.Size = New System.Drawing.Size(233, 21)
 		Me.Companya_Combo.TabIndex = 18
-		'
-		'Load_Image_button
-		'
-		Me.Load_Image_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Load_Image_button.Location = New System.Drawing.Point(858, 5)
-		Me.Load_Image_button.Name = "Load_Image_button"
-		Me.Load_Image_button.Size = New System.Drawing.Size(78, 23)
-		Me.Load_Image_button.TabIndex = 17
-		Me.Load_Image_button.Text = "Load Image"
-		Me.Load_Image_button.UseVisualStyleBackColor = True
 		'
 		'PictureBox3
 		'
@@ -215,33 +203,13 @@ Partial Class Start
 		Me.PictureBox3.TabIndex = 16
 		Me.PictureBox3.TabStop = False
 		'
-		'Report
-		'
-		Me.Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Report.Location = New System.Drawing.Point(897, 446)
-		Me.Report.Name = "Report"
-		Me.Report.Size = New System.Drawing.Size(65, 27)
-		Me.Report.TabIndex = 15
-		Me.Report.Text = "Report"
-		Me.Report.UseVisualStyleBackColor = True
-		'
-		'i3
-		'
-		Me.i3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.i3.Location = New System.Drawing.Point(942, 6)
-		Me.i3.Name = "i3"
-		Me.i3.Size = New System.Drawing.Size(20, 20)
-		Me.i3.TabIndex = 14
-		Me.i3.Text = "i"
-		Me.i3.UseVisualStyleBackColor = True
-		'
 		'DownParts
 		'
 		Me.DownParts.BackColor = System.Drawing.Color.DimGray
 		Me.DownParts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.DownParts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.DownParts.FormattingEnabled = True
-		Me.DownParts.Location = New System.Drawing.Point(762, 419)
+		Me.DownParts.Location = New System.Drawing.Point(764, 446)
 		Me.DownParts.Name = "DownParts"
 		Me.DownParts.Size = New System.Drawing.Size(65, 21)
 		Me.DownParts.TabIndex = 13
@@ -303,29 +271,12 @@ Partial Class Start
 		'Button_Download
 		'
 		Me.Button_Download.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button_Download.Location = New System.Drawing.Point(762, 446)
+		Me.Button_Download.Location = New System.Drawing.Point(764, 473)
 		Me.Button_Download.Name = "Button_Download"
-		Me.Button_Download.Size = New System.Drawing.Size(129, 27)
+		Me.Button_Download.Size = New System.Drawing.Size(203, 27)
 		Me.Button_Download.TabIndex = 5
 		Me.Button_Download.Text = "Download Game"
 		Me.Button_Download.UseVisualStyleBackColor = True
-		'
-		'Progres_KB
-		'
-		Me.Progres_KB.AutoSize = True
-		Me.Progres_KB.Location = New System.Drawing.Point(765, 485)
-		Me.Progres_KB.Name = "Progres_KB"
-		Me.Progres_KB.Size = New System.Drawing.Size(41, 13)
-		Me.Progres_KB.TabIndex = 4
-		Me.Progres_KB.Text = "0/0 KB"
-		'
-		'ProgressBar1
-		'
-		Me.ProgressBar1.ForeColor = System.Drawing.Color.Fuchsia
-		Me.ProgressBar1.Location = New System.Drawing.Point(10, 481)
-		Me.ProgressBar1.Name = "ProgressBar1"
-		Me.ProgressBar1.Size = New System.Drawing.Size(749, 23)
-		Me.ProgressBar1.TabIndex = 3
 		'
 		'List1
 		'
@@ -333,7 +284,7 @@ Partial Class Start
 		Me.List1.FullRowSelect = True
 		Me.List1.Location = New System.Drawing.Point(6, 32)
 		Me.List1.Name = "List1"
-		Me.List1.Size = New System.Drawing.Size(752, 441)
+		Me.List1.Size = New System.Drawing.Size(752, 468)
 		Me.List1.TabIndex = 2
 		Me.List1.UseCompatibleStateImageBehavior = False
 		Me.List1.View = System.Windows.Forms.View.Details
@@ -344,9 +295,9 @@ Partial Class Start
 		Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.ComboBox1.FormattingEnabled = True
-		Me.ComboBox1.Location = New System.Drawing.Point(702, 5)
+		Me.ComboBox1.Location = New System.Drawing.Point(752, 5)
 		Me.ComboBox1.Name = "ComboBox1"
-		Me.ComboBox1.Size = New System.Drawing.Size(153, 21)
+		Me.ComboBox1.Size = New System.Drawing.Size(215, 21)
 		Me.ComboBox1.TabIndex = 1
 		'
 		'TextBox1
@@ -371,7 +322,6 @@ Partial Class Start
 		Me.TabPage2.Controls.Add(Me.PictureBox2)
 		Me.TabPage2.Controls.Add(Me.ID_Game)
 		Me.TabPage2.Controls.Add(Me.GameID_Checkbox)
-		Me.TabPage2.Controls.Add(Me.i)
 		Me.TabPage2.Controls.Add(Me.ComboBox2)
 		Me.TabPage2.Controls.Add(Me.GamePath)
 		Me.TabPage2.Controls.Add(Me.TextBox6)
@@ -475,17 +425,6 @@ Partial Class Start
 		Me.GameID_Checkbox.Text = "Game has ID? False"
 		Me.GameID_Checkbox.UseVisualStyleBackColor = True
 		'
-		'i
-		'
-		Me.i.BackColor = System.Drawing.Color.DimGray
-		Me.i.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.i.Location = New System.Drawing.Point(304, 135)
-		Me.i.Name = "i"
-		Me.i.Size = New System.Drawing.Size(278, 21)
-		Me.i.TabIndex = 31
-		Me.i.Text = "Link Wiki"
-		Me.i.UseVisualStyleBackColor = False
-		'
 		'ComboBox2
 		'
 		Me.ComboBox2.BackColor = System.Drawing.Color.DimGray
@@ -575,17 +514,17 @@ Partial Class Start
 		Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both
 		Me.TextBox2.Size = New System.Drawing.Size(943, 119)
 		Me.TextBox2.TabIndex = 1
-		Me.TextBox2.Text = "Link Game(Please Read Wiki)"
+		Me.TextBox2.Text = "Link Game(Direct Download)"
 		'
 		'TabPage3
 		'
 		Me.TabPage3.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage3.Controls.Add(Me.Uploader_tab)
 		Me.TabPage3.Controls.Add(Me.Label2)
 		Me.TabPage3.Controls.Add(Me.Select_Image)
 		Me.TabPage3.Controls.Add(Me.background_image_checkbox)
 		Me.TabPage3.Controls.Add(Me.CheckBox2)
 		Me.TabPage3.Controls.Add(Me.CheckBox1)
-		Me.TabPage3.Controls.Add(Me.i2)
 		Me.TabPage3.Controls.Add(Me.CreatedBy)
 		Me.TabPage3.Controls.Add(Me.Uploader)
 		Me.TabPage3.Controls.Add(Me.Languaje_Custom)
@@ -632,7 +571,7 @@ Partial Class Start
 		'CheckBox2
 		'
 		Me.CheckBox2.AutoSize = True
-		Me.CheckBox2.Location = New System.Drawing.Point(520, 120)
+		Me.CheckBox2.Location = New System.Drawing.Point(9, 79)
 		Me.CheckBox2.Name = "CheckBox2"
 		Me.CheckBox2.Size = New System.Drawing.Size(194, 17)
 		Me.CheckBox2.TabIndex = 8
@@ -650,26 +589,16 @@ Partial Class Start
 		Me.CheckBox1.Text = "UnLoad Images games (Less lag if your internet is not good)"
 		Me.CheckBox1.UseVisualStyleBackColor = True
 		'
-		'i2
-		'
-		Me.i2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.i2.Location = New System.Drawing.Point(940, 6)
-		Me.i2.Name = "i2"
-		Me.i2.Size = New System.Drawing.Size(22, 21)
-		Me.i2.TabIndex = 6
-		Me.i2.Text = "i"
-		Me.i2.UseVisualStyleBackColor = True
-		'
 		'CreatedBy
 		'
 		Me.CreatedBy.AutoSize = True
-		Me.CreatedBy.LinkColor = System.Drawing.Color.Fuchsia
-		Me.CreatedBy.Location = New System.Drawing.Point(864, 499)
+		Me.CreatedBy.LinkColor = System.Drawing.Color.DarkRed
+		Me.CreatedBy.Location = New System.Drawing.Point(868, 490)
 		Me.CreatedBy.Name = "CreatedBy"
-		Me.CreatedBy.Size = New System.Drawing.Size(104, 13)
+		Me.CreatedBy.Size = New System.Drawing.Size(91, 13)
 		Me.CreatedBy.TabIndex = 5
 		Me.CreatedBy.TabStop = True
-		Me.CreatedBy.Text = "Created By: TiTiYum"
+		Me.CreatedBy.Text = "Created By: KuYu"
 		'
 		'Uploader
 		'
@@ -718,7 +647,7 @@ Partial Class Start
 		Me.Color_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.Color_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.Color_Combobox.FormattingEnabled = True
-		Me.Color_Combobox.Location = New System.Drawing.Point(9, 58)
+		Me.Color_Combobox.Location = New System.Drawing.Point(6, 102)
 		Me.Color_Combobox.Name = "Color_Combobox"
 		Me.Color_Combobox.Size = New System.Drawing.Size(317, 21)
 		Me.Color_Combobox.TabIndex = 0
@@ -726,9 +655,8 @@ Partial Class Start
 		'List_Download
 		'
 		Me.List_Download.BackColor = System.Drawing.Color.DimGray
-		Me.List_Download.Controls.Add(Me.Label1)
+		Me.List_Download.Controls.Add(Me.ListViewEx)
 		Me.List_Download.Controls.Add(Me.MyToolStrip)
-		Me.List_Download.Controls.Add(Me.ListView2)
 		Me.List_Download.Location = New System.Drawing.Point(4, 22)
 		Me.List_Download.Name = "List_Download"
 		Me.List_Download.Padding = New System.Windows.Forms.Padding(3)
@@ -736,67 +664,58 @@ Partial Class Start
 		Me.List_Download.TabIndex = 3
 		Me.List_Download.Text = "List Download"
 		'
-		'Label1
-		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(287, 138)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(312, 46)
-		Me.Label1.TabIndex = 1
-		Me.Label1.Text = "COMING SOON"
-		'
 		'MyToolStrip
 		'
 		Me.MyToolStrip.BackColor = System.Drawing.Color.DimGray
-		Me.MyToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnResume, Me.btnResumeAll, Me.btnPause, Me.btnPauseAll, Me.btnRemove, Me.btnRemoveAll})
+		Me.MyToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+		Me.MyToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnResume1, Me.btnResumeAll1, Me.btnPause1, Me.btnPauseAll1, Me.btnRemove1, Me.btnRemoveAll})
 		Me.MyToolStrip.Location = New System.Drawing.Point(3, 3)
 		Me.MyToolStrip.Name = "MyToolStrip"
 		Me.MyToolStrip.Size = New System.Drawing.Size(967, 25)
 		Me.MyToolStrip.TabIndex = 0
 		Me.MyToolStrip.Text = "ToolStrip1"
 		'
-		'btnResume
+		'btnResume1
 		'
-		Me.btnResume.Image = CType(resources.GetObject("btnResume.Image"), System.Drawing.Image)
-		Me.btnResume.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.btnResume.Name = "btnResume"
-		Me.btnResume.Size = New System.Drawing.Size(69, 22)
-		Me.btnResume.Text = "Resume"
-		Me.btnResume.ToolTipText = "Resume"
+		Me.btnResume1.Image = CType(resources.GetObject("btnResume1.Image"), System.Drawing.Image)
+		Me.btnResume1.ImageTransparentColor = System.Drawing.Color.Magenta
+		Me.btnResume1.Name = "btnResume1"
+		Me.btnResume1.Size = New System.Drawing.Size(69, 22)
+		Me.btnResume1.Text = "Resume"
+		Me.btnResume1.ToolTipText = "Resume1"
 		'
-		'btnResumeAll
+		'btnResumeAll1
 		'
-		Me.btnResumeAll.Image = CType(resources.GetObject("btnResumeAll.Image"), System.Drawing.Image)
-		Me.btnResumeAll.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.btnResumeAll.Name = "btnResumeAll"
-		Me.btnResumeAll.Size = New System.Drawing.Size(86, 22)
-		Me.btnResumeAll.Text = "Resume All"
+		Me.btnResumeAll1.Image = CType(resources.GetObject("btnResumeAll1.Image"), System.Drawing.Image)
+		Me.btnResumeAll1.ImageTransparentColor = System.Drawing.Color.Magenta
+		Me.btnResumeAll1.Name = "btnResumeAll1"
+		Me.btnResumeAll1.Size = New System.Drawing.Size(86, 22)
+		Me.btnResumeAll1.Text = "Resume All"
 		'
-		'btnPause
+		'btnPause1
 		'
-		Me.btnPause.Image = CType(resources.GetObject("btnPause.Image"), System.Drawing.Image)
-		Me.btnPause.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.btnPause.Name = "btnPause"
-		Me.btnPause.Size = New System.Drawing.Size(58, 22)
-		Me.btnPause.Text = "Pause"
-		Me.btnPause.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+		Me.btnPause1.Image = CType(resources.GetObject("btnPause1.Image"), System.Drawing.Image)
+		Me.btnPause1.ImageTransparentColor = System.Drawing.Color.Magenta
+		Me.btnPause1.Name = "btnPause1"
+		Me.btnPause1.Size = New System.Drawing.Size(58, 22)
+		Me.btnPause1.Text = "Pause"
+		Me.btnPause1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
 		'
-		'btnPauseAll
+		'btnPauseAll1
 		'
-		Me.btnPauseAll.Image = CType(resources.GetObject("btnPauseAll.Image"), System.Drawing.Image)
-		Me.btnPauseAll.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.btnPauseAll.Name = "btnPauseAll"
-		Me.btnPauseAll.Size = New System.Drawing.Size(75, 22)
-		Me.btnPauseAll.Text = "Pause All"
+		Me.btnPauseAll1.Image = CType(resources.GetObject("btnPauseAll1.Image"), System.Drawing.Image)
+		Me.btnPauseAll1.ImageTransparentColor = System.Drawing.Color.Magenta
+		Me.btnPauseAll1.Name = "btnPauseAll1"
+		Me.btnPauseAll1.Size = New System.Drawing.Size(75, 22)
+		Me.btnPauseAll1.Text = "Pause All"
 		'
-		'btnRemove
+		'btnRemove1
 		'
-		Me.btnRemove.Image = CType(resources.GetObject("btnRemove.Image"), System.Drawing.Image)
-		Me.btnRemove.ImageTransparentColor = System.Drawing.Color.Magenta
-		Me.btnRemove.Name = "btnRemove"
-		Me.btnRemove.Size = New System.Drawing.Size(70, 22)
-		Me.btnRemove.Text = "Remove"
+		Me.btnRemove1.Image = CType(resources.GetObject("btnRemove1.Image"), System.Drawing.Image)
+		Me.btnRemove1.ImageTransparentColor = System.Drawing.Color.Magenta
+		Me.btnRemove1.Name = "btnRemove1"
+		Me.btnRemove1.Size = New System.Drawing.Size(70, 22)
+		Me.btnRemove1.Text = "Remove"
 		'
 		'btnRemoveAll
 		'
@@ -806,39 +725,107 @@ Partial Class Start
 		Me.btnRemoveAll.Size = New System.Drawing.Size(87, 22)
 		Me.btnRemoveAll.Text = "Remove All"
 		'
-		'ListView2
+		'NotifyIcon1
 		'
-		Me.ListView2.BackColor = System.Drawing.Color.DimGray
-		Me.ListView2.FullRowSelect = True
-		Me.ListView2.Location = New System.Drawing.Point(0, 31)
-		Me.ListView2.Name = "ListView2"
-		Me.ListView2.Size = New System.Drawing.Size(965, 469)
-		Me.ListView2.TabIndex = 26
-		Me.ListView2.UseCompatibleStateImageBehavior = False
-		Me.ListView2.View = System.Windows.Forms.View.Details
+		Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip2
+		Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+		Me.NotifyIcon1.Text = "Σύνταξη for games"
+		Me.NotifyIcon1.Visible = True
 		'
-		'Button3
+		'ContextMenuStrip2
 		'
-		Me.Button3.Location = New System.Drawing.Point(369, 138)
-		Me.Button3.Name = "Button3"
-		Me.Button3.Size = New System.Drawing.Size(179, 111)
-		Me.Button3.TabIndex = 22
-		Me.Button3.Text = "Button3"
-		Me.Button3.UseVisualStyleBackColor = True
+		Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem1, Me.MinimizeToolStripMenuItem1, Me.DownloadsToolStripMenuItem, Me.AboutToolStripMenuItem1, Me.ExitToolStripMenuItem1})
+		Me.ContextMenuStrip2.Name = "ContextMenuStrip1"
+		Me.ContextMenuStrip2.Size = New System.Drawing.Size(134, 114)
+		'
+		'OpenToolStripMenuItem1
+		'
+		Me.OpenToolStripMenuItem1.Name = "OpenToolStripMenuItem1"
+		Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
+		Me.OpenToolStripMenuItem1.Text = "Open"
+		'
+		'MinimizeToolStripMenuItem1
+		'
+		Me.MinimizeToolStripMenuItem1.Name = "MinimizeToolStripMenuItem1"
+		Me.MinimizeToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
+		Me.MinimizeToolStripMenuItem1.Text = "Minimize"
+		'
+		'DownloadsToolStripMenuItem
+		'
+		Me.DownloadsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResumeAllToolStripMenuItem, Me.PauseAllToolStripMenuItem, Me.RemoveAllToolStripMenuItem})
+		Me.DownloadsToolStripMenuItem.Name = "DownloadsToolStripMenuItem"
+		Me.DownloadsToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+		Me.DownloadsToolStripMenuItem.Text = "Downloads"
+		'
+		'ResumeAllToolStripMenuItem
+		'
+		Me.ResumeAllToolStripMenuItem.Name = "ResumeAllToolStripMenuItem"
+		Me.ResumeAllToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+		Me.ResumeAllToolStripMenuItem.Text = "Resume All"
+		'
+		'PauseAllToolStripMenuItem
+		'
+		Me.PauseAllToolStripMenuItem.Name = "PauseAllToolStripMenuItem"
+		Me.PauseAllToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+		Me.PauseAllToolStripMenuItem.Text = "Pause All"
+		'
+		'RemoveAllToolStripMenuItem
+		'
+		Me.RemoveAllToolStripMenuItem.Name = "RemoveAllToolStripMenuItem"
+		Me.RemoveAllToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+		Me.RemoveAllToolStripMenuItem.Text = "Remove All"
+		'
+		'AboutToolStripMenuItem1
+		'
+		Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
+		Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
+		Me.AboutToolStripMenuItem1.Text = "About"
+		'
+		'ExitToolStripMenuItem1
+		'
+		Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
+		Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
+		Me.ExitToolStripMenuItem1.Text = "Exit"
+		'
+		'Uploader_tab
+		'
+		Me.Uploader_tab.AutoSize = True
+		Me.Uploader_tab.Location = New System.Drawing.Point(9, 56)
+		Me.Uploader_tab.Name = "Uploader_tab"
+		Me.Uploader_tab.Size = New System.Drawing.Size(99, 17)
+		Me.Uploader_tab.TabIndex = 12
+		Me.Uploader_tab.Text = "Show Uploader"
+		Me.Uploader_tab.UseVisualStyleBackColor = True
+		'
+		'ListViewEx
+		'
+		Me.ListViewEx.BackColor = System.Drawing.Color.DimGray
+		Me.ListViewEx.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.ListViewEx.FullRowSelect = True
+		Me.ListViewEx.Location = New System.Drawing.Point(3, 28)
+		Me.ListViewEx.Name = "ListViewEx"
+		Me.ListViewEx.OwnerDraw = True
+		Me.ListViewEx.ShowItemToolTips = True
+		Me.ListViewEx.Size = New System.Drawing.Size(967, 505)
+		Me.ListViewEx.TabIndex = 1
+		Me.ListViewEx.UseCompatibleStateImageBehavior = False
+		Me.ListViewEx.View = System.Windows.Forms.View.Details
 		'
 		'Start
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+		Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
 		Me.ClientSize = New System.Drawing.Size(969, 534)
 		Me.Controls.Add(Me.Upload)
 		Me.Controls.Add(Me.PictureBox1)
-		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
 		Me.HelpButton = True
+		Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
 		Me.MaximumSize = New System.Drawing.Size(985, 573)
 		Me.Name = "Start"
-		Me.Text = "Project Koppai v2.3"
+		Me.Text = "Σύνταξη for games v1"
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.Upload.ResumeLayout(False)
 		Me.TabPage1.ResumeLayout(False)
@@ -853,6 +840,7 @@ Partial Class Start
 		Me.List_Download.PerformLayout()
 		Me.MyToolStrip.ResumeLayout(False)
 		Me.MyToolStrip.PerformLayout()
+		Me.ContextMenuStrip2.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -864,8 +852,6 @@ Partial Class Start
 	Friend WithEvents TextBox1 As TextBox
 	Friend WithEvents TabPage3 As TabPage
 	Friend WithEvents Button_Download As Button
-	Friend WithEvents Progres_KB As Label
-	Friend WithEvents ProgressBar1 As ProgressBar
 	Friend WithEvents List1 As ListView
 	Friend WithEvents Uploader As Button
 	Friend WithEvents Languaje_Custom As TextBox
@@ -889,31 +875,17 @@ Partial Class Start
 	Friend WithEvents Name_Game_Label As Label
 	Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 	Friend WithEvents List_Download As TabPage
-	Friend WithEvents MyToolStrip As ToolStrip
-	Friend WithEvents btnResume As ToolStripButton
-	Friend WithEvents btnResumeAll As ToolStripButton
-	Friend WithEvents btnPause As ToolStripButton
-	Friend WithEvents btnPauseAll As ToolStripButton
-	Friend WithEvents btnRemove As ToolStripButton
-	Friend WithEvents btnRemoveAll As ToolStripButton
-	Friend WithEvents Label1 As Label
 	Friend WithEvents GamePath As CheckBox
 	Friend WithEvents Parte As TextBox
 	Friend WithEvents ComboBox2 As ComboBox
 	Friend WithEvents DownParts As ComboBox
-	Friend WithEvents i As Button
-	Friend WithEvents i2 As Button
-	Friend WithEvents i3 As Button
-	Friend WithEvents Report As Button
 	Friend WithEvents GameID_Checkbox As CheckBox
 	Friend WithEvents ID_Game As TextBox
 	Friend WithEvents TextBox7 As TextBox
 	Friend WithEvents PictureBox2 As PictureBox
 	Friend WithEvents PictureBox3 As PictureBox
 	Friend WithEvents CheckBox1 As CheckBox
-	Friend WithEvents Load_Image_button As Button
 	Friend WithEvents CheckBox2 As CheckBox
-	Friend WithEvents ListView2 As ListView
 	Friend WithEvents Button1 As Button
 	Friend WithEvents Companya_Combo As ComboBox
 	Friend WithEvents ComboBox4 As ComboBox
@@ -926,5 +898,23 @@ Partial Class Start
 	Friend WithEvents background_image_checkbox As CheckBox
 	Friend WithEvents Select_Image As Button
 	Friend WithEvents Label2 As Label
-	Friend WithEvents Button3 As Button
+	Friend WithEvents NotifyIcon1 As NotifyIcon
+	Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
+	Friend WithEvents OpenToolStripMenuItem1 As ToolStripMenuItem
+	Friend WithEvents DownloadsToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents ResumeAllToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents PauseAllToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
+	Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
+	Friend WithEvents MinimizeToolStripMenuItem1 As ToolStripMenuItem
+	Friend WithEvents RemoveAllToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents ListViewEx As ListViewExtended
+	Friend WithEvents btnResume1 As ToolStripButton
+	Friend WithEvents btnResumeAll1 As ToolStripButton
+	Friend WithEvents btnPause1 As ToolStripButton
+	Friend WithEvents btnPauseAll1 As ToolStripButton
+	Friend WithEvents btnRemove1 As ToolStripButton
+	Friend WithEvents btnRemoveAll As ToolStripButton
+	Friend WithEvents MyToolStrip As ToolStrip
+	Friend WithEvents Uploader_tab As CheckBox
 End Class

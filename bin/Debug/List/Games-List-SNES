@@ -878,19 +878,6 @@
         "LicenseExist": "False",
         "LinkLisense": "",
         "FormatLisense": ""
-    },
-    {
-        "Name": "",
-        "Type": "",
-        "Format": "",
-        "User": "",
-        "Version": "",
-        "Region": "",
-        "Encrypt": "",
-        "N_Part": "1",
-        "LicenseExist": "False",
-        "LinkLisense": "",
-        "FormatLisense": ""
     }
 
 ]
