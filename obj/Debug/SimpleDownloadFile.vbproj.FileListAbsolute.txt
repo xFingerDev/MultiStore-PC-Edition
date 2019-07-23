@@ -60,3 +60,19 @@ C:\Users\Dara\source\repos\MultiStore-PC-Edition\bin\Debug\Σύνταξη for ga
 C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.exe
 C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.xml
 C:\Users\Dara\source\repos\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe.config
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.exe
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Σύνταξη for games.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\bin\Debug\Newtonsoft.Json.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbprojAssemblyReference.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Inicio.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Resources.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Start.resources
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.GenerateResource.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CoreCompileInputs.cache
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\SimpleDownloadFile.vbproj.CopyComplete
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.exe
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.xml
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.pdb

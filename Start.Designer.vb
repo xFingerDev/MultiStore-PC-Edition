@@ -63,6 +63,8 @@ Partial Class Start
 		Me.Upload_Add_item = New System.Windows.Forms.Button()
 		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.TabPage3 = New System.Windows.Forms.TabPage()
+		Me.Button3 = New System.Windows.Forms.Button()
+		Me.Uploader_tab = New System.Windows.Forms.CheckBox()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Select_Image = New System.Windows.Forms.Button()
 		Me.background_image_checkbox = New System.Windows.Forms.CheckBox()
@@ -72,7 +74,6 @@ Partial Class Start
 		Me.Uploader = New System.Windows.Forms.Button()
 		Me.Languaje_Custom = New System.Windows.Forms.TextBox()
 		Me.Custom_Color = New System.Windows.Forms.TextBox()
-		Me.Languaje = New System.Windows.Forms.ComboBox()
 		Me.Color_Combobox = New System.Windows.Forms.ComboBox()
 		Me.List_Download = New System.Windows.Forms.TabPage()
 		Me.MyToolStrip = New System.Windows.Forms.ToolStrip()
@@ -93,8 +94,9 @@ Partial Class Start
 		Me.RemoveAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-		Me.Uploader_tab = New System.Windows.Forms.CheckBox()
+		Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
 		Me.ListViewEx = New ProjectKoppai.ListViewExtended()
+		Me.Languaje_Combobox = New System.Windows.Forms.ComboBox()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -158,6 +160,7 @@ Partial Class Start
 		'
 		Me.ListView99.BackColor = System.Drawing.Color.DimGray
 		Me.ListView99.FullRowSelect = True
+		Me.ListView99.HideSelection = False
 		Me.ListView99.Location = New System.Drawing.Point(6, 32)
 		Me.ListView99.Name = "ListView99"
 		Me.ListView99.Size = New System.Drawing.Size(752, 468)
@@ -282,6 +285,7 @@ Partial Class Start
 		'
 		Me.List1.BackColor = System.Drawing.Color.DimGray
 		Me.List1.FullRowSelect = True
+		Me.List1.HideSelection = False
 		Me.List1.Location = New System.Drawing.Point(6, 32)
 		Me.List1.Name = "List1"
 		Me.List1.Size = New System.Drawing.Size(752, 468)
@@ -519,6 +523,8 @@ Partial Class Start
 		'TabPage3
 		'
 		Me.TabPage3.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage3.Controls.Add(Me.Languaje_Combobox)
+		Me.TabPage3.Controls.Add(Me.Button3)
 		Me.TabPage3.Controls.Add(Me.Uploader_tab)
 		Me.TabPage3.Controls.Add(Me.Label2)
 		Me.TabPage3.Controls.Add(Me.Select_Image)
@@ -529,7 +535,6 @@ Partial Class Start
 		Me.TabPage3.Controls.Add(Me.Uploader)
 		Me.TabPage3.Controls.Add(Me.Languaje_Custom)
 		Me.TabPage3.Controls.Add(Me.Custom_Color)
-		Me.TabPage3.Controls.Add(Me.Languaje)
 		Me.TabPage3.Controls.Add(Me.Color_Combobox)
 		Me.TabPage3.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage3.Name = "TabPage3"
@@ -537,6 +542,26 @@ Partial Class Start
 		Me.TabPage3.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "Configuration"
+		'
+		'Button3
+		'
+		Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Button3.Location = New System.Drawing.Point(131, 72)
+		Me.Button3.Name = "Button3"
+		Me.Button3.Size = New System.Drawing.Size(104, 24)
+		Me.Button3.TabIndex = 13
+		Me.Button3.Text = "Browse"
+		Me.Button3.UseVisualStyleBackColor = True
+		'
+		'Uploader_tab
+		'
+		Me.Uploader_tab.AutoSize = True
+		Me.Uploader_tab.Location = New System.Drawing.Point(9, 56)
+		Me.Uploader_tab.Name = "Uploader_tab"
+		Me.Uploader_tab.Size = New System.Drawing.Size(99, 17)
+		Me.Uploader_tab.TabIndex = 12
+		Me.Uploader_tab.Text = "Show Uploader"
+		Me.Uploader_tab.UseVisualStyleBackColor = True
 		'
 		'Label2
 		'
@@ -555,7 +580,7 @@ Partial Class Start
 		Me.Select_Image.Name = "Select_Image"
 		Me.Select_Image.Size = New System.Drawing.Size(104, 24)
 		Me.Select_Image.TabIndex = 10
-		Me.Select_Image.Text = "Select Image"
+		Me.Select_Image.Text = "Browse"
 		Me.Select_Image.UseVisualStyleBackColor = True
 		'
 		'background_image_checkbox
@@ -573,11 +598,10 @@ Partial Class Start
 		Me.CheckBox2.AutoSize = True
 		Me.CheckBox2.Location = New System.Drawing.Point(9, 79)
 		Me.CheckBox2.Name = "CheckBox2"
-		Me.CheckBox2.Size = New System.Drawing.Size(194, 17)
+		Me.CheckBox2.Size = New System.Drawing.Size(114, 17)
 		Me.CheckBox2.TabIndex = 8
-		Me.CheckBox2.Text = "Custom Path Save(No found Temp)"
+		Me.CheckBox2.Text = "Custom Path Save"
 		Me.CheckBox2.UseVisualStyleBackColor = True
-		Me.CheckBox2.Visible = False
 		'
 		'CheckBox1
 		'
@@ -603,9 +627,9 @@ Partial Class Start
 		'Uploader
 		'
 		Me.Uploader.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Uploader.Location = New System.Drawing.Point(384, 308)
+		Me.Uploader.Location = New System.Drawing.Point(6, 180)
 		Me.Uploader.Name = "Uploader"
-		Me.Uploader.Size = New System.Drawing.Size(265, 60)
+		Me.Uploader.Size = New System.Drawing.Size(265, 42)
 		Me.Uploader.TabIndex = 4
 		Me.Uploader.Text = "Upload List Games"
 		Me.Uploader.UseVisualStyleBackColor = True
@@ -630,26 +654,15 @@ Partial Class Start
 		Me.Custom_Color.Text = "Exemple Name"
 		Me.Custom_Color.Visible = False
 		'
-		'Languaje
-		'
-		Me.Languaje.BackColor = System.Drawing.Color.DimGray
-		Me.Languaje.FormattingEnabled = True
-		Me.Languaje.Location = New System.Drawing.Point(436, 180)
-		Me.Languaje.Name = "Languaje"
-		Me.Languaje.Size = New System.Drawing.Size(316, 21)
-		Me.Languaje.TabIndex = 1
-		Me.Languaje.Text = "Languaje"
-		Me.Languaje.Visible = False
-		'
 		'Color_Combobox
 		'
 		Me.Color_Combobox.BackColor = System.Drawing.Color.DimGray
 		Me.Color_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.Color_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.Color_Combobox.FormattingEnabled = True
-		Me.Color_Combobox.Location = New System.Drawing.Point(6, 102)
+		Me.Color_Combobox.Location = New System.Drawing.Point(9, 118)
 		Me.Color_Combobox.Name = "Color_Combobox"
-		Me.Color_Combobox.Size = New System.Drawing.Size(317, 21)
+		Me.Color_Combobox.Size = New System.Drawing.Size(226, 21)
 		Me.Color_Combobox.TabIndex = 0
 		'
 		'List_Download
@@ -787,16 +800,6 @@ Partial Class Start
 		Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
 		Me.ExitToolStripMenuItem1.Text = "Exit"
 		'
-		'Uploader_tab
-		'
-		Me.Uploader_tab.AutoSize = True
-		Me.Uploader_tab.Location = New System.Drawing.Point(9, 56)
-		Me.Uploader_tab.Name = "Uploader_tab"
-		Me.Uploader_tab.Size = New System.Drawing.Size(99, 17)
-		Me.Uploader_tab.TabIndex = 12
-		Me.Uploader_tab.Text = "Show Uploader"
-		Me.Uploader_tab.UseVisualStyleBackColor = True
-		'
 		'ListViewEx
 		'
 		Me.ListViewEx.BackColor = System.Drawing.Color.DimGray
@@ -810,6 +813,17 @@ Partial Class Start
 		Me.ListViewEx.TabIndex = 1
 		Me.ListViewEx.UseCompatibleStateImageBehavior = False
 		Me.ListViewEx.View = System.Windows.Forms.View.Details
+		'
+		'Languaje_Combobox
+		'
+		Me.Languaje_Combobox.BackColor = System.Drawing.Color.DimGray
+		Me.Languaje_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.Languaje_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Languaje_Combobox.FormattingEnabled = True
+		Me.Languaje_Combobox.Location = New System.Drawing.Point(9, 145)
+		Me.Languaje_Combobox.Name = "Languaje_Combobox"
+		Me.Languaje_Combobox.Size = New System.Drawing.Size(226, 21)
+		Me.Languaje_Combobox.TabIndex = 14
 		'
 		'Start
 		'
@@ -856,7 +870,6 @@ Partial Class Start
 	Friend WithEvents Uploader As Button
 	Friend WithEvents Languaje_Custom As TextBox
 	Friend WithEvents Custom_Color As TextBox
-	Friend WithEvents Languaje As ComboBox
 	Friend WithEvents Color_Combobox As ComboBox
 	Friend WithEvents CreatedBy As LinkLabel
 	Friend WithEvents TabPage2 As TabPage
@@ -917,4 +930,7 @@ Partial Class Start
 	Friend WithEvents btnRemoveAll As ToolStripButton
 	Friend WithEvents MyToolStrip As ToolStrip
 	Friend WithEvents Uploader_tab As CheckBox
+	Friend WithEvents Button3 As Button
+	Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+	Friend WithEvents Languaje_Combobox As ComboBox
 End Class

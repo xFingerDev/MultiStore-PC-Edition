@@ -2,7 +2,6 @@
 Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
-Imports System.Drawing.Color
 
 Public Class Start
 
@@ -11,8 +10,7 @@ Public Class Start
 
 	Public Property Platform As String
 
-	Dim userMsg As String
-
+	Public Languaje_Program As String
 
 	Private Link_Game As String
 	Private Link_License As String
@@ -26,6 +24,7 @@ Public Class Start
 	Private Game_Num As String
 	Private myFile As String
 	Private DirGamesDownload As String()
+	Private Dir_Save_Games As String
 #Disable Warning IDE1006 ' Estilos de nombres
 	Private WithEvents myWebClient As New Net.WebClient()
 #Enable Warning IDE1006 ' Estilos de nombres
@@ -425,6 +424,17 @@ Public Class Start
 		Select_Image.Visible = False
 		Label2.Visible = False
 
+		Dim Languaje_StringAll As String() = Directory.GetFiles(Application.StartupPath & "\Lang\", "*.ini")
+		For Each LangSenseArray As String In Languaje_StringAll
+			' Do work, example
+			Dim fileName As String = LangSenseArray.Substring(LangSenseArray.LastIndexOf("\") + 1)
+
+			Languaje_Combobox.Items.Add(Path.GetDirectoryName(fileName) + Path.GetFileNameWithoutExtension(fileName))
+		Next
+
+
+		Dir_Save_Games = "Default"
+
 		Createfolders()
 #Region "Consoles"
 		Platform = "All"
@@ -608,7 +618,9 @@ Public Class Start
 
 		Companya_Combo.Text = "ALL"
 #End Region
-
+#Region "LANG"
+		ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+#End Region
 		List1.Columns.Add("ID", 100)
 		List1.Columns.Add("NAME", 300)
 		List1.Columns.Add("TYPE", 70)
@@ -1166,7 +1178,7 @@ Public Class Start
 		TabPage3.BackColor = color_combo
 		Uploader.BackColor = color_combo
 		Color_Combobox.BackColor = color_combo
-		Languaje.BackColor = color_combo
+		Languaje_Combobox.BackColor = color_combo
 		TabPage1.BackColor = color_combo
 		TabPage2.BackColor = color_combo
 		ListViewEx.BackColor = color_combo
@@ -1233,9 +1245,9 @@ Public Class Start
 		End If
 
 
-		'	If Dir(Application.StartupPath & "\Lang", vbDirectory) = "" Then
-		'	MkDir(Application.StartupPath & "\Lang")
-		'	End If
+		If Dir(Application.StartupPath & "\Lang", vbDirectory) = "" Then
+			MkDir(Application.StartupPath & "\Lang")
+		End If
 
 		If Dir(Application.StartupPath & "\License", vbDirectory) = "" Then
 			MkDir(Application.StartupPath & "\License")
@@ -1283,9 +1295,19 @@ Public Class Start
 				Uploader_tab.Checked = 1
 				start_tab = True
 			End If
+			If ini.GetKeyValue("Config", "Path_Save") = "Default" Then
+				CheckBox2.Checked = 0
+				Button3.Visible = False
+			Else
+				CheckBox2.Checked = 1
+				Dir_Save_Games = ini.GetKeyValue("Config", "Path_Save")
+				'MsgBox(Dir_Save_Games)
+			End If
 			Color_Combobox.Text = ini.GetKeyValue("Config", "Color")
+			Languaje_Combobox.Text = ini.GetKeyValue("Config", "Language")
+			Languaje_Program = ini.GetKeyValue("Config", "Language")
 		End If
-			If System.IO.File.Exists((Application.StartupPath & "\Config.ini")) = False Then
+		If System.IO.File.Exists((Application.StartupPath & "\Config.ini")) = False Then
 			System.IO.File.Create((Application.StartupPath & "\Config.ini")).Dispose()
 			'ini.Load(Application.StartupPath & "\Config.ini")
 			'ini.AddSection("Config").AddKey("Unload_Images").Value = "True"
@@ -1301,7 +1323,9 @@ Public Class Start
 BackGroundImage=False
 Color=White
 Unload_Images=True
-Show_Uploader=False")
+Show_Uploader=False
+Path_Save=Default
+Language=English")
 
 		End If
 #Region "List"
@@ -2404,7 +2428,7 @@ Show_Uploader=False")
 			Version_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(5).Text
 			format_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
 			Name_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
-			Region_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text
+			Region_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text
 			Game_Part = List1.Items.Item(List1.FocusedItem.Index).SubItems(9).Text
 			Game_Num = List1.Items.Item(List1.FocusedItem.Index).SubItems(10).Text
 			Lisense = List1.Items.Item(List1.FocusedItem.Index).SubItems(13).Text
@@ -2448,11 +2472,22 @@ Show_Uploader=False")
 		End Try
 	End Sub
 	Private Sub Button_Download_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Download.Click
+		Dim saved As String
 
-		myFile = Application.StartupPath & "\Roms\[" & ComboBox1.Text & "][" & Region_Game & "]" & Name_Game & "." & format_Game
+		If Dir_Save_Games = "Default" Then
+			saved = Application.StartupPath
+		Else
+			saved = Dir_Save_Games
+
+			If (Directory.Exists(Dir_Save_Games)) = False Then
+				MsgBox("The selected dirrectory does not exist please select another dirrectory")
+				Exit Sub
+			End If
+		End If
+
+
 		myWebClient = New Net.WebClient
 		Dim i As Integer = 0
-
 		Dim Listita As List(Of ListTwo)
 		Dim Plataforma As String
 		Select Case ComboBox1.Text
@@ -2741,6 +2776,9 @@ Show_Uploader=False")
 		localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-" & Plataforma)
 
 		Listita = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
+
+		myFile = saved & "\Roms\[" & Platform_Game & "][" & Version_Game & "][" & Region_Game & "]" & Name_Game & "." & format_Game
+
 #Enable Warning BC42104 ' Se usa la variable antes de que se le haya asignado un valor
 		If Game_Part = False Then
 			'Link_Game = ""
@@ -2756,6 +2794,11 @@ Show_Uploader=False")
 					NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
 					NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
 				Next
+				ListViewEx.StartDownload(Listita(Game_Num).Encrypt(DownParts.Text), "[Part:" & DownParts.Text & "]" & myFile)
+				NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
+				NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
+			Else
+
 			End If
 		End If
 	End Sub
@@ -3125,10 +3168,6 @@ Show_Uploader=False")
 			NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", ex.Message, ToolTipIcon.Error)
 		End Try
 
-		If Dir(Application.StartupPath & "\Uploader\List\*.*", vbArchive) = "" Then
-		Else
-			Kill(Application.StartupPath & "\Uploader\List\*.*")
-		End If
 		Upload_Add_item.Enabled = True
 	End Sub
 	Private Sub GamePath_CheckedChanged(sender As Object, e As EventArgs) Handles GamePath.CheckedChanged
@@ -3167,14 +3206,7 @@ Show_Uploader=False")
 		End Try
 	End Function
 	Private Sub Start_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-		If Dir(Application.StartupPath & "\List\Version", vbArchive) = "" Then
-		Else
-			Kill(Application.StartupPath & "\List\Version")
-		End If
-		If Dir(Application.StartupPath & "\Uploader\List\*.*", vbArchive) = "" Then
-		Else
-			Kill(Application.StartupPath & "\Uploader\List\*.*")
-		End If
+		NotifyIcon1.Visible = False
 	End Sub
 	Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
 		ini.Load(Application.StartupPath & "\Config.ini")
@@ -3507,7 +3539,7 @@ Show_Uploader=False")
 		TabPage3.BackColor = color_combo
 		Uploader.BackColor = color_combo
 		Color_Combobox.BackColor = color_combo
-		Languaje.BackColor = color_combo
+		Languaje_Combobox.BackColor = color_combo
 		TabPage1.BackColor = color_combo
 		TabPage2.BackColor = color_combo
 		ListViewEx.BackColor = color_combo
@@ -4135,5 +4167,345 @@ Show_Uploader=False")
 			ini.SetKeyValue("Config", "Show_Uploader", "False")
 			ini.Save(Application.StartupPath & "\Config.ini")
 		End If
+	End Sub
+	Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+		If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
+			'MsgBox(FolderBrowserDialog1.SelectedPath)
+			Dir_Save_Games = FolderBrowserDialog1.SelectedPath
+			ini.Load(Application.StartupPath & "\Config.ini")
+			ini.SetKeyValue("Config", "Path_Save", FolderBrowserDialog1.SelectedPath)
+			ini.Save(Application.StartupPath & "\Config.ini")
+		End If
+	End Sub
+	Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+		Dim saved As String
+
+		If Dir_Save_Games = "Default" Then
+			saved = Application.StartupPath
+		Else
+			saved = Dir_Save_Games
+
+			If (Directory.Exists(Dir_Save_Games)) = False Then
+				MsgBox("The selected dirrectory does not exist please select another dirrectory")
+				Exit Sub
+			End If
+		End If
+
+
+		myWebClient = New Net.WebClient
+		Dim Plataforma As String
+		Select Case ComboBox1.Text
+			Case "All"
+				Plataforma = "All"
+			Case "Wii"
+				Plataforma = "Wii"
+			Case "Wii U"
+				Plataforma = "WiiU"
+			Case "Nintendo Swich"
+				Plataforma = "NSwich"
+			Case "Nintendo 64"
+				Plataforma = "N64"
+			Case "GameCube"
+				Plataforma = "GameCube"
+			Case "Virtual Boy"
+				Plataforma = "VirtualBoy"
+			Case "Game Boy Advance"
+				Plataforma = "GameBoyAdvance"
+			Case "Snes"
+				Plataforma = "SNES"
+			Case "Nes"
+				Plataforma = "NES"
+			Case "NDS"
+				Plataforma = "NDS"
+			Case "3DS"
+				Plataforma = "3DS"
+			Case "Game Boy"
+				Plataforma = "GameBoy"
+			Case "Game & Watch"
+				Plataforma = "G&W"
+			Case "PlayStation"
+				Plataforma = "PS1"
+			Case "PlayStation 2"
+				Plataforma = "PS2"
+			Case "PlayStation 3"
+				Plataforma = "PS3"
+			Case "PlayStation 4"
+				Plataforma = "PS4"
+			Case "PSP"
+				Plataforma = "PSP"
+			Case "PS Vita"
+				Plataforma = "PSVita"
+			Case "PocketStation"
+				Plataforma = "PocketStation"
+			Case "Xbox"
+				Plataforma = "Xbox"
+			Case "Xbox 360"
+				Plataforma = "Xbox360"
+			Case "Xbox One"
+				Plataforma = "XboxOne"
+			Case "SG-1000"
+				Plataforma = "SG-1000"
+			Case "SC-3000"
+				Plataforma = "SC-3000"
+			Case "Sega Master System"
+				Plataforma = "Sega-Master-System"
+			Case "Sega Genesis"
+				Plataforma = "Sega-Genesis"
+			Case "Sega Mega CD"
+				Plataforma = "Sega-Mega-CD"
+			Case "Game Gear"
+				Plataforma = "Game-Gear"
+			Case "Sega Saturn"
+				Plataforma = "Sega-Saturn"
+			Case "Mega Drive 32x"
+				Plataforma = "Mega-Drive-32x"
+			Case "Sega Nomad"
+				Plataforma = "Sega-Nomad"
+			Case "Sega Model 2"
+				Plataforma = "Sega-Model-2"
+			Case "Sega Dreamcast"
+				Plataforma = "Dreamcast"
+			Case "Neo-Geo"
+				Plataforma = "Neo-Geo"
+			Case "Neo-Geo CD"
+				Plataforma = "Neo-Geo-CD"
+			Case "Pippin"
+				Plataforma = "Pippin"
+			Case "Atari 2600"
+				Plataforma = "Atari2600"
+			Case "Atari 5200"
+				Plataforma = "Atari5200"
+			Case "Atari 7800"
+				Plataforma = "Atari7800"
+			Case "Atari Jaguar"
+				Plataforma = "Atari-Jaguar"
+			Case "Playdia"
+				Plataforma = "Playdia"
+			Case "Wonderswan"
+				Plataforma = "Wonderswan"
+			Case "Wonderswan Color"
+				Plataforma = "Wonderswan-Color"
+			Case "Play System 1"
+				Plataforma = "Play-System-1"
+			Case "Play System 2"
+				Plataforma = "Play-System-2"
+			Case "Play System 3"
+				Plataforma = "Play-System-3"
+			Case "Casio Loopy"
+				Plataforma = "Casio-Loopy"
+			Case "ColecoVision"
+				Plataforma = "ColecoVision"
+			Case "Commodore 64GS"
+				Plataforma = "Commodore64GS"
+			Case "AmigaCD32"
+				Plataforma = "AmigaCD32"
+			Case "AmigaCD"
+				Plataforma = "AmigaCD"
+			Case "Fairchild Channel F"
+				Plataforma = "Fairchild-Channel-F"
+			Case "GP32"
+				Plataforma = "GP32"
+			Case "Vectrex"
+				Plataforma = "Vectrex"
+			Case "Magnavox Oddyssey"
+				Plataforma = "Magnavox-Oddyssey"
+			Case "Magnavox Oddyssey 2"
+				Plataforma = "Magnavox-Oddyssey2"
+			Case "Intellivision"
+				Plataforma = "Intellivision"
+			Case "PC Engine"
+				Plataforma = "PC-Engine"
+			Case "PC-FX"
+				Plataforma = "PC-FX"
+			Case "N-Gage"
+				Plataforma = "N-Gage"
+			Case "3DO"
+				Plataforma = "3DO"
+			Case "Videopac"
+				Plataforma = "Videopac"
+			Case "Philips CDi"
+				Plataforma = "Philips-CDi"
+			Case "RCA Studio II"
+				Plataforma = "RCA-Studio-II"
+			Case "V.Smile"
+				Plataforma = "V-Smile"
+			Case "Amstrad GX4000"
+				Plataforma = "AmstradGX4000"
+		End Select
+#Disable Warning BC42104 ' Se usa la variable antes de que se le haya asignado un valor
+		'MsgBox()
+		If Plataforma = "All" Then
+			Select Case List1.Items.Item(0).SubItems(8).Text
+				Case "All"
+					Plataforma = "All"
+				Case "Wii"
+					Plataforma = "Wii"
+				Case "Wii U"
+					Plataforma = "WiiU"
+				Case "Nintendo Swich"
+					Plataforma = "NSwich"
+				Case "Nintendo 64"
+					Plataforma = "N64"
+				Case "GameCube"
+					Plataforma = "GameCube"
+				Case "Virtual Boy"
+					Plataforma = "VirtualBoy"
+				Case "Game Boy Advance"
+					Plataforma = "GameBoyAdvance"
+				Case "Snes"
+					Plataforma = "SNES"
+				Case "Nes"
+					Plataforma = "NES"
+				Case "NDS"
+					Plataforma = "NDS"
+				Case "3DS"
+					Plataforma = "3DS"
+				Case "Game Boy"
+					Plataforma = "GameBoy"
+				Case "Game & Watch"
+					Plataforma = "G&W"
+				Case "PlayStation"
+					Plataforma = "PS1"
+				Case "PlayStation 2"
+					Plataforma = "PS2"
+				Case "PlayStation 3"
+					Plataforma = "PS3"
+				Case "PlayStation 4"
+					Plataforma = "PS4"
+				Case "PSP"
+					Plataforma = "PSP"
+				Case "PS Vita"
+					Plataforma = "PSVita"
+				Case "PocketStation"
+					Plataforma = "PocketStation"
+				Case "Xbox"
+					Plataforma = "Xbox"
+				Case "Xbox 360"
+					Plataforma = "Xbox360"
+				Case "Xbox One"
+					Plataforma = "XboxOne"
+				Case "SG-1000"
+					Plataforma = "SG-1000"
+				Case "SC-3000"
+					Plataforma = "SC-3000"
+				Case "Sega Master System"
+					Plataforma = "Sega-Master-System"
+				Case "Sega Genesis"
+					Plataforma = "Sega-Genesis"
+				Case "Sega Mega CD"
+					Plataforma = "Sega-Mega-CD"
+				Case "Game Gear"
+					Plataforma = "Game-Gear"
+				Case "Sega Saturn"
+					Plataforma = "Sega-Saturn"
+				Case "Mega Drive 32x"
+					Plataforma = "Mega-Drive-32x"
+				Case "Sega Nomad"
+					Plataforma = "Sega-Nomad"
+				Case "Sega Model 2"
+					Plataforma = "Sega-Model-2"
+				Case "Sega Dreamcast"
+					Plataforma = "Dreamcast"
+				Case "Neo-Geo"
+					Plataforma = "Neo-Geo"
+				Case "Neo-Geo CD"
+					Plataforma = "Neo-Geo-CD"
+				Case "Pippin"
+					Plataforma = "Pippin"
+				Case "Atari 2600"
+					Plataforma = "Atari2600"
+				Case "Atari 5200"
+					Plataforma = "Atari5200"
+				Case "Atari 7800"
+					Plataforma = "Atari7800"
+				Case "Atari Jaguar"
+					Plataforma = "Atari-Jaguar"
+				Case "Playdia"
+					Plataforma = "Playdia"
+				Case "Wonderswan"
+					Plataforma = "Wonderswan"
+				Case "Wonderswan Color"
+					Plataforma = "Wonderswan-Color"
+				Case "Play System 1"
+					Plataforma = "Play-System-1"
+				Case "Play System 2"
+					Plataforma = "Play-System-2"
+				Case "Play System 3"
+					Plataforma = "Play-System-3"
+				Case "Casio Loopy"
+					Plataforma = "Casio-Loopy"
+				Case "ColecoVision"
+					Plataforma = "ColecoVision"
+				Case "Commodore 64GS"
+					Plataforma = "Commodore64GS"
+				Case "AmigaCD32"
+					Plataforma = "AmigaCD32"
+				Case "AmigaCD"
+					Plataforma = "AmigaCD"
+				Case "Fairchild Channel F"
+					Plataforma = "Fairchild-Channel-F"
+				Case "GP32"
+					Plataforma = "GP32"
+				Case "Vectrex"
+					Plataforma = "Vectrex"
+				Case "Magnavox Oddyssey"
+					Plataforma = "Magnavox-Oddyssey"
+				Case "Magnavox Oddyssey 2"
+					Plataforma = "Magnavox-Oddyssey2"
+				Case "Intellivision"
+					Plataforma = "Intellivision"
+				Case "PC Engine"
+					Plataforma = "PC-Engine"
+				Case "PC-FX"
+					Plataforma = "PC-FX"
+				Case "N-Gage"
+					Plataforma = "N-Gage"
+				Case "3DO"
+					Plataforma = "3DO"
+				Case "Videopac"
+					Plataforma = "Videopac"
+				Case "Philips CDi"
+					Plataforma = "Philips-CDi"
+				Case "RCA Studio II"
+					Plataforma = "RCA-Studio-II"
+				Case "V.Smile"
+					Plataforma = "V-Smile"
+				Case "Amstrad GX4000"
+					Plataforma = "AmstradGX4000"
+			End Select
+		Else
+
+		End If
+#Enable Warning BC42104 ' Se usa la variable antes de que se le haya asignado un valor
+		'Link_Game = ""
+		myFile = saved & "\License\[" & Platform_Game & "][" & Version_Game & "][" & Region_Game & "]" & Name_Game & "." & format_License
+		'myWebClient.DownloadFileAsync(New Uri(Link_Game), myFile)
+		ListViewEx.StartDownload(Link_License, myFile)
+		NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
+		NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
+	End Sub
+	Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+		ini.Load(Application.StartupPath & "\Config.ini")
+		If CheckBox2.CheckState = 1 Then
+			Button3.Visible = True
+		End If
+		If CheckBox2.CheckState = 0 Then
+			'MsgBox("remove")
+			ini.SetKeyValue("Config", "Path_Save", "Default")
+			ini.Save(Application.StartupPath & "\Config.ini")
+			Dir_Save_Games = "Default"
+			Button3.Visible = False
+		End If
+	End Sub
+
+	Private Sub Languaje_Combobox_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+	End Sub
+
+	Private Sub Languaje_Combobox_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles Languaje_Combobox.SelectedIndexChanged
+		ini.Load(Application.StartupPath & "\Config.ini")
+		ini.SetKeyValue("Config", "Language", Languaje_Combobox.Text)
+		ini.Save(Application.StartupPath & "\Config.ini")
+		Languaje_Program = Languaje_Combobox.Text
 	End Sub
 End Class
