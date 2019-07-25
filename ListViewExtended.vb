@@ -4,11 +4,14 @@ Imports System.Drawing.Drawing2D
 Public Class ListViewExtended
     Inherits ListView
 
-    Private StatusImageList As New ImageList
+	Private StatusImageList As New ImageList
+	Dim ini As New IniFile
 
-    Public Sub New()
-        '// Set OwnerDraw to True, so we can draw the progressbar.
-        Me.OwnerDraw = True
+	Public Sub New()
+		'// Set OwnerDraw to True, so we can draw the progressbar.
+
+
+		Me.OwnerDraw = True
 
         '// The control flickers if it's continuously
         '// updated and not double-buffered.
@@ -21,19 +24,21 @@ Public Class ListViewExtended
         Me.ShowItemToolTips = True
         Me.FullRowSelect = True
         Me.HideSelection = True
-        Me.Dock = DockStyle.Fill
-        Me.BackColor = Color.White
-        Me.Columns.Add("Filename", 225, HorizontalAlignment.Left)
-        Me.Columns.Add("Size", 80, HorizontalAlignment.Right)
-        Me.Columns.Add("Status", 125, HorizontalAlignment.Left)
-        Me.Columns.Add("Completed", 100, HorizontalAlignment.Right)
-        Me.Columns.Add("Progress", 125, HorizontalAlignment.Center)
-        Me.Columns.Add("Speed", 75, HorizontalAlignment.Right)
-        Me.Columns.Add("Time", 80, HorizontalAlignment.Left)
-        Me.Columns.Add("Time Left", 80, HorizontalAlignment.Left)
+		Me.Dock = DockStyle.Fill
+		Me.BackColor = Color.White
 
-        '// Configure Imagelist and assign it to the Listview.
-        StatusImageList.ColorDepth = ColorDepth.Depth32Bit
+		'ini.Load(Application.StartupPath & "\Lang\" & Start.Languaje_Program & ".ini")
+		'Me.Columns.Add("Filename", 225, HorizontalAlignment.Left)
+		'Me.Columns.Add("Size", 80, HorizontalAlignment.Right)
+		'Me.Columns.Add("Status", 125, HorizontalAlignment.Left)
+		'Me.Columns.Add("Completed", 100, HorizontalAlignment.Right)
+		'Me.Columns.Add("Progress", 125, HorizontalAlignment.Center)
+		'Me.Columns.Add("Speed", 75, HorizontalAlignment.Right)
+		'Me.Columns.Add("Time", 80, HorizontalAlignment.Left)
+		'Me.Columns.Add("Time Left", 80, HorizontalAlignment.Left)
+
+		'// Configure Imagelist and assign it to the Listview.
+		StatusImageList.ColorDepth = ColorDepth.Depth32Bit
         StatusImageList.ImageSize = New Size(16, 16)
 		StatusImageList.Images.Add("Initializing", My.Resources.StatusInitializing)
 		StatusImageList.Images.Add("Downloading", My.Resources.StatusDownload)
@@ -90,19 +95,20 @@ Public Class ListViewExtended
     Public Sub StartDownload(ByVal URL As String, ByVal LocalFilePath As String)
         Dim wClient As New DownloadFileAsyncExtended
 
-        '// Add some initial data to the Listview.
-        Dim lvw As ListViewItem = Me.Items.Add(Path.GetFileName(LocalFilePath))
-        lvw.SubItems.Add("0 Bytes") '// Total Size.
-        lvw.SubItems.Add("Initializing...") '// Status.
-        lvw.SubItems.Add("0 Bytes") '// Completed.
+		'// Add some initial data to the Listview.
+		Dim lvw As ListViewItem = Me.Items.Add(Path.GetFileName(LocalFilePath))
+		ini.Load(Application.StartupPath & "\Lang\" & Start.Languaje_Program & ".ini")
+		lvw.SubItems.Add("0 Bytes") '// Total Size.
+		lvw.SubItems.Add(ini.GetKeyValue("LANGUAGE", "Initializing") & "...") '// Status.
+		lvw.SubItems.Add("0 Bytes") '// Completed.
         lvw.SubItems.Add("0") '// Progress Percentage. NOTE: Only add a number here, no letters/signs!
         lvw.SubItems.Add("0 kB/s") '// Download Speed.
         lvw.SubItems.Add("00:00:00") '// Download Time.
         lvw.SubItems.Add("00:00:00") '// Remaining Time.
-        lvw.ImageKey = "Initializing" '// Initializing image.
-        '// Store the DownloadFileAsyncExtended class instance in the Tag,
-        '// so we can use it later to cancel/resume the download if necessary.
-        lvw.Tag = wClient
+		lvw.ImageKey = "Initializing" '// Initializing image.
+		'// Store the DownloadFileAsyncExtended class instance in the Tag,
+		'// so we can use it later to cancel/resume the download if necessary.
+		lvw.Tag = wClient
 
         '// Add Event handlers, so we can update the progress to the user.
         AddHandler wClient.DownloadProgressChanged, AddressOf DownloadProgressChanged
@@ -145,14 +151,14 @@ Public Class ListViewExtended
 
         '// Update the ListView items.
         lvw.SubItems(1).Text = ConvertBytes(e.TotalBytesToReceive)
-        lvw.SubItems(2).Text = "Downloading"
-        lvw.SubItems(3).Text = ConvertBytes(e.BytesReceived)
+		lvw.SubItems(2).Text = ini.GetKeyValue("LANGUAGE", "Downloading")
+		lvw.SubItems(3).Text = ConvertBytes(e.BytesReceived)
         lvw.SubItems(4).Text = e.ProgressPercentage
         lvw.SubItems(5).Text = (e.DownloadSpeedBytesPerSec \ 1024).ToString & " kB/s"
         lvw.SubItems(6).Text = ConvertSeconds(e.DownloadTimeSeconds)
         lvw.SubItems(7).Text = ConvertSeconds(e.RemainingTimeSeconds)
-        lvw.ImageKey = "Downloading"
-    End Sub
+		lvw.ImageKey = "Downloading"
+	End Sub
 
     '// This event lets you know when the download is complete. The download finished
     '// successfully, the user cancelled the download or there was an error.
@@ -168,13 +174,13 @@ Public Class ListViewExtended
             lvw.Tag = Nothing
 
         ElseIf e.Cancelled Then '// The user cancelled the download.
-            lvw.SubItems(2).Text = "Paused"
-            lvw.ImageKey = "Paused"
+			lvw.SubItems(2).Text = ini.GetKeyValue("LANGUAGE", "Paused")
+			lvw.ImageKey = "Paused"
 
         Else '// Download was successful.
-            lvw.SubItems(2).Text = "Finished"
+			lvw.SubItems(2).Text = ini.GetKeyValue("LANGUAGE", "Finished")
 			lvw.ImageKey = "Finished"
-			Start.NotifyIcon1.ShowBalloonTip(1000, "Download Complete    ", lvw.SubItems(0).Text, ToolTipIcon.None)
+			Start.NotifyIcon1.ShowBalloonTip(1000, ini.GetKeyValue("LANGUAGE", "Download_Complete") & "    ", lvw.SubItems(0).Text, ToolTipIcon.None)
 			'NotifyIcon1.ContextMenuStrip = ContextMenuStrip1
 			'// Set Tag to Nothing in order to remove the wClient class instance.
 			'// This way we know we can't resume the download.

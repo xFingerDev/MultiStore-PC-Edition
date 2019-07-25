@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
+Imports System.Threading
 
 Public Class Start
 
@@ -25,6 +26,7 @@ Public Class Start
 	Private myFile As String
 	Private DirGamesDownload As String()
 	Private Dir_Save_Games As String
+	Dim StartBol As Boolean = True
 #Disable Warning IDE1006 ' Estilos de nombres
 	Private WithEvents myWebClient As New Net.WebClient()
 #Enable Warning IDE1006 ' Estilos de nombres
@@ -43,7 +45,9 @@ Public Class Start
 	Public Color_ini As String
 
 	Public start_tab As Boolean
+	Public Search_On As Boolean = True
 
+	Dim blnAscending As Boolean = False
 
 	Private Sub Companya_Combo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Companya_Combo.SelectedIndexChanged
 		ComboBox1.Items.Clear()
@@ -406,7 +410,9 @@ Public Class Start
 	End Sub
 	Private Sub Start_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 		Me.Cursor = Cursors.WaitCursor
+		Createfolders()
 
+		'myListView.ListViewItemSorter = New myListViewComparer
 		Net.ServicePointManager.DefaultConnectionLimit = 5
 		Me.Text = "Σύνταξη for games v" & Version
 		If Dir(Application.StartupPath & "\Picture_Remplace.png", vbDirectory) = "" Then
@@ -435,7 +441,7 @@ Public Class Start
 
 		Dir_Save_Games = "Default"
 
-		Createfolders()
+
 #Region "Consoles"
 		Platform = "All"
 		ComboBox1.Items.Add("All")
@@ -619,15 +625,40 @@ Public Class Start
 		Companya_Combo.Text = "ALL"
 #End Region
 #Region "LANG"
-		ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+		Try
+			ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+			Button2.Text = ini.GetKeyValue("LANGUAGE", "Download_License")
+			Button_Download.Text = ini.GetKeyValue("LANGUAGE", "Download_Game")
+			Search_Label.Text = ini.GetKeyValue("LANGUAGE", "Search")
+			CheckBox1.Text = ini.GetKeyValue("LANGUAGE", "UnLoad_Images_games_Less_lag_if_your_internet_is_not_good")
+			background_image_checkbox.Text = ini.GetKeyValue("LANGUAGE", "Background_Image")
+			Uploader_tab.Text = ini.GetKeyValue("LANGUAGE", "Show_Uploader")
+			Select_Image.Text = ini.GetKeyValue("LANGUAGE", "Browse")
+			Button3.Text = ini.GetKeyValue("LANGUAGE", "Browse")
+			CheckBox2.Text = ini.GetKeyValue("LANGUAGE", "Custom_Path_Save")
+			Label2.Text = ini.GetKeyValue("LANGUAGE", "If_you_already_have_a_defined_image_and_change_it_again_the_application_will_restart_be_careful_that_the_downloads_will_stop")
+			Uploader.Text = ini.GetKeyValue("LANGUAGE", "Upload_List_Games")
+			btnResumeAll1.Text = ini.GetKeyValue("LANGUAGE", "Resume_All")
+			btnResume1.Text = ini.GetKeyValue("LANGUAGE", "Resume")
+			btnPause1.Text = ini.GetKeyValue("LANGUAGE", "Pause")
+			btnPauseAll1.Text = ini.GetKeyValue("LANGUAGE", "Pause_All")
+			btnRemove1.Text = ini.GetKeyValue("LANGUAGE", "Remove")
+			btnRemoveAll.Text = ini.GetKeyValue("LANGUAGE", "Remove_All")
+			Button1.Text = ini.GetKeyValue("LANGUAGE", "Check_image")
+			Upload_Add_item.Text = ini.GetKeyValue("LANGUAGE", "Up_Game")
+			Button4.Text = ini.GetKeyValue("LANGUAGE", "Edit_Url_List")
+			Languaje_Combobox.Text = Languaje_Program
+		Catch
+		End Try
 #End Region
-		List1.Columns.Add("ID", 100)
-		List1.Columns.Add("NAME", 300)
-		List1.Columns.Add("TYPE", 70)
-		List1.Columns.Add("REGION", 70)
-		List1.Columns.Add("USER", 90)
-		List1.Columns.Add("VERSION", 100)
-		List1.Columns.Add("FORMAT", 100)
+		ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "ID"), 100)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "NAME"), 300)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "REGION"), 70)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "TYPE"), 70)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "USER"), 90)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "VERSION"), 100)
+		List1.Columns.Add(ini.GetKeyValue("LANGUAGE", "FORMAT"), 100)
 		List1.Columns.Add("ENCRYPT", 0)
 		List1.Columns.Add("Platform", 0)
 		List1.Columns.Add("Part Exist?", 0)
@@ -638,13 +669,13 @@ Public Class Start
 		List1.Columns.Add("LinkLicence encrypt", 0)
 		List1.Columns.Add("FORMATLicence", 0)
 
-		ListView99.Columns.Add("ID", 100)
-		ListView99.Columns.Add("NAME", 300)
-		ListView99.Columns.Add("TYPE", 70)
-		ListView99.Columns.Add("REGION", 70)
-		ListView99.Columns.Add("USER", 90)
-		ListView99.Columns.Add("VERSION", 100)
-		ListView99.Columns.Add("FORMAT", 100)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "ID"), 100)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "NAME"), 300)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "REGION"), 70)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "TYPE"), 70)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "USER"), 90)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "VERSION"), 100)
+		ListView99.Columns.Add(ini.GetKeyValue("LANGUAGE", "FORMAT"), 100)
 		ListView99.Columns.Add("ENCRYPT", 0)
 		ListView99.Columns.Add("Platform", 0)
 		ListView99.Columns.Add("Part Exist?", 0)
@@ -876,14 +907,14 @@ Public Class Start
 		End Try
 		'AddList()
 
-		ListViewEx.Columns.Add("Filename", 225, HorizontalAlignment.Left)
-		ListViewEx.Columns.Add("Size", 80, HorizontalAlignment.Right)
-		ListViewEx.Columns.Add("Status", 125, HorizontalAlignment.Left)
-		ListViewEx.Columns.Add("Completed", 100, HorizontalAlignment.Right)
-		ListViewEx.Columns.Add("Progress", 125, HorizontalAlignment.Center)
-		ListViewEx.Columns.Add("Speed", 75, HorizontalAlignment.Right)
-		ListViewEx.Columns.Add("Time", 80, HorizontalAlignment.Left)
-		ListViewEx.Columns.Add("Time Left", 80, HorizontalAlignment.Left)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Filename"), 225, HorizontalAlignment.Left)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Size"), 80, HorizontalAlignment.Right)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Status"), 125, HorizontalAlignment.Left)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Completed"), 100, HorizontalAlignment.Right)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Progress"), 125, HorizontalAlignment.Center)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Speed"), 75, HorizontalAlignment.Right)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Time"), 80, HorizontalAlignment.Left)
+		ListViewEx.Columns.Add(ini.GetKeyValue("LANGUAGE", "Time_Left"), 80, HorizontalAlignment.Left)
 
 
 #Region "Load Color"
@@ -1215,6 +1246,8 @@ Public Class Start
 		List1.BackColor = color_combo
 		ComboBox2.BackColor = color_combo
 		MyToolStrip.BackColor = color_combo
+		TextBox9.BackColor = color_combo
+
 		If BackGround_Image = True Then
 			If Dir(Application.StartupPath & "\Picture.png", vbDirectory) = "" Then
 			Else
@@ -1231,6 +1264,8 @@ Public Class Start
 		ini.Load(Application.StartupPath & "\Config.ini")
 		Color_Combobox.Text = ini.GetKeyValue("Config", "Color")
 		Me.Cursor = Cursors.Default
+
+		List1.ListViewItemSorter = New ListViewItemComparer(1, True)
 	End Sub
 	Private Sub CreatedBy_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles CreatedBy.LinkClicked
 		'Process.Start("https://github.com/TiTiYum/Project-Koppai/releases")
@@ -1268,7 +1303,112 @@ Public Class Start
 		'Else
 		'Process.Start("https://github.com/TiTiYum/Project-Koppai/releases/latest")
 		'End If
-
+		If System.IO.File.Exists((Application.StartupPath & "\Lang\English.ini")) = False Then
+			System.IO.File.WriteAllText(Application.StartupPath & "\Lang\English.ini", "[LANGUAGE]
+ID=ID
+NAME=NAME
+TYPE=TYPE
+REGION=REGION
+USER=USER
+VERSION=VERSION
+FORMAT=FORMAT
+ENCRYPT=ENCRYPT
+Error_Load_Image=Error Load Image
+The_selected_dirrectory_does_not_exist_please_select_another_dirrectory=The selected dirrectory does not exist please select another dirrectory
+Download_Start=Download Start
+Name_Game=Name Game
+Type=Type
+Format=Format
+User=User
+Version=Version
+Region=Region
+Game_data_copied_in_Clipboard=Game data copied in Clipboard
+Finished=Finished
+Paused=Paused
+Download_Complete=Download Complete
+Downloading=Downloading
+Initializing=Initializing
+Filename=Filename
+Size=Size
+Status=Status
+Completed=Completed
+Progress=Progress
+Speed=Speed
+Check_image=Check image
+Up_Game=Up Game
+Time=Time
+Time_Left=Time Left
+Browse=Browse
+Upload_List_Games=Upload List Games
+Custom_Path_Save=Custom Path Save
+Show_Uploader=Show Uploader
+Background_Image=Background Image
+UnLoad_Images_games_Less_lag_if_your_internet_is_not_good=UnLoad Images games (Less lag if your internet is not good)
+If_you_already_have_a_defined_image_and_change_it_again_the_application_will_restart_be_careful_that_the_downloads_will_stop=If you already have a defined image and change it again, the application will restart, be careful that the downloads will stop
+Resume=Resume
+Resume_All=Resume All
+Pause=Pause
+Pause_All=Pause All
+Remove=Remove
+Remove_All=Remove All
+Search=Search:
+Download_License=Download License
+Download_Game=Download Game
+Edit_Url_List=Edit Url List")
+		End If
+		If System.IO.File.Exists((Application.StartupPath & "\Lang\Español.ini")) = False Then
+			System.IO.File.WriteAllText(Application.StartupPath & "\Lang\Español.ini", "[LANGUAGE]
+ID=ID
+NAME=NOMBRE
+TYPE=TIPO
+REGION=REGIÓN
+USER=USUARIO
+VERSION=VERSIÓN
+FORMAT=FORMATO
+ENCRYPT=ENCRYPT
+Error_Load_Image=Error al Cargar Imagen
+The_selected_dirrectory_does_not_exist_please_select_another_dirrectory=La direcion del escritoro selecionada no existe
+Download_Start=Comenzando Descarga
+Name_Game=Nombre Juego
+Type=Tipo
+Format=Formato
+User=Usuario
+Version=Versión
+Region=Región
+Game_data_copied_in_Clipboard=Datos del juego copiado al portapapeles
+Finished=Acabado
+Paused=Pausado
+Download_Complete=Descarga Completada
+Downloading=Descargando
+Initializing=Iniciando
+Filename=Nombre del archivo
+Size=Tamaño
+Status=Estado
+Completed=Completado
+Progress=Progreso
+Speed=Velocidad
+Check_image=Verificar Imagen
+Up_Game=Subir Juego
+Time=Tiempo
+Time_Left=Tiempo Restante
+Browse=Buscar
+Upload_List_Games=Actualizar lista de los juegos
+Custom_Path_Save=Directorio Customizado de guardado
+Show_Uploader=Mostrar Subidor
+Background_Image=Imagen de fondo
+UnLoad_Images_games_Less_lag_if_your_internet_is_not_good=No Cargar imagenes de los juegos(Es perfecto si tu internet es lento)
+If_you_already_have_a_defined_image_and_change_it_again_the_application_will_restart_be_careful_that_the_downloads_will_stop=Si ya tiene una imagen definida y la vuelve a cambiar, la aplicación se reiniciará, tenga cuidado de que las descargas no se detengan
+Resume=Resume
+Resume_All=Resume Todo
+Pause=Pausar
+Pause_All=Pausar Todo
+Remove=Eliminar
+Remove_All=Eliminar Todo
+Search=Buscar:
+Download_License=Descargar Licencia
+Download_Game=Descargar Juego
+Edit_Url_List=Editar Url de la lista")
+		End If
 		If System.IO.File.Exists((Application.StartupPath & "\Config.ini")) = True Then
 			ini.Load(Application.StartupPath & "\Config.ini")
 			If ini.GetKeyValue("Config", "Unload_Images") = "True" Then
@@ -1291,6 +1431,9 @@ Public Class Start
 				Uploader_tab.Checked = 0
 				Upload.TabPages.Remove(TabPage2)
 				start_tab = False
+				start_tab = True
+				TextBox9.Visible = False
+				Encrypt_Burron.Visible = False
 			Else
 				Uploader_tab.Checked = 1
 				start_tab = True
@@ -1319,6 +1462,7 @@ Public Class Start
 			Upload.TabPages.Remove(TabPage2)
 			'Color_ini = ini.GetKeyValue("Config", "Color")
 			'ini.Save(Application.StartupPath & "\Config.ini")
+			Languaje_Program = "English"
 			System.IO.File.WriteAllText(Application.StartupPath & "\Config.ini", "[Config]
 BackGroundImage=False
 Color=White
@@ -1955,206 +2099,206 @@ Language=English")
 		'Download List
 #Region "Download"
 		Try
-			If UrlExist(DirGamesDownload(0)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(0), Application.StartupPath & "\List\Games-List-Wii")
+			If UrlExist(AES_Decrypt(DirGamesDownload(0))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(0)), Application.StartupPath & "\List\Games-List-Wii")
 			End If
-			If UrlExist(DirGamesDownload(1)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(1), Application.StartupPath & "\List\Games-List-WiiU")
+			If UrlExist(AES_Decrypt(DirGamesDownload(1))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(1)), Application.StartupPath & "\List\Games-List-WiiU")
 			End If
-			If UrlExist(DirGamesDownload(2)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(2), Application.StartupPath & "\List\Games-List-NSwich")
+			If UrlExist(AES_Decrypt(DirGamesDownload(2))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(2)), Application.StartupPath & "\List\Games-List-NSwich")
 			End If
-			If UrlExist(DirGamesDownload(3)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(3), Application.StartupPath & "\List\Games-List-N64")
+			If UrlExist(AES_Decrypt(DirGamesDownload(3))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(3)), Application.StartupPath & "\List\Games-List-N64")
 			End If
-			If UrlExist(DirGamesDownload(4)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(4), Application.StartupPath & "\List\Games-List-GameCube")
+			If UrlExist(AES_Decrypt(DirGamesDownload(4))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(4)), Application.StartupPath & "\List\Games-List-GameCube")
 			End If
-			If UrlExist(DirGamesDownload(5)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(5), Application.StartupPath & "\List\Games-List-VirtualBoy")
+			If UrlExist(AES_Decrypt(DirGamesDownload(5))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(5)), Application.StartupPath & "\List\Games-List-VirtualBoy")
 			End If
-			If UrlExist(DirGamesDownload(6)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(6), Application.StartupPath & "\List\Games-List-GameBoyAdvance")
+			If UrlExist(AES_Decrypt(DirGamesDownload(6))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(6)), Application.StartupPath & "\List\Games-List-GameBoyAdvance")
 			End If
-			If UrlExist(DirGamesDownload(7)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(7), Application.StartupPath & "\List\Games-List-SNES")
+			If UrlExist(AES_Decrypt(DirGamesDownload(7))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(7)), Application.StartupPath & "\List\Games-List-SNES")
 			End If
-			If UrlExist(DirGamesDownload(8)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(8), Application.StartupPath & "\List\Games-List-NES")
+			If UrlExist(AES_Decrypt(DirGamesDownload(8))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(8)), Application.StartupPath & "\List\Games-List-NES")
 			End If
-			If UrlExist(DirGamesDownload(9)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(9), Application.StartupPath & "\List\Games-List-NDS")
+			If UrlExist(AES_Decrypt(DirGamesDownload(9))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(9)), Application.StartupPath & "\List\Games-List-NDS")
 			End If
-			If UrlExist(DirGamesDownload(10)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(10), Application.StartupPath & "\List\Games-List-3DS")
+			If UrlExist(AES_Decrypt(DirGamesDownload(10))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(10)), Application.StartupPath & "\List\Games-List-3DS")
 			End If
-			If UrlExist(DirGamesDownload(11)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(11), Application.StartupPath & "\List\Games-List-GameBoy")
+			If UrlExist(AES_Decrypt(DirGamesDownload(11))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(11)), Application.StartupPath & "\List\Games-List-GameBoy")
 			End If
-			If UrlExist(DirGamesDownload(12)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(12), Application.StartupPath & "\List\Games-List-G&W")
+			If UrlExist(AES_Decrypt(DirGamesDownload(12))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(12)), Application.StartupPath & "\List\Games-List-G&W")
 			End If
-			If UrlExist(DirGamesDownload(13)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(13), Application.StartupPath & "\List\Games-List-PS1")
+			If UrlExist(AES_Decrypt(DirGamesDownload(13))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(13)), Application.StartupPath & "\List\Games-List-PS1")
 			End If
-			If UrlExist(DirGamesDownload(14)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(14), Application.StartupPath & "\List\Games-List-PS2")
+			If UrlExist(AES_Decrypt(DirGamesDownload(14))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(14)), Application.StartupPath & "\List\Games-List-PS2")
 			End If
-			If UrlExist(DirGamesDownload(15)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(15), Application.StartupPath & "\List\Games-List-PS3")
+			If UrlExist(AES_Decrypt(DirGamesDownload(15))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(15)), Application.StartupPath & "\List\Games-List-PS3")
 			End If
-			If UrlExist(DirGamesDownload(16)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(16), Application.StartupPath & "\List\Games-List-PS4")
+			If UrlExist(AES_Decrypt(DirGamesDownload(16))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(16)), Application.StartupPath & "\List\Games-List-PS4")
 			End If
-			If UrlExist(DirGamesDownload(17)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(17), Application.StartupPath & "\List\Games-List-PSP")
+			If UrlExist(AES_Decrypt(DirGamesDownload(17))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(17)), Application.StartupPath & "\List\Games-List-PSP")
 			End If
-			If UrlExist(DirGamesDownload(18)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(18), Application.StartupPath & "\List\Games-List-PSVita")
+			If UrlExist(AES_Decrypt(DirGamesDownload(18))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(18)), Application.StartupPath & "\List\Games-List-PSVita")
 			End If
-			If UrlExist(DirGamesDownload(19)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(19), Application.StartupPath & "\List\Games-List-PocketStation")
+			If UrlExist(AES_Decrypt(DirGamesDownload(19))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(19)), Application.StartupPath & "\List\Games-List-PocketStation")
 			End If
-			If UrlExist(DirGamesDownload(20)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(20), Application.StartupPath & "\List\Games-List-Xbox")
+			If UrlExist(AES_Decrypt(DirGamesDownload(20))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(20)), Application.StartupPath & "\List\Games-List-Xbox")
 			End If
-			If UrlExist(DirGamesDownload(21)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(21), Application.StartupPath & "\List\Games-List-Xbox360")
+			If UrlExist(AES_Decrypt(DirGamesDownload(21))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(21)), Application.StartupPath & "\List\Games-List-Xbox360")
 			End If
-			If UrlExist(DirGamesDownload(22)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(22), Application.StartupPath & "\List\Games-List-XboxOne")
+			If UrlExist(AES_Decrypt(DirGamesDownload(22))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(22)), Application.StartupPath & "\List\Games-List-XboxOne")
 			End If
-			If UrlExist(DirGamesDownload(23)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(23), Application.StartupPath & "\List\Games-List-SG-1000")
+			If UrlExist(AES_Decrypt(DirGamesDownload(23))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(23)), Application.StartupPath & "\List\Games-List-SG-1000")
 			End If
-			If UrlExist(DirGamesDownload(24)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(24), Application.StartupPath & "\List\Games-List-SC-3000")
+			If UrlExist(AES_Decrypt(DirGamesDownload(24))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(24)), Application.StartupPath & "\List\Games-List-SC-3000")
 			End If
-			If UrlExist(DirGamesDownload(25)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(25), Application.StartupPath & "\List\Games-List-Sega-Master-System")
+			If UrlExist(AES_Decrypt(DirGamesDownload(25))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(25)), Application.StartupPath & "\List\Games-List-Sega-Master-System")
 			End If
-			If UrlExist(DirGamesDownload(26)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(26), Application.StartupPath & "\List\Games-List-Sega-Genesis")
+			If UrlExist(AES_Decrypt(DirGamesDownload(26))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(26)), Application.StartupPath & "\List\Games-List-Sega-Genesis")
 			End If
-			If UrlExist(DirGamesDownload(27)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(27), Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
+			If UrlExist(AES_Decrypt(DirGamesDownload(27))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(27)), Application.StartupPath & "\List\Games-List-Sega-Mega-CD")
 			End If
-			If UrlExist(DirGamesDownload(28)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(28), Application.StartupPath & "\List\Games-List-Game-Gear")
+			If UrlExist(AES_Decrypt(DirGamesDownload(28))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(28)), Application.StartupPath & "\List\Games-List-Game-Gear")
 			End If
-			If UrlExist(DirGamesDownload(29)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(29), Application.StartupPath & "\List\Games-List-Sega-Saturn")
+			If UrlExist(AES_Decrypt(DirGamesDownload(29))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(29)), Application.StartupPath & "\List\Games-List-Sega-Saturn")
 			End If
-			If UrlExist(DirGamesDownload(30)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(30), Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
+			If UrlExist(AES_Decrypt(DirGamesDownload(30))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(30)), Application.StartupPath & "\List\Games-List-Mega-Drive-32x")
 			End If
-			If UrlExist(DirGamesDownload(31)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(31), Application.StartupPath & "\List\Games-List-Sega-Nomad")
+			If UrlExist(AES_Decrypt(DirGamesDownload(31))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(31)), Application.StartupPath & "\List\Games-List-Sega-Nomad")
 			End If
-			If UrlExist(DirGamesDownload(32)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(32), Application.StartupPath & "\List\Games-List-Sega-Model-2")
+			If UrlExist(AES_Decrypt(DirGamesDownload(32))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(32)), Application.StartupPath & "\List\Games-List-Sega-Model-2")
 			End If
-			If UrlExist(DirGamesDownload(33)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(33), Application.StartupPath & "\List\Games-List-Dreamcast")
+			If UrlExist(AES_Decrypt(DirGamesDownload(33))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(33)), Application.StartupPath & "\List\Games-List-Dreamcast")
 			End If
-			If UrlExist(DirGamesDownload(34)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(34), Application.StartupPath & "\List\Games-List-Neo-Geo")
+			If UrlExist(AES_Decrypt(DirGamesDownload(34))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(34)), Application.StartupPath & "\List\Games-List-Neo-Geo")
 			End If
-			If UrlExist(DirGamesDownload(35)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(35), Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
+			If UrlExist(AES_Decrypt(DirGamesDownload(35))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(35)), Application.StartupPath & "\List\Games-List-Neo-Geo-CD")
 			End If
-			If UrlExist(DirGamesDownload(36)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(36), Application.StartupPath & "\List\Games-List-Pippin")
+			If UrlExist(AES_Decrypt(DirGamesDownload(36))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(36)), Application.StartupPath & "\List\Games-List-Pippin")
 			End If
-			If UrlExist(DirGamesDownload(37)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(37), Application.StartupPath & "\List\Games-List-Atari2600")
+			If UrlExist(AES_Decrypt(DirGamesDownload(37))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(37)), Application.StartupPath & "\List\Games-List-Atari2600")
 			End If
-			If UrlExist(DirGamesDownload(38)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(38), Application.StartupPath & "\List\Games-List-Atari5200")
+			If UrlExist(AES_Decrypt(DirGamesDownload(38))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(38)), Application.StartupPath & "\List\Games-List-Atari5200")
 			End If
-			If UrlExist(DirGamesDownload(39)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(39), Application.StartupPath & "\List\Games-List-Atari7800")
+			If UrlExist(AES_Decrypt(DirGamesDownload(39))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(39)), Application.StartupPath & "\List\Games-List-Atari7800")
 			End If
-			If UrlExist(DirGamesDownload(40)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(40), Application.StartupPath & "\List\Games-List-Atari-Jaguar")
+			If UrlExist(AES_Decrypt(DirGamesDownload(40))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(40)), Application.StartupPath & "\List\Games-List-Atari-Jaguar")
 			End If
-			If UrlExist(DirGamesDownload(41)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(41), Application.StartupPath & "\List\Games-List-Playdia")
+			If UrlExist(AES_Decrypt(DirGamesDownload(41))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(41)), Application.StartupPath & "\List\Games-List-Playdia")
 			End If
-			If UrlExist(DirGamesDownload(42)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(42), Application.StartupPath & "\List\Games-List-Wonderswan")
+			If UrlExist(AES_Decrypt(DirGamesDownload(42))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(42)), Application.StartupPath & "\List\Games-List-Wonderswan")
 			End If
-			If UrlExist(DirGamesDownload(43)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(43), Application.StartupPath & "\List\Games-List-Wonderswan-Color")
+			If UrlExist(AES_Decrypt(DirGamesDownload(43))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(43)), Application.StartupPath & "\List\Games-List-Wonderswan-Color")
 			End If
-			If UrlExist(DirGamesDownload(44)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(44), Application.StartupPath & "\List\Games-List-Play-System-1")
+			If UrlExist(AES_Decrypt(DirGamesDownload(44))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(44)), Application.StartupPath & "\List\Games-List-Play-System-1")
 			End If
-			If UrlExist(DirGamesDownload(45)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(45), Application.StartupPath & "\List\Games-List-Play-System-2")
+			If UrlExist(AES_Decrypt(DirGamesDownload(45))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(45)), Application.StartupPath & "\List\Games-List-Play-System-2")
 			End If
-			If UrlExist(DirGamesDownload(46)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(46), Application.StartupPath & "\List\Games-List-Play-System-3")
+			If UrlExist(AES_Decrypt(DirGamesDownload(46))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(46)), Application.StartupPath & "\List\Games-List-Play-System-3")
 			End If
-			If UrlExist(DirGamesDownload(47)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(47), Application.StartupPath & "\List\Games-List-Casio-Loopy")
+			If UrlExist(AES_Decrypt(DirGamesDownload(47))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(47)), Application.StartupPath & "\List\Games-List-Casio-Loopy")
 			End If
-			If UrlExist(DirGamesDownload(48)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(48), Application.StartupPath & "\List\Games-List-ColecoVision")
+			If UrlExist(AES_Decrypt(DirGamesDownload(48))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(48)), Application.StartupPath & "\List\Games-List-ColecoVision")
 			End If
-			If UrlExist(DirGamesDownload(49)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(49), Application.StartupPath & "\List\Games-List-Commodore64GS")
+			If UrlExist(AES_Decrypt(DirGamesDownload(49))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(49)), Application.StartupPath & "\List\Games-List-Commodore64GS")
 			End If
-			If UrlExist(DirGamesDownload(50)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(50), Application.StartupPath & "\List\Games-List-AmigaCD32")
+			If UrlExist(AES_Decrypt(DirGamesDownload(50))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(50)), Application.StartupPath & "\List\Games-List-AmigaCD32")
 			End If
-			If UrlExist(DirGamesDownload(51)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(51), Application.StartupPath & "\List\Games-List-AmigaCD")
+			If UrlExist(AES_Decrypt(DirGamesDownload(51))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(51)), Application.StartupPath & "\List\Games-List-AmigaCD")
 			End If
-			If UrlExist(DirGamesDownload(52)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(52), Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
+			If UrlExist(AES_Decrypt(DirGamesDownload(52))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(52)), Application.StartupPath & "\List\Games-List-Fairchild-Channel-F")
 			End If
-			If UrlExist(DirGamesDownload(53)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(53), Application.StartupPath & "\List\Games-List-GP32")
+			If UrlExist(AES_Decrypt(DirGamesDownload(53))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(53)), Application.StartupPath & "\List\Games-List-GP32")
 			End If
-			If UrlExist(DirGamesDownload(54)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(54), Application.StartupPath & "\List\Games-List-Vectrex")
+			If UrlExist(AES_Decrypt(DirGamesDownload(54))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(54)), Application.StartupPath & "\List\Games-List-Vectrex")
 			End If
-			If UrlExist(DirGamesDownload(55)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(55), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
+			If UrlExist(AES_Decrypt(DirGamesDownload(55))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(55)), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey")
 			End If
-			If UrlExist(DirGamesDownload(56)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(56), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
+			If UrlExist(AES_Decrypt(DirGamesDownload(56))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(56)), Application.StartupPath & "\List\Games-List-Magnavox-Oddyssey2")
 			End If
-			If UrlExist(DirGamesDownload(57)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(57), Application.StartupPath & "\List\Games-List-Intellivision")
+			If UrlExist(AES_Decrypt(DirGamesDownload(57))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(57)), Application.StartupPath & "\List\Games-List-Intellivision")
 			End If
-			If UrlExist(DirGamesDownload(58)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(58), Application.StartupPath & "\List\Games-List-PC-Engine")
+			If UrlExist(AES_Decrypt(DirGamesDownload(58))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(58)), Application.StartupPath & "\List\Games-List-PC-Engine")
 			End If
-			If UrlExist(DirGamesDownload(59)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(59), Application.StartupPath & "\List\Games-List-PC-FX")
+			If UrlExist(AES_Decrypt(DirGamesDownload(59))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(59)), Application.StartupPath & "\List\Games-List-PC-FX")
 			End If
-			If UrlExist(DirGamesDownload(60)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(60), Application.StartupPath & "\List\Games-List-N-Gage")
+			If UrlExist(AES_Decrypt(DirGamesDownload(60))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(60)), Application.StartupPath & "\List\Games-List-N-Gage")
 			End If
-			If UrlExist(DirGamesDownload(61)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(61), Application.StartupPath & "\List\Games-List-3DO")
+			If UrlExist(AES_Decrypt(DirGamesDownload(61))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(61)), Application.StartupPath & "\List\Games-List-3DO")
 			End If
-			If UrlExist(DirGamesDownload(62)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(62), Application.StartupPath & "\List\Games-List-Videopac")
+			If UrlExist(AES_Decrypt(DirGamesDownload(62))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(62)), Application.StartupPath & "\List\Games-List-Videopac")
 			End If
-			If UrlExist(DirGamesDownload(63)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(63), Application.StartupPath & "\List\Games-List-Philips-CDi")
+			If UrlExist(AES_Decrypt(DirGamesDownload(63))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(63)), Application.StartupPath & "\List\Games-List-Philips-CDi")
 			End If
-			If UrlExist(DirGamesDownload(64)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(64), Application.StartupPath & "\List\Games-List-RCA-Studio-II")
+			If UrlExist(AES_Decrypt(DirGamesDownload(64))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(64)), Application.StartupPath & "\List\Games-List-RCA-Studio-II")
 			End If
-			If UrlExist(DirGamesDownload(65)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(65), Application.StartupPath & "\List\Games-List-V-Smile")
+			If UrlExist(AES_Decrypt(DirGamesDownload(65))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(65)), Application.StartupPath & "\List\Games-List-V-Smile")
 			End If
-			If UrlExist(DirGamesDownload(66)) = True Then
-				My.Computer.Network.DownloadFile(DirGamesDownload(66), Application.StartupPath & "\List\Games-List-AmstradGX4000")
+			If UrlExist(AES_Decrypt(DirGamesDownload(66))) = True Then
+				My.Computer.Network.DownloadFile(AES_Decrypt(DirGamesDownload(66)), Application.StartupPath & "\List\Games-List-AmstradGX4000")
 			End If
 			NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", "Correctly updated list", ToolTipIcon.None)
 		Catch
@@ -2390,8 +2534,8 @@ Language=English")
 					End If
 				Next index1
 			Catch
-			End try
-			End If
+			End Try
+		End If
 		'Catch
 		'MsgBox("error")
 		'End Try
@@ -2399,6 +2543,7 @@ Language=English")
 		If List1.Items.Count = 0 Then
 		Else
 			Try
+				List1.ListViewItemSorter = New ListViewItemComparer(1, True)
 				Name_Game_Label.Text = "Name Game: " & List1.Items.Item(0).SubItems(1).Text
 				Type_label.Text = "Type: " & List1.Items.Item(0).SubItems(2).Text
 				Format_label.Text = "Format: " & List1.Items.Item(0).SubItems(6).Text
@@ -2410,77 +2555,253 @@ Language=English")
 		End If
 
 		Me.Cursor = Cursors.Default
-
-
+		Try
+			List1.Items.Item(0).Selected = True
+		Catch
+		End Try
 	End Sub
 	Private Sub List1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles List1.SelectedIndexChanged
 
 		Dim Lisense As Boolean = False
-		Try
-			Name_Game_Label.Text = "Name Game: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
-			Type_label.Text = "Type: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text
-			Format_label.Text = "Format: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
-			User_label.Text = "User: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(4).Text
-			Version_label.Text = "Version: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(5).Text
-			Region_label.Text = "Region: " & List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text
-			Link_Game = AES_Decrypt(List1.Items.Item(List1.FocusedItem.Index).SubItems(7).Text)
-			Platform_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(8).Text
-			Version_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(5).Text
-			format_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
-			Name_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
-			Region_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text
-			Game_Part = List1.Items.Item(List1.FocusedItem.Index).SubItems(9).Text
-			Game_Num = List1.Items.Item(List1.FocusedItem.Index).SubItems(10).Text
-			Lisense = List1.Items.Item(List1.FocusedItem.Index).SubItems(13).Text
-			Link_License = AES_Decrypt(List1.Items.Item(List1.FocusedItem.Index).SubItems(14).Text)
-			format_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(15).Text
-
-			If Lisense = False Then
-				Button2.Visible = False
-			Else
-				Button2.Visible = True
-			End If
-			'MsgBox(Game_Part)
-			'MsgBox(Game_Num)
-			If Game_Part = True Then
-				DownParts.Visible = True
-				DownParts.Enabled = True
-				DownParts.Items.Clear()
-				DownParts.Items.Add("ALL")
-				DownParts.Text = "ALL"
-				Dim i As Integer = 0
-				For i = 1 To Game_Num
-					DownParts.Items.Add(i)
-				Next
-			Else
-				DownParts.Visible = False
-				DownParts.Enabled = False
-			End If
-
-			If load_images_games = False Then
-				If List1.Items.Item(List1.FocusedItem.Index).SubItems(12).Text = "" Then
+		If StartBol = False Then
+			Try
+				ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+				Name_Game_Label.Text = ini.GetKeyValue("LANGUAGE", "Name_Game") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
+				Type_label.Text = ini.GetKeyValue("LANGUAGE", "Type") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(3).Text
+				Format_label.Text = ini.GetKeyValue("LANGUAGE", "Format") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
+				User_label.Text = ini.GetKeyValue("LANGUAGE", "User") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(4).Text
+				Version_label.Text = ini.GetKeyValue("LANGUAGE", "Version") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(5).Text
+				Region_label.Text = ini.GetKeyValue("LANGUAGE", "Region") & ": " & List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text
+				Link_Game = AES_Decrypt(List1.Items.Item(List1.FocusedItem.Index).SubItems(7).Text)
+				Platform_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(8).Text
+				Version_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(5).Text
+				format_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(6).Text
+				Name_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(1).Text
+				Region_Game = List1.Items.Item(List1.FocusedItem.Index).SubItems(2).Text
+				Game_Part = List1.Items.Item(List1.FocusedItem.Index).SubItems(9).Text
+				Game_Num = List1.Items.Item(List1.FocusedItem.Index).SubItems(10).Text
+				Lisense = List1.Items.Item(List1.FocusedItem.Index).SubItems(13).Text
+				Link_License = AES_Decrypt(List1.Items.Item(List1.FocusedItem.Index).SubItems(14).Text)
+				format_License = List1.Items.Item(List1.FocusedItem.Index).SubItems(15).Text
+				If Lisense = False Then
+					Button2.Visible = False
 				Else
-					Try
-						PictureBox3.Load(List1.Items.Item(List1.FocusedItem.Index).SubItems(12).Text)
-					Catch
-					End Try
-					'	MsgBox("1")
+					Button2.Visible = True
 				End If
-			End If
-		Catch
-			MsgBox("Error", MsgBoxStyle.OkOnly)
-		End Try
+				'MsgBox(Game_Part)
+				'MsgBox(Game_Num)
+				If Game_Part = True Then
+					DownParts.Visible = True
+					DownParts.Enabled = True
+					DownParts.Items.Clear()
+					DownParts.Items.Add("ALL")
+					DownParts.Text = "ALL"
+					Dim i As Integer = 0
+					For i = 1 To Game_Num
+						DownParts.Items.Add(i)
+					Next
+				Else
+					DownParts.Visible = False
+					DownParts.Enabled = False
+				End If
+
+				If load_images_games = False Then
+					If List1.Items.Item(List1.FocusedItem.Index).SubItems(12).Text = "" Then
+					Else
+						Try
+							PictureBox3.Load(List1.Items.Item(List1.FocusedItem.Index).SubItems(12).Text)
+						Catch
+						End Try
+						'	MsgBox("1")
+					End If
+				End If
+			Catch ex As Exception
+				'MsgBox("Error: " & ex.Message, MsgBoxStyle.OkOnly)
+			End Try
+		Else
+			StartBol = False
+			Try
+				ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+				Name_Game_Label.Text = ini.GetKeyValue("LANGUAGE", "Name_Game") & ": " & List1.Items.Item(0).SubItems(1).Text
+				Type_label.Text = ini.GetKeyValue("LANGUAGE", "Type") & ": " & List1.Items.Item(0).SubItems(3).Text
+				Format_label.Text = ini.GetKeyValue("LANGUAGE", "Format") & ": " & List1.Items.Item(0).SubItems(6).Text
+				User_label.Text = ini.GetKeyValue("LANGUAGE", "User") & ": " & List1.Items.Item(0).SubItems(4).Text
+				Version_label.Text = ini.GetKeyValue("LANGUAGE", "Version") & ": " & List1.Items.Item(0).SubItems(5).Text
+				Region_label.Text = ini.GetKeyValue("LANGUAGE", "Region") & ": " & List1.Items.Item(0).SubItems(2).Text
+				Link_Game = AES_Decrypt(List1.Items.Item(0).SubItems(7).Text)
+				Platform_Game = List1.Items.Item(0).SubItems(8).Text
+				Version_Game = List1.Items.Item(0).SubItems(5).Text
+				format_Game = List1.Items.Item(0).SubItems(6).Text
+				Name_Game = List1.Items.Item(0).SubItems(1).Text
+				Region_Game = List1.Items.Item(0).SubItems(2).Text
+				Game_Part = List1.Items.Item(0).SubItems(9).Text
+				Game_Num = List1.Items.Item(0).SubItems(10).Text
+				Lisense = List1.Items.Item(0).SubItems(13).Text
+				Link_License = AES_Decrypt(List1.Items.Item(0).SubItems(14).Text)
+				format_License = List1.Items.Item(0).SubItems(15).Text
+				If Lisense = False Then
+					Button2.Visible = False
+				Else
+					Button2.Visible = True
+				End If
+				'MsgBox(Game_Part)
+				'MsgBox(Game_Num)
+				If Game_Part = True Then
+					DownParts.Visible = True
+					DownParts.Enabled = True
+					DownParts.Items.Clear()
+					DownParts.Items.Add("ALL")
+					DownParts.Text = "ALL"
+					Dim i As Integer = 0
+					For i = 1 To Game_Num
+						DownParts.Items.Add(i)
+					Next
+				Else
+					DownParts.Visible = False
+					DownParts.Enabled = False
+				End If
+
+				If load_images_games = False Then
+					If List1.Items.Item(0).SubItems(12).Text = "" Then
+					Else
+						Try
+							PictureBox3.Load(List1.Items.Item(0).SubItems(12).Text)
+						Catch
+						End Try
+						'	MsgBox("1")
+					End If
+				End If
+			Catch ex As Exception
+				'MsgBox("Error: " & ex.Message, MsgBoxStyle.OkOnly)
+			End Try
+		End If
+	End Sub
+	Private Sub ListView99_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView99.SelectedIndexChanged
+
+		Dim Lisense As Boolean = False
+		If StartBol = False Then
+			Try
+				ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+				Name_Game_Label.Text = ini.GetKeyValue("LANGUAGE", "Name_Game") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(1).Text
+				Type_label.Text = ini.GetKeyValue("LANGUAGE", "Type") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(3).Text
+				Format_label.Text = ini.GetKeyValue("LANGUAGE", "Format") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(6).Text
+				User_label.Text = ini.GetKeyValue("LANGUAGE", "User") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(4).Text
+				Version_label.Text = ini.GetKeyValue("LANGUAGE", "Version") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(5).Text
+				Region_label.Text = ini.GetKeyValue("LANGUAGE", "Region") & ": " & ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(2).Text
+				Link_Game = AES_Decrypt(ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(7).Text)
+				Platform_Game = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(8).Text
+				Version_Game = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(5).Text
+				format_Game = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(6).Text
+				Name_Game = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(1).Text
+				Region_Game = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(2).Text
+				Game_Part = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(9).Text
+				Game_Num = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(10).Text
+				Lisense = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(13).Text
+				Link_License = AES_Decrypt(ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(14).Text)
+				format_License = ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(15).Text
+				If Lisense = False Then
+					Button2.Visible = False
+				Else
+					Button2.Visible = True
+				End If
+				'MsgBox(Game_Part)
+				'MsgBox(Game_Num)
+				If Game_Part = True Then
+					DownParts.Visible = True
+					DownParts.Enabled = True
+					DownParts.Items.Clear()
+					DownParts.Items.Add("ALL")
+					DownParts.Text = "ALL"
+					Dim i As Integer = 0
+					For i = 1 To Game_Num
+						DownParts.Items.Add(i)
+					Next
+				Else
+					DownParts.Visible = False
+					DownParts.Enabled = False
+				End If
+
+				If load_images_games = False Then
+					If ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(12).Text = "" Then
+					Else
+						Try
+							PictureBox3.Load(ListView99.Items.Item(ListView99.FocusedItem.Index).SubItems(12).Text)
+						Catch
+						End Try
+						'	MsgBox("1")
+					End If
+				End If
+			Catch ex As Exception
+				'MsgBox("Error: " & ex.Message, MsgBoxStyle.OkOnly)
+			End Try
+		Else
+			StartBol = False
+			Try
+				ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+				Name_Game_Label.Text = ini.GetKeyValue("LANGUAGE", "Name_Game") & ": " & ListView99.Items.Item(0).SubItems(1).Text
+				Type_label.Text = ini.GetKeyValue("LANGUAGE", "Type") & ": " & ListView99.Items.Item(0).SubItems(3).Text
+				Format_label.Text = ini.GetKeyValue("LANGUAGE", "Format") & ": " & ListView99.Items.Item(0).SubItems(6).Text
+				User_label.Text = ini.GetKeyValue("LANGUAGE", "User") & ": " & ListView99.Items.Item(0).SubItems(4).Text
+				Version_label.Text = ini.GetKeyValue("LANGUAGE", "Version") & ": " & ListView99.Items.Item(0).SubItems(5).Text
+				Region_label.Text = ini.GetKeyValue("LANGUAGE", "Region") & ": " & ListView99.Items.Item(0).SubItems(2).Text
+				Link_Game = AES_Decrypt(ListView99.Items.Item(0).SubItems(7).Text)
+				Platform_Game = ListView99.Items.Item(0).SubItems(8).Text
+				Version_Game = ListView99.Items.Item(0).SubItems(5).Text
+				format_Game = ListView99.Items.Item(0).SubItems(6).Text
+				Name_Game = ListView99.Items.Item(0).SubItems(1).Text
+				Region_Game = ListView99.Items.Item(0).SubItems(2).Text
+				Game_Part = ListView99.Items.Item(0).SubItems(9).Text
+				Game_Num = ListView99.Items.Item(0).SubItems(10).Text
+				Lisense = ListView99.Items.Item(0).SubItems(13).Text
+				Link_License = AES_Decrypt(ListView99.Items.Item(0).SubItems(14).Text)
+				format_License = ListView99.Items.Item(0).SubItems(15).Text
+				If Lisense = False Then
+					Button2.Visible = False
+				Else
+					Button2.Visible = True
+				End If
+				'MsgBox(Game_Part)
+				'MsgBox(Game_Num)
+				If Game_Part = True Then
+					DownParts.Visible = True
+					DownParts.Enabled = True
+					DownParts.Items.Clear()
+					DownParts.Items.Add("ALL")
+					DownParts.Text = "ALL"
+					Dim i As Integer = 0
+					For i = 1 To Game_Num
+						DownParts.Items.Add(i)
+					Next
+				Else
+					DownParts.Visible = False
+					DownParts.Enabled = False
+				End If
+
+				If load_images_games = False Then
+					If ListView99.Items.Item(0).SubItems(12).Text = "" Then
+					Else
+						Try
+							PictureBox3.Load(ListView99.Items.Item(0).SubItems(12).Text)
+						Catch
+						End Try
+						'	MsgBox("1")
+					End If
+				End If
+			Catch ex As Exception
+				'MsgBox("Error: " & ex.Message, MsgBoxStyle.OkOnly)
+			End Try
+		End If
 	End Sub
 	Private Sub Button_Download_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Download.Click
 		Dim saved As String
-
+		ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
 		If Dir_Save_Games = "Default" Then
 			saved = Application.StartupPath
 		Else
 			saved = Dir_Save_Games
 
 			If (Directory.Exists(Dir_Save_Games)) = False Then
-				MsgBox("The selected dirrectory does not exist please select another dirrectory")
+				MsgBox(ini.GetKeyValue("LANGUAGE", "The_selected_dirrectory_does_not_exist_please_select_another_dirrectory"))
 				Exit Sub
 			End If
 		End If
@@ -2632,175 +2953,181 @@ Language=English")
 		'MsgBox()
 		Dim localpath As String
 		If Plataforma = "All" Then
-			Select Case List1.Items.Item(0).SubItems(8).Text
-				Case "All"
-					Plataforma = "All"
-				Case "Wii"
-					Plataforma = "Wii"
-				Case "Wii U"
-					Plataforma = "WiiU"
-				Case "Nintendo Swich"
-					Plataforma = "NSwich"
-				Case "Nintendo 64"
-					Plataforma = "N64"
-				Case "GameCube"
-					Plataforma = "GameCube"
-				Case "Virtual Boy"
-					Plataforma = "VirtualBoy"
-				Case "Game Boy Advance"
-					Plataforma = "GameBoyAdvance"
-				Case "Snes"
-					Plataforma = "SNES"
-				Case "Nes"
-					Plataforma = "NES"
-				Case "NDS"
-					Plataforma = "NDS"
-				Case "3DS"
-					Plataforma = "3DS"
-				Case "Game Boy"
-					Plataforma = "GameBoy"
-				Case "Game & Watch"
-					Plataforma = "G&W"
-				Case "PlayStation"
-					Plataforma = "PS1"
-				Case "PlayStation 2"
-					Plataforma = "PS2"
-				Case "PlayStation 3"
-					Plataforma = "PS3"
-				Case "PlayStation 4"
-					Plataforma = "PS4"
-				Case "PSP"
-					Plataforma = "PSP"
-				Case "PS Vita"
-					Plataforma = "PSVita"
-				Case "PocketStation"
-					Plataforma = "PocketStation"
-				Case "Xbox"
-					Plataforma = "Xbox"
-				Case "Xbox 360"
-					Plataforma = "Xbox360"
-				Case "Xbox One"
-					Plataforma = "XboxOne"
-				Case "SG-1000"
-					Plataforma = "SG-1000"
-				Case "SC-3000"
-					Plataforma = "SC-3000"
-				Case "Sega Master System"
-					Plataforma = "Sega-Master-System"
-				Case "Sega Genesis"
-					Plataforma = "Sega-Genesis"
-				Case "Sega Mega CD"
-					Plataforma = "Sega-Mega-CD"
-				Case "Game Gear"
-					Plataforma = "Game-Gear"
-				Case "Sega Saturn"
-					Plataforma = "Sega-Saturn"
-				Case "Mega Drive 32x"
-					Plataforma = "Mega-Drive-32x"
-				Case "Sega Nomad"
-					Plataforma = "Sega-Nomad"
-				Case "Sega Model 2"
-					Plataforma = "Sega-Model-2"
-				Case "Sega Dreamcast"
-					Plataforma = "Dreamcast"
-				Case "Neo-Geo"
-					Plataforma = "Neo-Geo"
-				Case "Neo-Geo CD"
-					Plataforma = "Neo-Geo-CD"
-				Case "Pippin"
-					Plataforma = "Pippin"
-				Case "Atari 2600"
-					Plataforma = "Atari2600"
-				Case "Atari 5200"
-					Plataforma = "Atari5200"
-				Case "Atari 7800"
-					Plataforma = "Atari7800"
-				Case "Atari Jaguar"
-					Plataforma = "Atari-Jaguar"
-				Case "Playdia"
-					Plataforma = "Playdia"
-				Case "Wonderswan"
-					Plataforma = "Wonderswan"
-				Case "Wonderswan Color"
-					Plataforma = "Wonderswan-Color"
-				Case "Play System 1"
-					Plataforma = "Play-System-1"
-				Case "Play System 2"
-					Plataforma = "Play-System-2"
-				Case "Play System 3"
-					Plataforma = "Play-System-3"
-				Case "Casio Loopy"
-					Plataforma = "Casio-Loopy"
-				Case "ColecoVision"
-					Plataforma = "ColecoVision"
-				Case "Commodore 64GS"
-					Plataforma = "Commodore64GS"
-				Case "AmigaCD32"
-					Plataforma = "AmigaCD32"
-				Case "AmigaCD"
-					Plataforma = "AmigaCD"
-				Case "Fairchild Channel F"
-					Plataforma = "Fairchild-Channel-F"
-				Case "GP32"
-					Plataforma = "GP32"
-				Case "Vectrex"
-					Plataforma = "Vectrex"
-				Case "Magnavox Oddyssey"
-					Plataforma = "Magnavox-Oddyssey"
-				Case "Magnavox Oddyssey 2"
-					Plataforma = "Magnavox-Oddyssey2"
-				Case "Intellivision"
-					Plataforma = "Intellivision"
-				Case "PC Engine"
-					Plataforma = "PC-Engine"
-				Case "PC-FX"
-					Plataforma = "PC-FX"
-				Case "N-Gage"
-					Plataforma = "N-Gage"
-				Case "3DO"
-					Plataforma = "3DO"
-				Case "Videopac"
-					Plataforma = "Videopac"
-				Case "Philips CDi"
-					Plataforma = "Philips-CDi"
-				Case "RCA Studio II"
-					Plataforma = "RCA-Studio-II"
-				Case "V.Smile"
-					Plataforma = "V-Smile"
-				Case "Amstrad GX4000"
-					Plataforma = "AmstradGX4000"
-			End Select
+			Try
+				Select Case List1.Items.Item(0).SubItems(8).Text
+					Case "All"
+						Plataforma = "All"
+					Case "Wii"
+						Plataforma = "Wii"
+					Case "Wii U"
+						Plataforma = "WiiU"
+					Case "Nintendo Swich"
+						Plataforma = "NSwich"
+					Case "Nintendo 64"
+						Plataforma = "N64"
+					Case "GameCube"
+						Plataforma = "GameCube"
+					Case "Virtual Boy"
+						Plataforma = "VirtualBoy"
+					Case "Game Boy Advance"
+						Plataforma = "GameBoyAdvance"
+					Case "Snes"
+						Plataforma = "SNES"
+					Case "Nes"
+						Plataforma = "NES"
+					Case "NDS"
+						Plataforma = "NDS"
+					Case "3DS"
+						Plataforma = "3DS"
+					Case "Game Boy"
+						Plataforma = "GameBoy"
+					Case "Game & Watch"
+						Plataforma = "G&W"
+					Case "PlayStation"
+						Plataforma = "PS1"
+					Case "PlayStation 2"
+						Plataforma = "PS2"
+					Case "PlayStation 3"
+						Plataforma = "PS3"
+					Case "PlayStation 4"
+						Plataforma = "PS4"
+					Case "PSP"
+						Plataforma = "PSP"
+					Case "PS Vita"
+						Plataforma = "PSVita"
+					Case "PocketStation"
+						Plataforma = "PocketStation"
+					Case "Xbox"
+						Plataforma = "Xbox"
+					Case "Xbox 360"
+						Plataforma = "Xbox360"
+					Case "Xbox One"
+						Plataforma = "XboxOne"
+					Case "SG-1000"
+						Plataforma = "SG-1000"
+					Case "SC-3000"
+						Plataforma = "SC-3000"
+					Case "Sega Master System"
+						Plataforma = "Sega-Master-System"
+					Case "Sega Genesis"
+						Plataforma = "Sega-Genesis"
+					Case "Sega Mega CD"
+						Plataforma = "Sega-Mega-CD"
+					Case "Game Gear"
+						Plataforma = "Game-Gear"
+					Case "Sega Saturn"
+						Plataforma = "Sega-Saturn"
+					Case "Mega Drive 32x"
+						Plataforma = "Mega-Drive-32x"
+					Case "Sega Nomad"
+						Plataforma = "Sega-Nomad"
+					Case "Sega Model 2"
+						Plataforma = "Sega-Model-2"
+					Case "Sega Dreamcast"
+						Plataforma = "Dreamcast"
+					Case "Neo-Geo"
+						Plataforma = "Neo-Geo"
+					Case "Neo-Geo CD"
+						Plataforma = "Neo-Geo-CD"
+					Case "Pippin"
+						Plataforma = "Pippin"
+					Case "Atari 2600"
+						Plataforma = "Atari2600"
+					Case "Atari 5200"
+						Plataforma = "Atari5200"
+					Case "Atari 7800"
+						Plataforma = "Atari7800"
+					Case "Atari Jaguar"
+						Plataforma = "Atari-Jaguar"
+					Case "Playdia"
+						Plataforma = "Playdia"
+					Case "Wonderswan"
+						Plataforma = "Wonderswan"
+					Case "Wonderswan Color"
+						Plataforma = "Wonderswan-Color"
+					Case "Play System 1"
+						Plataforma = "Play-System-1"
+					Case "Play System 2"
+						Plataforma = "Play-System-2"
+					Case "Play System 3"
+						Plataforma = "Play-System-3"
+					Case "Casio Loopy"
+						Plataforma = "Casio-Loopy"
+					Case "ColecoVision"
+						Plataforma = "ColecoVision"
+					Case "Commodore 64GS"
+						Plataforma = "Commodore64GS"
+					Case "AmigaCD32"
+						Plataforma = "AmigaCD32"
+					Case "AmigaCD"
+						Plataforma = "AmigaCD"
+					Case "Fairchild Channel F"
+						Plataforma = "Fairchild-Channel-F"
+					Case "GP32"
+						Plataforma = "GP32"
+					Case "Vectrex"
+						Plataforma = "Vectrex"
+					Case "Magnavox Oddyssey"
+						Plataforma = "Magnavox-Oddyssey"
+					Case "Magnavox Oddyssey 2"
+						Plataforma = "Magnavox-Oddyssey2"
+					Case "Intellivision"
+						Plataforma = "Intellivision"
+					Case "PC Engine"
+						Plataforma = "PC-Engine"
+					Case "PC-FX"
+						Plataforma = "PC-FX"
+					Case "N-Gage"
+						Plataforma = "N-Gage"
+					Case "3DO"
+						Plataforma = "3DO"
+					Case "Videopac"
+						Plataforma = "Videopac"
+					Case "Philips CDi"
+						Plataforma = "Philips-CDi"
+					Case "RCA Studio II"
+						Plataforma = "RCA-Studio-II"
+					Case "V.Smile"
+						Plataforma = "V-Smile"
+					Case "Amstrad GX4000"
+						Plataforma = "AmstradGX4000"
+				End Select
+			Catch
+			End Try
 		Else
 
 		End If
-		localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-" & Plataforma)
+		Try
+			localpath = File.ReadAllText(Application.StartupPath & "\List\Games-List-" & Plataforma)
 
-		Listita = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
+			Listita = JsonConvert.DeserializeObject(Of List(Of ListTwo))(localpath)
 
-		myFile = saved & "\Roms\[" & Platform_Game & "][" & Version_Game & "][" & Region_Game & "]" & Name_Game & "." & format_Game
+			myFile = saved & "\Roms\[" & Platform_Game & "][" & Version_Game & "][" & Region_Game & "]" & Name_Game & "." & format_Game
 
 #Enable Warning BC42104 ' Se usa la variable antes de que se le haya asignado un valor
-		If Game_Part = False Then
-			'Link_Game = ""
-			'myWebClient.DownloadFileAsync(New Uri(Link_Game), myFile)
-			ListViewEx.StartDownload(Link_Game, myFile)
-			NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
-			NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
-		Else
-			If DownParts.Text = "ALL" Then
-				For i = 1 To Game_Num
-					'myWebClient.DownloadFileAsync(New Uri(Listita(Game_Num).Encrypt(i)), "[Part:" & i & "]" & myFile)
-					ListViewEx.StartDownload(Listita(Game_Num).Encrypt(i), "[Part:" & i & "]" & myFile)
-					NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
-					NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
-				Next
-				ListViewEx.StartDownload(Listita(Game_Num).Encrypt(DownParts.Text), "[Part:" & DownParts.Text & "]" & myFile)
+			If Game_Part = False Then
+				'Link_Game = ""
+				'myWebClient.DownloadFileAsync(New Uri(Link_Game), myFile)
+				ListViewEx.StartDownload(Link_Game, myFile)
 				NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
-				NotifyIcon1.ShowBalloonTip(1000, "Download Start:    ", myFile, ToolTipIcon.None)
+				NotifyIcon1.ShowBalloonTip(1000, ini.GetKeyValue("LANGUAGE", "Download_Start") & ":    ", myFile, ToolTipIcon.None)
 			Else
+				If DownParts.Text = "ALL" Then
+					For i = 1 To Game_Num
+						'myWebClient.DownloadFileAsync(New Uri(Listita(Game_Num).Encrypt(i)), "[Part:" & i & "]" & myFile)
+						ListViewEx.StartDownload(Listita(Game_Num).Encrypt(i), "[Part:" & i & "]" & myFile)
+						NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
+						NotifyIcon1.ShowBalloonTip(1000, ini.GetKeyValue("LANGUAGE", "Download_Start") & ":    ", myFile, ToolTipIcon.None)
+					Next
+					ListViewEx.StartDownload(Listita(Game_Num).Encrypt(DownParts.Text), "[Part:" & DownParts.Text & "]" & myFile)
+					NotifyIcon1.ContextMenuStrip = ContextMenuStrip2
+					NotifyIcon1.ShowBalloonTip(1000, ini.GetKeyValue("LANGUAGE", "Download_Start") & ":    ", myFile, ToolTipIcon.None)
+				Else
 
+				End If
 			End If
-		End If
+		Catch
+		End Try
 	End Sub
 	Private Sub Form1_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
 		Dim wClient As DownloadFileAsyncExtended
@@ -3066,39 +3393,22 @@ Language=English")
 		Public FormatLisense As String
 	End Class
 	Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-		Dim check As Integer = FindItem(List1, TextBox1.Text)
+		'If TextBox1.Text.Length = 2 Then
+		If Search_On = True Then
+			Dim check As Integer = FindItem(List1, TextBox1.Text)
 
-		If TextBox1.Text = "" Then
-			ListView99.Visible = False
-			counter4 = 0
-		Else
-			ListView99.Visible = True
-			ListView99.Items.Clear()
-			counter4 = 0
+			If TextBox1.Text.Length <= 2 Then
+				ListView99.Visible = False
+				counter4 = 0
+				ListView99.Items.Clear()
+			Else
+				ListView99.Visible = True
+				ListView99.Items.Clear()
+				counter4 = 0
 
-			For i As Integer = 0 To List1.Items.Count - 1
-				If Trim(List1.Items(i).Text).Contains(Trim(TextBox1.Text)) Then
-					'MsgBox(i)
-					ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
-					ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
-					counter4 = counter4 + 1
-				End If
-				For subitem As Integer = 0 To List1.Items(i).SubItems.Count - 1
-					If Trim(List1.Items(i).SubItems(subitem).Text).Contains(Trim(TextBox1.Text)) Then
+				For i As Integer = 0 To List1.Items.Count - 1
+					If Trim(List1.Items(i).Text).Contains(Trim(TextBox1.Text)) Then
+						'MsgBox(i)
 						ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
 						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
 						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
@@ -3116,12 +3426,126 @@ Language=English")
 						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
 						ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
 						counter4 = counter4 + 1
-						Exit For
 					End If
+					For subitem As Integer = 0 To List1.Items(i).SubItems.Count - 1
+						If Trim(List1.Items(i).SubItems(subitem).Text).Contains(Trim(TextBox1.Text)) Then
+							ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
+							counter4 = counter4 + 1
+							Exit For
+						End If
+					Next
+
 				Next
 
-			Next
+			End If
+			Try
+				ListView99.ListViewItemSorter = New ListViewItemComparer2(1, True)
+				ListView99.Items.Item(0).Selected = True
+				StartBol = True
+			Catch
+			End Try
+		End If
+		'Else
+		'ListView99.Visible = False
+		'counter4 = 0
+		'End If
+	End Sub
+	Private Sub TextBox1_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyUp
+		If e.KeyCode = 8 Then
+			Search_On = True
+			If TextBox1.Text = "" Then
+			Else
+				Dim check As Integer = FindItem(List1, TextBox1.Text)
 
+				If TextBox1.Text.Length <= 2 Then
+					ListView99.Visible = False
+					counter4 = 0
+					ListView99.Items.Clear()
+				Else
+					ListView99.Visible = True
+					ListView99.Items.Clear()
+					counter4 = 0
+
+					For i As Integer = 0 To List1.Items.Count - 1
+						If Trim(List1.Items(i).Text).Contains(Trim(TextBox1.Text)) Then
+							'MsgBox(i)
+							ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
+							ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
+							counter4 = counter4 + 1
+						End If
+						For subitem As Integer = 0 To List1.Items(i).SubItems.Count - 1
+							If Trim(List1.Items(i).SubItems(subitem).Text).Contains(Trim(TextBox1.Text)) Then
+								ListView99.Items.Add(List1.Items.Item(i).SubItems(0).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(1).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(2).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(3).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(4).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(5).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(6).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(7).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(8).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(9).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(10).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(11).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(12).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(13).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(14).Text)
+								ListView99.Items(counter4).SubItems.Add(List1.Items.Item(i).SubItems(15).Text)
+								counter4 = counter4 + 1
+								Exit For
+							End If
+						Next
+
+					Next
+
+				End If
+				Try
+					ListView99.ListViewItemSorter = New ListViewItemComparer2(1, True)
+					ListView99.Items.Item(0).Selected = True
+					StartBol = True
+				Catch
+				End Try
+			End If
+		End If
+	End Sub
+	Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
+		If e.KeyChar = "" Then
+			Search_On = False
+			If TextBox1.Text = "" Then
+				ListView99.Visible = False
+				counter4 = 0
+			End If
+		Else
+			Search_On = True
 		End If
 	End Sub
 	Private Sub CopyClipBoard(Platform_Send As String, ID_Send As String, Type_Send As String, Name_Send As String, Region_Send As String,
@@ -3162,7 +3586,8 @@ Language=English")
 			Dim output As String = JsonConvert.SerializeObject(Lista)
 
 			Clipboard.SetText(output & ",")
-			NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", "Game data copied in Clipboard", ToolTipIcon.None)
+			ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
+			NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", ini.GetKeyValue("LANGUAGE", "Game_data_copied_in_Clipboard"), ToolTipIcon.None)
 
 		Catch ex As Exception
 			NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", ex.Message, ToolTipIcon.Error)
@@ -3576,6 +4001,7 @@ Language=English")
 		List1.BackColor = color_combo
 		ComboBox2.BackColor = color_combo
 		MyToolStrip.BackColor = color_combo
+		TextBox9.BackColor = color_combo
 
 		ini.SetKeyValue("Config", "Color", Color_Combobox.Text)
 		ini.Save(Application.StartupPath & "\Config.ini")
@@ -4157,6 +4583,8 @@ Language=English")
 				start_tab = True
 			End If
 
+			TextBox9.Visible = True
+			Encrypt_Burron.Visible = True
 			ini.SetKeyValue("Config", "Show_Uploader", "True")
 			ini.Save(Application.StartupPath & "\Config.ini")
 			'MsgBox("add")
@@ -4166,6 +4594,9 @@ Language=English")
 			Upload.TabPages.Remove(TabPage2)
 			ini.SetKeyValue("Config", "Show_Uploader", "False")
 			ini.Save(Application.StartupPath & "\Config.ini")
+			TextBox9.Visible = False
+			Encrypt_Burron.Visible = False
+			start_tab = True
 		End If
 	End Sub
 	Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -4497,15 +4928,92 @@ Language=English")
 			Button3.Visible = False
 		End If
 	End Sub
-
 	Private Sub Languaje_Combobox_SelectedIndexChanged(sender As Object, e As EventArgs)
 
 	End Sub
-
 	Private Sub Languaje_Combobox_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles Languaje_Combobox.SelectedIndexChanged
+
 		ini.Load(Application.StartupPath & "\Config.ini")
+		If Languaje_Combobox.Text = ini.GetKeyValue("Config", "Language") Then
+		Else
+			MsgBox("Please Reset Program")
+		End If
 		ini.SetKeyValue("Config", "Language", Languaje_Combobox.Text)
 		ini.Save(Application.StartupPath & "\Config.ini")
 		Languaje_Program = Languaje_Combobox.Text
+
+	End Sub
+	Private Sub List1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles List1.ColumnClick
+		List1.ListViewItemSorter = New ListViewItemComparer(e.Column, blnAscending)
+
+		If blnAscending = True Then
+			blnAscending = False
+		Else
+			blnAscending = True
+		End If
+	End Sub
+	Private Sub ListView99_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles List1.ColumnClick
+		ListView99.ListViewItemSorter = New ListViewItemComparer2(e.Column, blnAscending)
+		If blnAscending = True Then
+			blnAscending = False
+		Else
+			blnAscending = True
+		End If
+	End Sub
+	Private Sub ListViewEx_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles List1.ColumnClick
+		ListViewEx.ListViewItemSorter = New ListViewItemComparer(e.Column, blnAscending)
+
+		If blnAscending = True Then
+			blnAscending = False
+		Else
+			blnAscending = True
+		End If
+	End Sub
+	Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+		Process.Start(Application.StartupPath & "\List.ini")
+	End Sub
+	Private Sub Encrypt_Burron_Click(sender As Object, e As EventArgs) Handles Encrypt_Burron.Click
+
+		Clipboard.SetText(AES_Encrypt(TextBox9.Text))
+		NotifyIcon1.ShowBalloonTip(1000, "Σύνταξη for games    ", "Encrypted Link", ToolTipIcon.None)
 	End Sub
 End Class
+
+'
+' Hola buena Persona, mi nombre es Yum, encantado de conozerte, soy un programador algo novato llevare mas o menos 1 año programando
+' y me encanta, asi que encontre mi aficion favorita, si les esto, es que as descrifrazo el programa, o lo has cogido de mi git privado
+' hehhe, solo queria decir que puedes modificarlo de tal manera para que sea incluso mejor..., ya que mis conozimientos son gracias
+' a aprender por la red, si puede re-editar el programa y hacerlo mejor, no tendre ningun problem, pero almenos quiero que me mencionen,
+' no eh estado mas de 4 meses trabajando en este proyecto para que una persona random me robe todo el proyecto, porfabor si es tan hamable
+' de hacerlo.., este programa no influye en ninguna ilegaliadad (Pirateria, etc) ya que como el creador que soy, no doy ningun enlaze de 
+' descarga de  ningun juego/ram/programa etc, y hacer un sofware tampoco es illegal, como los emuladores que no son ilegales, cada uno le
+' da el uso que quiere..., yo doy la herramienta de hazelo mas sencillo, la feana es de los usuarios, ya que si yo subiese las roms, estaria
+' inflingiendo las reglas sociales tales puesta en este 2019 por ahora, si, no sera el mejor programa del mundo si, pero es algo que nadie
+' lo ah echo, porque?, porque en simple vista pareze una tonteria, pensaras que a hay webs para esto, y mi pregunta es y cunto tiempo tardas 
+' en descargar aquella rom que deseas?, no es tan simple de buscar y descargar en el 90% de las vezes, incluye un wuebo de publicidad, y esta
+' appno incluye publicidad, 0% de lucro puedes ver en el codigo, si, normalmente la gente que hace esas paginas lo hacen para ganar dinero,
+' pero no piensan en el usuario, el pobre esta 20-100s esperando a descargar 1 rom, en la cual la empresa o empresas que suben las roms,
+' no les importa, ami si que me importa, no quiero perder tiempo unitil haciendo cosas inutiles, quiero hacer la cosas en el momento,
+' y aqui biene mi app, 0% publicidad, instantea, y sin limite de descarga, que todo pinta bien ahora no?, el problema es que los usuarios
+' se organizen y suban juegos, como en cemu los graphicspaks, los shaders etc..., si no logran hacer eso, esta app sera inutil,
+' si, puede ser ua buena app, pero sera buena si os usuarios les interesa..., are un pequeño resumen delo que es mi app:
+' esta applicacion es un recopilatorio de roms, puede ser privada o publica, eso ya el consumidor, puede un usuario subir sus propias roms
+' a un servidor y gracias a esta app descargarlas, sin ir al servidor y descargarlas, ese es el mayor punto fuerte, si podia tomarse como una
+' app para descargar roms ilegalmente, si se puede usar para eso, pero enteria ese no es mi plan, yo me eh echo un pequeño repositorio de
+' las roms que jugare y descargare de mi servidor, claro, yo la utilizare porqu no?, si, para el 99% de los usuaios lo utilizaran para descargar
+' roms piratas pero ese ya no esmi probema. 
+'
+' Bueno muchas gracias por leer.
+' 
+'ATENTAMENTE: YUM :D
+'
+'
+' APPICACION SIN COPIRIGTH HEHHE
+'
+'
+'
+' Por cierto Gracias al Control + Z , me ha salvado demasiadas vezes por gilipollezes xD
+'
+'
+'
+'

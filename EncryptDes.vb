@@ -58,4 +58,95 @@ Module EncryptDes
 		' If not found, then return -1.
 		Return -1
 	End Function
+
+	Class ListViewItemComparer
+		Implements IComparer
+
+		Private col As Integer
+		Private AscOrder As Boolean
+
+		Public Sub New()
+			col = 0
+			AscOrder = True
+		End Sub
+
+		Public Sub New(ByVal column As Integer, ByVal Ascending As Boolean)
+			col = column
+			AscOrder = Ascending
+		End Sub
+
+		Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer _
+				Implements IComparer.Compare
+			Try
+				If AscOrder Then
+					Return [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
+				Else
+					Return [String].Compare(CType(y, ListViewItem).SubItems(col).Text, CType(x, ListViewItem).SubItems(col).Text)
+				End If
+			Catch
+			End Try
+
+		End Function
+
+	End Class
+	Class ListViewItemComparer2
+		Implements IComparer
+
+		Private col As Integer
+		Private AscOrder As Boolean
+
+		Public Sub New()
+			col = 0
+			AscOrder = True
+		End Sub
+
+		Public Sub New(ByVal column As Integer, ByVal Ascending As Boolean)
+			col = column
+			AscOrder = Ascending
+		End Sub
+
+		Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer _
+				Implements IComparer.Compare
+			Try
+				If AscOrder Then
+					Return [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
+				Else
+					Return [String].Compare(CType(y, ListViewItem).SubItems(col).Text, CType(x, ListViewItem).SubItems(col).Text)
+				End If
+			Catch
+			End Try
+
+		End Function
+
+	End Class
+	Class ListViewItemComparer3
+		Implements IComparer
+
+		Private col As Integer
+		Private AscOrder As Boolean
+
+		Public Sub New()
+			col = 0
+			AscOrder = True
+		End Sub
+
+		Public Sub New(ByVal column As Integer, ByVal Ascending As Boolean)
+			col = column
+			AscOrder = Ascending
+		End Sub
+
+		Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer _
+				Implements IComparer.Compare
+			Try
+				If AscOrder Then
+					Return [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
+				Else
+					Return [String].Compare(CType(y, ListViewItem).SubItems(col).Text, CType(x, ListViewItem).SubItems(col).Text)
+				End If
+			Catch
+			End Try
+
+		End Function
+
+	End Class
 End Module

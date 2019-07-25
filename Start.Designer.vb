@@ -63,6 +63,7 @@ Partial Class Start
 		Me.Upload_Add_item = New System.Windows.Forms.Button()
 		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.TabPage3 = New System.Windows.Forms.TabPage()
+		Me.Languaje_Combobox = New System.Windows.Forms.ComboBox()
 		Me.Button3 = New System.Windows.Forms.Button()
 		Me.Uploader_tab = New System.Windows.Forms.CheckBox()
 		Me.Label2 = New System.Windows.Forms.Label()
@@ -73,7 +74,6 @@ Partial Class Start
 		Me.CreatedBy = New System.Windows.Forms.LinkLabel()
 		Me.Uploader = New System.Windows.Forms.Button()
 		Me.Languaje_Custom = New System.Windows.Forms.TextBox()
-		Me.Custom_Color = New System.Windows.Forms.TextBox()
 		Me.Color_Combobox = New System.Windows.Forms.ComboBox()
 		Me.List_Download = New System.Windows.Forms.TabPage()
 		Me.MyToolStrip = New System.Windows.Forms.ToolStrip()
@@ -95,8 +95,11 @@ Partial Class Start
 		Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+		Me.Button4 = New System.Windows.Forms.Button()
+		Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.Encrypt_Burron = New System.Windows.Forms.Button()
 		Me.ListViewEx = New ProjectKoppai.ListViewExtended()
-		Me.Languaje_Combobox = New System.Windows.Forms.ComboBox()
+		Me.TextBox9 = New System.Windows.Forms.TextBox()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -523,6 +526,9 @@ Partial Class Start
 		'TabPage3
 		'
 		Me.TabPage3.BackColor = System.Drawing.Color.DimGray
+		Me.TabPage3.Controls.Add(Me.TextBox9)
+		Me.TabPage3.Controls.Add(Me.Encrypt_Burron)
+		Me.TabPage3.Controls.Add(Me.Button4)
 		Me.TabPage3.Controls.Add(Me.Languaje_Combobox)
 		Me.TabPage3.Controls.Add(Me.Button3)
 		Me.TabPage3.Controls.Add(Me.Uploader_tab)
@@ -534,7 +540,6 @@ Partial Class Start
 		Me.TabPage3.Controls.Add(Me.CreatedBy)
 		Me.TabPage3.Controls.Add(Me.Uploader)
 		Me.TabPage3.Controls.Add(Me.Languaje_Custom)
-		Me.TabPage3.Controls.Add(Me.Custom_Color)
 		Me.TabPage3.Controls.Add(Me.Color_Combobox)
 		Me.TabPage3.Location = New System.Drawing.Point(4, 22)
 		Me.TabPage3.Name = "TabPage3"
@@ -542,6 +547,17 @@ Partial Class Start
 		Me.TabPage3.Size = New System.Drawing.Size(973, 536)
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "Configuration"
+		'
+		'Languaje_Combobox
+		'
+		Me.Languaje_Combobox.BackColor = System.Drawing.Color.DimGray
+		Me.Languaje_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.Languaje_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Languaje_Combobox.FormattingEnabled = True
+		Me.Languaje_Combobox.Location = New System.Drawing.Point(9, 145)
+		Me.Languaje_Combobox.Name = "Languaje_Combobox"
+		Me.Languaje_Combobox.Size = New System.Drawing.Size(226, 21)
+		Me.Languaje_Combobox.TabIndex = 14
 		'
 		'Button3
 		'
@@ -627,9 +643,9 @@ Partial Class Start
 		'Uploader
 		'
 		Me.Uploader.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Uploader.Location = New System.Drawing.Point(6, 180)
+		Me.Uploader.Location = New System.Drawing.Point(9, 208)
 		Me.Uploader.Name = "Uploader"
-		Me.Uploader.Size = New System.Drawing.Size(265, 42)
+		Me.Uploader.Size = New System.Drawing.Size(229, 30)
 		Me.Uploader.TabIndex = 4
 		Me.Uploader.Text = "Upload List Games"
 		Me.Uploader.UseVisualStyleBackColor = True
@@ -643,16 +659,6 @@ Partial Class Start
 		Me.Languaje_Custom.TabIndex = 3
 		Me.Languaje_Custom.Text = "Exemple Name"
 		Me.Languaje_Custom.Visible = False
-		'
-		'Custom_Color
-		'
-		Me.Custom_Color.BackColor = System.Drawing.Color.DimGray
-		Me.Custom_Color.Location = New System.Drawing.Point(520, 67)
-		Me.Custom_Color.Name = "Custom_Color"
-		Me.Custom_Color.Size = New System.Drawing.Size(284, 20)
-		Me.Custom_Color.TabIndex = 2
-		Me.Custom_Color.Text = "Exemple Name"
-		Me.Custom_Color.Visible = False
 		'
 		'Color_Combobox
 		'
@@ -800,6 +806,31 @@ Partial Class Start
 		Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
 		Me.ExitToolStripMenuItem1.Text = "Exit"
 		'
+		'Button4
+		'
+		Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Button4.Location = New System.Drawing.Point(9, 172)
+		Me.Button4.Name = "Button4"
+		Me.Button4.Size = New System.Drawing.Size(229, 30)
+		Me.Button4.TabIndex = 15
+		Me.Button4.Text = "Edit Url List"
+		Me.Button4.UseVisualStyleBackColor = True
+		'
+		'ContextMenuStrip1
+		'
+		Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+		Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+		'
+		'Encrypt_Burron
+		'
+		Me.Encrypt_Burron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Encrypt_Burron.Location = New System.Drawing.Point(9, 335)
+		Me.Encrypt_Burron.Name = "Encrypt_Burron"
+		Me.Encrypt_Burron.Size = New System.Drawing.Size(950, 30)
+		Me.Encrypt_Burron.TabIndex = 16
+		Me.Encrypt_Burron.Text = "Encrypt"
+		Me.Encrypt_Burron.UseVisualStyleBackColor = True
+		'
 		'ListViewEx
 		'
 		Me.ListViewEx.BackColor = System.Drawing.Color.DimGray
@@ -814,16 +845,15 @@ Partial Class Start
 		Me.ListViewEx.UseCompatibleStateImageBehavior = False
 		Me.ListViewEx.View = System.Windows.Forms.View.Details
 		'
-		'Languaje_Combobox
+		'TextBox9
 		'
-		Me.Languaje_Combobox.BackColor = System.Drawing.Color.DimGray
-		Me.Languaje_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.Languaje_Combobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Languaje_Combobox.FormattingEnabled = True
-		Me.Languaje_Combobox.Location = New System.Drawing.Point(9, 145)
-		Me.Languaje_Combobox.Name = "Languaje_Combobox"
-		Me.Languaje_Combobox.Size = New System.Drawing.Size(226, 21)
-		Me.Languaje_Combobox.TabIndex = 14
+		Me.TextBox9.BackColor = System.Drawing.Color.DarkRed
+		Me.TextBox9.Location = New System.Drawing.Point(9, 309)
+		Me.TextBox9.Name = "TextBox9"
+		Me.TextBox9.ScrollBars = System.Windows.Forms.ScrollBars.Both
+		Me.TextBox9.Size = New System.Drawing.Size(950, 20)
+		Me.TextBox9.TabIndex = 17
+		Me.TextBox9.Text = "Link Server"
 		'
 		'Start
 		'
@@ -869,7 +899,6 @@ Partial Class Start
 	Friend WithEvents List1 As ListView
 	Friend WithEvents Uploader As Button
 	Friend WithEvents Languaje_Custom As TextBox
-	Friend WithEvents Custom_Color As TextBox
 	Friend WithEvents Color_Combobox As ComboBox
 	Friend WithEvents CreatedBy As LinkLabel
 	Friend WithEvents TabPage2 As TabPage
@@ -933,4 +962,8 @@ Partial Class Start
 	Friend WithEvents Button3 As Button
 	Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 	Friend WithEvents Languaje_Combobox As ComboBox
+	Friend WithEvents Button4 As Button
+	Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+	Friend WithEvents Encrypt_Burron As Button
+	Friend WithEvents TextBox9 As TextBox
 End Class
