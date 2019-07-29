@@ -76,3 +76,4 @@ C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Simple
 C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.exe
 C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.xml
 C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\Σύνταξη for games.pdb
+C:\Users\rayns\OneDrive\Documentos\GitHub\MultiStore-PC-Edition\obj\Debug\ProjectKoppai.Accept.resources

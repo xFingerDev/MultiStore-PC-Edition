@@ -31,7 +31,7 @@ Public Class Start
 	Private WithEvents myWebClient As New Net.WebClient()
 #Enable Warning IDE1006 ' Estilos de nombres
 	Dim client As WebClient = New WebClient
-
+	Private color_combo As Color
 	Public counter2 As Integer
 	Public counter3 As Integer
 	Dim counter4 As Integer
@@ -40,6 +40,7 @@ Public Class Start
 	Public Parts As Boolean
 	Public License_Bol As Boolean
 	Dim ini As New IniFile
+	Dim saved As String
 	Private load_images_games As Boolean
 	Public BackGround_Image As Boolean
 	Public Color_ini As String
@@ -647,6 +648,8 @@ Public Class Start
 			Button1.Text = ini.GetKeyValue("LANGUAGE", "Check_image")
 			Upload_Add_item.Text = ini.GetKeyValue("LANGUAGE", "Up_Game")
 			Button4.Text = ini.GetKeyValue("LANGUAGE", "Edit_Url_List")
+			Accept.Label1.Text = ini.GetKeyValue("LANGUAGE", "Are_you_sure_you_want_to_remove_this_file_from_the_download_list")
+			Accept.Label1.Text = ""
 			Languaje_Combobox.Text = Languaje_Program
 		Catch
 		End Try
@@ -896,13 +899,13 @@ Public Class Start
 		PictureBox2.WaitOnLoad = False
 		PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
 		Try
-			PictureBox2.Load("https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Megaman10.jpg/220px-Megaman10.jpg")
+			'	PictureBox2.Load("https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Megaman10.jpg/220px-Megaman10.jpg")
 		Catch
 		End Try
 		PictureBox3.WaitOnLoad = False
 		PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
 		Try
-			PictureBox3.Load("https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Megaman10.jpg/220px-Megaman10.jpg")
+			'PictureBox3.Load("https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Megaman10.jpg/220px-Megaman10.jpg")
 		Catch
 		End Try
 		'AddList()
@@ -918,7 +921,7 @@ Public Class Start
 
 
 #Region "Load Color"
-		Dim color_combo As Color
+
 		Color_Combobox.Text = Color_ini
 		Select Case Color_ini
 			Case "White"
@@ -1354,7 +1357,10 @@ Remove_All=Remove All
 Search=Search:
 Download_License=Download License
 Download_Game=Download Game
-Edit_Url_List=Edit Url List")
+Edit_Url_List=Edit Url List
+Are_you_sure_you_want_to_remove_this_file_from_the_download_list=Are you sure you want to remove this file from the download list?
+Also_delete_files_from_disk=Also delete files from disk
+Confirm_Delete=Confirm Delete")
 		End If
 		If System.IO.File.Exists((Application.StartupPath & "\Lang\Español.ini")) = False Then
 			System.IO.File.WriteAllText(Application.StartupPath & "\Lang\Español.ini", "[LANGUAGE]
@@ -1407,7 +1413,10 @@ Remove_All=Eliminar Todo
 Search=Buscar:
 Download_License=Descargar Licencia
 Download_Game=Descargar Juego
-Edit_Url_List=Editar Url de la lista")
+Edit_Url_List=Editar Url de la lista
+Are_you_sure_you_want_to_remove_this_file_from_the_download_list=¿Seguro que quieres eliminar este archivo de la lista de descargas?
+Also_delete_files_from_disk=Eliminar también archivos del disco
+Confirm_Delete=Confirmar Eliminación")
 		End If
 		If System.IO.File.Exists((Application.StartupPath & "\Config.ini")) = True Then
 			ini.Load(Application.StartupPath & "\Config.ini")
@@ -2793,7 +2802,7 @@ Language=English")
 		End If
 	End Sub
 	Private Sub Button_Download_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Download.Click
-		Dim saved As String
+
 		ini.Load(Application.StartupPath & "\Lang\" & Languaje_Program & ".ini")
 		If Dir_Save_Games = "Default" Then
 			saved = Application.StartupPath
@@ -4430,25 +4439,50 @@ Language=English")
 	End Sub
 	Private Sub BtnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove1.Click
 		Dim wClient As DownloadFileAsyncExtended
-
+		Dim Accept_Form As New Accept
 		'// Always loop backwards when removing items from the list,
 		'// because the index gets updated when an item is removed.
 		'// This can result in certain items not getting removed.
-		For i As Integer = ListViewEx.SelectedItems.Count - 1 To 0 Step -1
-			If ListViewEx.SelectedItems(i).Tag IsNot Nothing Then
-				'// Get the DownloadFileAsyncExtended class instance from the ListViewItem Tag.
-				wClient = DirectCast(ListViewEx.SelectedItems(i).Tag, DownloadFileAsyncExtended)
-				'// Pause (cancel) the download and remove it from the list.
-				wClient.CancelAsync()
-				ListViewEx.SelectedItems(i).Tag = Nothing
-				ListViewEx.SelectedItems(i).Remove()
-			Else
-				'// There's nothing to cancel, because the
-				'// download has finished or caused an error.
-				'// Just remove the item from the list.
-				ListViewEx.SelectedItems(i).Remove()
-			End If
-		Next
+
+		If Accept_Form.ShowDialog = DialogResult.OK Then
+
+
+			For i As Integer = ListViewEx.SelectedItems.Count - 1 To 0 Step -1
+				If ListViewEx.SelectedItems(i).Tag IsNot Nothing Then
+					'// Get the DownloadFileAsyncExtended class instance from the ListViewItem Tag.
+					wClient = DirectCast(ListViewEx.SelectedItems(i).Tag, DownloadFileAsyncExtended)
+					'// Pause (cancel) the download and remove it from the list.
+					wClient.CancelAsync()
+					ListViewEx.SelectedItems(i).Tag = Nothing
+
+					If Accept_Form.CheckBox1.Checked = True Then
+						'Kill(ListViewEx.SelectedItems(i).)
+						If System.IO.File.Exists(saved & "\Roms\" & ListViewEx.Items.Item(i).SubItems(0).Text) = True Then
+							'	MsgBox("exist")
+							Kill(saved & "\Roms\" & ListViewEx.Items.Item(i).SubItems(0).Text)
+						Else
+							'MsgBox("exist2")
+						End If
+					End If
+					ListViewEx.SelectedItems(i).Remove()
+				Else
+					If Accept_Form.CheckBox1.Checked = True Then
+						MsgBox(saved & ListViewEx.Items.Item(i).SubItems(0).Text)
+						If System.IO.File.Exists(saved & ListViewEx.Items.Item(i).SubItems(0).Text) = True Then
+							'	MsgBox("exist")
+							Kill(saved & "\Roms\" & ListViewEx.Items.Item(i).SubItems(0).Text)
+						Else
+							'MsgBox("exist2")
+						End If
+					End If
+					'// There's nothing to cancel, because the
+					'// download has finished or caused an error.
+					'// Just remove the item from the list.
+					ListViewEx.SelectedItems(i).Remove()
+				End If
+			Next
+		End If
+		'MsgBox(Accept_Form.CheckBox1.CheckState)
 	End Sub
 	Private Sub BtnRemoveAll_Click(sender As Object, e As EventArgs) Handles btnRemoveAll.Click
 		Dim wClient As DownloadFileAsyncExtended

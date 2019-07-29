@@ -63,6 +63,9 @@ Partial Class Start
 		Me.Upload_Add_item = New System.Windows.Forms.Button()
 		Me.TextBox2 = New System.Windows.Forms.TextBox()
 		Me.TabPage3 = New System.Windows.Forms.TabPage()
+		Me.TextBox9 = New System.Windows.Forms.TextBox()
+		Me.Encrypt_Burron = New System.Windows.Forms.Button()
+		Me.Button4 = New System.Windows.Forms.Button()
 		Me.Languaje_Combobox = New System.Windows.Forms.ComboBox()
 		Me.Button3 = New System.Windows.Forms.Button()
 		Me.Uploader_tab = New System.Windows.Forms.CheckBox()
@@ -76,6 +79,7 @@ Partial Class Start
 		Me.Languaje_Custom = New System.Windows.Forms.TextBox()
 		Me.Color_Combobox = New System.Windows.Forms.ComboBox()
 		Me.List_Download = New System.Windows.Forms.TabPage()
+		Me.ListViewEx = New ProjectKoppai.ListViewExtended()
 		Me.MyToolStrip = New System.Windows.Forms.ToolStrip()
 		Me.btnResume1 = New System.Windows.Forms.ToolStripButton()
 		Me.btnResumeAll1 = New System.Windows.Forms.ToolStripButton()
@@ -95,11 +99,7 @@ Partial Class Start
 		Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-		Me.Button4 = New System.Windows.Forms.Button()
 		Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-		Me.Encrypt_Burron = New System.Windows.Forms.Button()
-		Me.ListViewEx = New ProjectKoppai.ListViewExtended()
-		Me.TextBox9 = New System.Windows.Forms.TextBox()
 		CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.Upload.SuspendLayout()
 		Me.TabPage1.SuspendLayout()
@@ -203,6 +203,7 @@ Partial Class Start
 		'
 		'PictureBox3
 		'
+		Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
 		Me.PictureBox3.Location = New System.Drawing.Point(766, 32)
 		Me.PictureBox3.Name = "PictureBox3"
 		Me.PictureBox3.Size = New System.Drawing.Size(196, 199)
@@ -407,6 +408,7 @@ Partial Class Start
 		'
 		'PictureBox2
 		'
+		Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
 		Me.PictureBox2.Location = New System.Drawing.Point(658, 215)
 		Me.PictureBox2.Name = "PictureBox2"
 		Me.PictureBox2.Size = New System.Drawing.Size(252, 157)
@@ -548,6 +550,36 @@ Partial Class Start
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "Configuration"
 		'
+		'TextBox9
+		'
+		Me.TextBox9.BackColor = System.Drawing.Color.DarkRed
+		Me.TextBox9.Location = New System.Drawing.Point(9, 309)
+		Me.TextBox9.Name = "TextBox9"
+		Me.TextBox9.ScrollBars = System.Windows.Forms.ScrollBars.Both
+		Me.TextBox9.Size = New System.Drawing.Size(950, 20)
+		Me.TextBox9.TabIndex = 17
+		Me.TextBox9.Text = "Link Server"
+		'
+		'Encrypt_Burron
+		'
+		Me.Encrypt_Burron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Encrypt_Burron.Location = New System.Drawing.Point(9, 335)
+		Me.Encrypt_Burron.Name = "Encrypt_Burron"
+		Me.Encrypt_Burron.Size = New System.Drawing.Size(950, 30)
+		Me.Encrypt_Burron.TabIndex = 16
+		Me.Encrypt_Burron.Text = "Encrypt"
+		Me.Encrypt_Burron.UseVisualStyleBackColor = True
+		'
+		'Button4
+		'
+		Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.Button4.Location = New System.Drawing.Point(9, 172)
+		Me.Button4.Name = "Button4"
+		Me.Button4.Size = New System.Drawing.Size(229, 30)
+		Me.Button4.TabIndex = 15
+		Me.Button4.Text = "Edit Url List"
+		Me.Button4.UseVisualStyleBackColor = True
+		'
 		'Languaje_Combobox
 		'
 		Me.Languaje_Combobox.BackColor = System.Drawing.Color.DimGray
@@ -683,6 +715,20 @@ Partial Class Start
 		Me.List_Download.TabIndex = 3
 		Me.List_Download.Text = "List Download"
 		'
+		'ListViewEx
+		'
+		Me.ListViewEx.BackColor = System.Drawing.Color.DimGray
+		Me.ListViewEx.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.ListViewEx.FullRowSelect = True
+		Me.ListViewEx.Location = New System.Drawing.Point(3, 28)
+		Me.ListViewEx.Name = "ListViewEx"
+		Me.ListViewEx.OwnerDraw = True
+		Me.ListViewEx.ShowItemToolTips = True
+		Me.ListViewEx.Size = New System.Drawing.Size(967, 505)
+		Me.ListViewEx.TabIndex = 1
+		Me.ListViewEx.UseCompatibleStateImageBehavior = False
+		Me.ListViewEx.View = System.Windows.Forms.View.Details
+		'
 		'MyToolStrip
 		'
 		Me.MyToolStrip.BackColor = System.Drawing.Color.DimGray
@@ -806,54 +852,10 @@ Partial Class Start
 		Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(133, 22)
 		Me.ExitToolStripMenuItem1.Text = "Exit"
 		'
-		'Button4
-		'
-		Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Button4.Location = New System.Drawing.Point(9, 172)
-		Me.Button4.Name = "Button4"
-		Me.Button4.Size = New System.Drawing.Size(229, 30)
-		Me.Button4.TabIndex = 15
-		Me.Button4.Text = "Edit Url List"
-		Me.Button4.UseVisualStyleBackColor = True
-		'
 		'ContextMenuStrip1
 		'
 		Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
 		Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
-		'
-		'Encrypt_Burron
-		'
-		Me.Encrypt_Burron.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.Encrypt_Burron.Location = New System.Drawing.Point(9, 335)
-		Me.Encrypt_Burron.Name = "Encrypt_Burron"
-		Me.Encrypt_Burron.Size = New System.Drawing.Size(950, 30)
-		Me.Encrypt_Burron.TabIndex = 16
-		Me.Encrypt_Burron.Text = "Encrypt"
-		Me.Encrypt_Burron.UseVisualStyleBackColor = True
-		'
-		'ListViewEx
-		'
-		Me.ListViewEx.BackColor = System.Drawing.Color.DimGray
-		Me.ListViewEx.Dock = System.Windows.Forms.DockStyle.Fill
-		Me.ListViewEx.FullRowSelect = True
-		Me.ListViewEx.Location = New System.Drawing.Point(3, 28)
-		Me.ListViewEx.Name = "ListViewEx"
-		Me.ListViewEx.OwnerDraw = True
-		Me.ListViewEx.ShowItemToolTips = True
-		Me.ListViewEx.Size = New System.Drawing.Size(967, 505)
-		Me.ListViewEx.TabIndex = 1
-		Me.ListViewEx.UseCompatibleStateImageBehavior = False
-		Me.ListViewEx.View = System.Windows.Forms.View.Details
-		'
-		'TextBox9
-		'
-		Me.TextBox9.BackColor = System.Drawing.Color.DarkRed
-		Me.TextBox9.Location = New System.Drawing.Point(9, 309)
-		Me.TextBox9.Name = "TextBox9"
-		Me.TextBox9.ScrollBars = System.Windows.Forms.ScrollBars.Both
-		Me.TextBox9.Size = New System.Drawing.Size(950, 20)
-		Me.TextBox9.TabIndex = 17
-		Me.TextBox9.Text = "Link Server"
 		'
 		'Start
 		'

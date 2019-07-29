@@ -82,6 +82,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accept.Designer.vb">
+      <DependentUpon>Accept.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Accept.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DownloadFileAsyncExtended.vb" />
     <Compile Include="EncryptDes.vb" />
     <Compile Include="IniFileVb.vb" />
@@ -117,6 +123,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Accept.resx">
+      <DependentUpon>Accept.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Inicio.resx">
       <DependentUpon>Inicio.vb</DependentUpon>
     </EmbeddedResource>
